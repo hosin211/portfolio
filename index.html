@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Hussein Thamer Sadeq · Backend / Full Stack Developer</title>
+<meta name="description" content="Backend-focused full-stack engineer, 5 years of production Python and Django.">
+<!-- shared by link only: keep it out of search results -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F3F0E9">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body data-tone="teal" data-mode="profile">
+<!-- outline numerals: a ring grown from the filled glyph, so overlapping contours never show -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="ol-teal" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB"><feMorphology in="SourceAlpha" operator="dilate" radius="2.5" result="d"/><feComposite in="d" in2="SourceAlpha" operator="out" result="r"/><feFlood flood-color="#0E857A"/><feComposite in2="r" operator="in"/></filter>
+  <filter id="ol-ind" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB"><feMorphology in="SourceAlpha" operator="dilate" radius="2.5" result="d"/><feComposite in="d" in2="SourceAlpha" operator="out" result="r"/><feFlood flood-color="#4055B4"/><feComposite in2="r" operator="in"/></filter>
+  <filter id="ol-amb" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB"><feMorphology in="SourceAlpha" operator="dilate" radius="2.5" result="d"/><feComposite in="d" in2="SourceAlpha" operator="out" result="r"/><feFlood flood-color="#C47915"/><feComposite in2="r" operator="in"/></filter>
+</svg>
+
+<div id="app">
+  <header class="top">
+    <div class="left">
+      <button class="back" id="toProfile" type="button"><span class="ico">←</span><span class="lbl">Profile</span></button>
+      <a class="mark" id="mark" href="./"><span class="full">Hussein Thamer Sadeq</span><span class="short">HTS</span></a>
+    </div>
+    <div class="right">
+      <nav class="links">
+        <a href="https://github.com/hosin211" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/hosin211" target="_blank" rel="noopener">LinkedIn</a>
+        <a id="lnMail" href="mailto:hussinthamer211@gmail.com">Email</a>
+      </nav>
+      <div class="lang" role="group" aria-label="Language / Sprache"><button type="button" data-lang="en">EN</button><button type="button" data-lang="de">DE</button></div>
+      <button class="play" id="tour" type="button"><span class="ico">▶</span><span class="lbl">Play the story</span></button>
+      <button class="story-btn" id="toStory" type="button"><span class="lbl">My story</span><span class="ico">→</span></button>
+    </div>
+  </header>
+
+  <div id="views">
+    <section id="profile" aria-label="Profile"></section>
+    <section id="story" aria-label="Story">
+      <main id="viewport"><div id="rail"></div></main>
+      <footer id="timeline">
+        <button class="step" id="prev" type="button" aria-label="Previous">←</button>
+        <div class="track" id="track"></div>
+        <button class="step" id="next" type="button" aria-label="Next">→</button>
+      </footer>
+    </section>
+  </div>
+</div>
+
+<script src="js/engine.js"></script>
+<script src="js/scenes-alhadi.js"></script>
+<script src="js/scenes-apicbase.js"></script>
+<script src="js/scenes-side.js"></script>
+<script src="js/content.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
