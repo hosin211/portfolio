@@ -110,8 +110,8 @@ body[data-mode=story] #profile{transform:translateX(-8vw) scale(.985);opacity:0;
 .tl [data-tone=amb]{--c:var(--amb);--cL:var(--ambL)} .tl [data-tone=ink]{--c:var(--ink);--cL:var(--bg)}
 .tl-line{position:absolute;left:0;right:0;top:50%;height:4px;margin-top:-2px;border-radius:2px;background:linear-gradient(90deg,var(--teal) 0%,var(--teal) 44%,var(--ind) 56%,var(--ind) 100%);transform-origin:0 50%}
 .tl-node{position:absolute;z-index:1;top:50%;left:var(--x);width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:#fff;border:4px solid var(--c);box-shadow:0 0 0 5px #fff}
-.tl-node.today::after{content:'';position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--c);animation:tlpulse 1.9s ease-out infinite}
-@keyframes tlpulse{from{transform:scale(1);opacity:.7}to{transform:scale(2.3);opacity:0}}
+.tl-node.today::after{content:'';position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--c);animation:tlpulse 3.6s cubic-bezier(.16,1,.3,1) infinite}
+@keyframes tlpulse{from{transform:scale(1);opacity:.55}to{transform:scale(2.1);opacity:0}}
 .tl-stem{position:absolute;left:var(--x);width:2px;margin-left:-1px;height:24px;background:var(--c);opacity:.5}
 .tl-stem.up{bottom:calc(50% + 12px)} .tl-stem.down{top:calc(50% + 12px)}
 .tl-yr{position:absolute;left:var(--x);top:calc(50% + 28px);transform:translateX(-50%);font-size:clamp(42px,3.7vw,62px);font-weight:900;letter-spacing:-.05em;line-height:1;color:var(--c);opacity:.3;pointer-events:none}
@@ -135,18 +135,11 @@ button.tl-card:hover .go{transform:translateX(3px)}
 .lg{display:inline-flex;align-items:center;gap:7px;font:600 11px/1 var(--mono);letter-spacing:1.3px;text-transform:uppercase;color:var(--mute)}
 .lg b{font-size:13px;color:var(--ink2)}
 .snote{font-size:13.5px;color:var(--mute)}
-/* the timeline draws itself: the line runs out, then each milestone arrives in order */
-.js .tl .tl-line{transform:scaleX(0)}
-.js .tl.in .tl-line{transform:none;transition:transform 1.9s var(--ease) .1s}
-.js .tl .tl-node{transform:scale(0)}
-.js .tl .tl-stem,.js .tl .tl-yr,.js .tl .tl-card{opacity:0}
-.js .tl .tl-card.up{transform:translateY(14px)} .js .tl .tl-card.down{transform:translateY(-14px)}
-.js .tl.in .tl-node{transform:none;transition:transform .55s cubic-bezier(.3,1.7,.5,1) calc(.25s + var(--i) * .36s)}
-.js .tl.in .tl-stem{opacity:.5;transition:opacity .4s ease calc(.35s + var(--i) * .36s)}
-.js .tl.in .tl-yr{opacity:.3;transition:opacity .9s ease calc(.3s + var(--i) * .36s)}
-.js .tl.in .tl-card{opacity:1;transform:none;transition:opacity .6s ease calc(.4s + var(--i) * .36s),transform .8s var(--out) calc(.4s + var(--i) * .36s),box-shadow .25s}
-.js .tl.done .tl-card{transition:transform .25s var(--out),box-shadow .25s}
-.js .tl.done button.tl-card:hover{transform:translateY(-3px)}
+/* the timeline draws itself (paintTimeline in js/main.js): hidden until it plays, plain CSS once done */
+.js .tl:not(.done) .tl-line{clip-path:inset(0 100% 0 0)}
+.js .tl:not(.done) .tl-node,.js .tl:not(.done) .tl-stem,.js .tl:not(.done) .tl-yr,.js .tl:not(.done) .tl-card{opacity:0}
+.tl.drawing,.tl.drawing *{transition:none!important}
+.tl-stem.up{transform-origin:50% 100%} .tl-stem.down{transform-origin:50% 0}
 .btn{display:inline-flex;align-items:center;gap:10px;font:600 14px/1 var(--mono);padding:13px 18px;border-radius:999px;border:1.5px solid var(--ink);cursor:pointer;transition:background .2s,transform .2s}
 .btn.primary{background:var(--ink);color:#fff}
 .btn.primary:hover{background:#2C3446;transform:translateY(-1px)}
@@ -303,7 +296,7 @@ footer#timeline{height:var(--bottom);flex:none;display:flex;align-items:center;g
   .tl-node,.tl-stem,.tl-yr{display:none}
   .tl-card{position:relative;left:auto!important;top:auto!important;bottom:auto!important;width:auto}
   .tl-card::before{content:'';position:absolute;left:-33px;top:16px;width:14px;height:14px;border-radius:50%;background:#fff;border:4px solid var(--c);box-shadow:0 0 0 4px var(--card)}
-  .js .tl .tl-line,.js .tl .tl-card{transform:none!important;opacity:1!important}
+  .js .tl .tl-line,.js .tl .tl-card,.js .tl .tl-card>*,.js .tl .tl-hi em{transform:none!important;opacity:1!important;clip-path:none!important}
 }
 @media (max-width:860px){
   :root{--top:56px;--bottom:74px}

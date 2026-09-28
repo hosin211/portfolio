@@ -17,7 +17,7 @@ const UI={
 
 // ---------------- the profile: what a recruiter reads first ----------------
 const PROFILE={
-  name:'Hussein Thamer Sadeq',
+  name:'Hussein Altaka',
   role:T('Backend / Full Stack Developer','Backend / Full Stack Developer'), focus:'Python &amp; Django',
   contact:[
     {kind:'mail',label:'hussinthamer211@gmail.com',href:'mailto:hussinthamer211@gmail.com'},
@@ -207,5 +207,5 @@ const SLIDES=[
   {id:'end',group:'end',type:'end',tone:'teal',
     kick:T('5 years · still building','5 Jahre · und es geht weiter'),
     title:T("That's the story so far.",'Das war die Story bisher.'),
-    name:'Hussein Thamer Sadeq', role:T('Backend / Full Stack Developer · <b>Python &amp; Django</b>','Backend / Full Stack Developer · <b>Python &amp; Django</b>')}
+    name:'Hussein Altaka', role:T('Backend / Full Stack Developer · <b>Python &amp; Django</b>','Backend / Full Stack Developer · <b>Python &amp; Django</b>')}
 ];

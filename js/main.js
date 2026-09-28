@@ -84,10 +84,54 @@ function buildProfile(){
   w.querySelectorAll('.rise').forEach((c,k)=>c.style.setProperty('--k',k));
   pro={w,chars,u:pro?pro.u:0};
   paintProfile();
-  const tl=S.querySelector('.tl'); fitTimeline();
-  if(STILL||REDUCE||!('IntersectionObserver' in window)) tl.classList.add('in','done');
-  else{const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){tl.classList.add('in');setTimeout(()=>tl.classList.add('done'),3400);io.disconnect()}},{root:prof,threshold:.3});io.observe(tl)}
+  const tl=S.querySelector('.tl'); fitTimeline(); tlm=planTimeline(tl);
+  if(STILL||REDUCE||tlSeen||!('IntersectionObserver' in window)) finishTimeline();
+  else{const m=tlm; tl.classList.add('drawing'); paintTimeline();
+    const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){m.on=true;io.disconnect()}},{root:prof,threshold:.3});io.observe(tl)}
 }
+// The timeline draws itself like a motion graphic, with the motion rules of the fframes design guide:
+// the line runs from milestone to milestone, each node springs in as the line reaches it, its stem grows,
+// then the card rises out of the stem and its lines follow 60 ms apart. "Today" then breathes (CSS).
+const SPRING={snappy:[300,26],soft:[150,18]};                 // stiffness, damping, mass 1
+function spring(t,[k,c]){                                     // 0 → 1, a small overshoot, settles on its own
+  if(t<=0) return 0;
+  const w=Math.sqrt(k), z=c/(2*w), wd=w*Math.sqrt(1-z*z);
+  return 1-Math.exp(-z*w*t)*(Math.cos(wd*t)+z*w/wd*Math.sin(wd*t));
+}
+let tlm=null, tlSeen=false;
+function planTimeline(tl){
+  const q=s=>[...tl.querySelectorAll(s)], pos=e=>parseFloat(e.style.getPropertyValue('--x'))/100;
+  const nodes=q('.tl-node'), stems=q('.tl-stem'), cards=q('.tl-card'), yrs=q('.tl-yr');
+  const legs=[]; let s=0, from=0;                              // leg k: the line from the last milestone to milestone k
+  nodes.forEach((n,k)=>{const d=k?.34:.3; legs.push({from,to:pos(n),s,a:s+d}); from=pos(n); s+=d+.2});
+  const ms=nodes.map((n,k)=>({a:legs[k].a, node:n, stem:stems[k], card:cards[k],
+    dir:cards[k].classList.contains('down')?-1:1,
+    parts:[...cards[k].querySelectorAll(':scope>.tl-date,:scope>b,:scope>.tl-role,.tl-hi em')],
+    yr:yrs.find(y=>Math.abs(pos(y)-pos(n))<.001)}));
+  return {tl,line:tl.querySelector('.tl-line'),legs,ms,t:0,on:false,end:legs[legs.length-1].a+1.3};
+}
+function paintTimeline(){
+  const m=tlm; if(!m) return; const t=m.t, last=m.legs[m.legs.length-1];
+  let x=0; for(const g of m.legs){if(t>=g.a) x=g.to; else{if(t>g.s) x=lerp(g.from,g.to,E.inOutCubic(P(t,g.s,g.a))); break}}
+  if(t>last.a) x=lerp(last.to,1,E.outCubic(P(t,last.a+.1,last.a+.7)));   // after "today" it runs on to the edge
+  m.line.style.clipPath=`inset(0 ${((1-x)*100).toFixed(2)}% 0 0 round 2px)`;
+  const f=v=>v.toFixed(3);
+  m.ms.forEach(o=>{
+    const a=o.a, n=spring(t-a,SPRING.snappy), c=spring(t-a-.1,SPRING.soft);
+    o.node.style.opacity=f(P(t,a,a+.12)); o.node.style.transform=`scale(${f(.45+.55*n)})`;
+    o.stem.style.opacity=f(.5*P(t,a+.04,a+.2)); o.stem.style.transform=`scaleY(${f(E.outCubic(P(t,a+.04,a+.3)))})`;
+    if(o.yr){o.yr.style.opacity=f(.3*P(t,a+.1,a+.45)); o.yr.style.transform=`translate(-50%,${((1-c)*18).toFixed(1)}px)`}
+    o.card.style.opacity=f(E.outCubic(P(t,a+.1,a+.4)));
+    o.card.style.transform=`translateY(${(o.dir*40*(1-c)).toFixed(1)}px) scale(${(.96+.04*c).toFixed(4)})`;
+    o.parts.forEach((e,j)=>{const s=a+.17+j*.06; e.style.opacity=f(P(t,s,s+.25)); e.style.transform=`translateY(${((1-spring(t-s,SPRING.soft))*10).toFixed(1)}px)`});
+  });
+}
+function finishTimeline(){                                     // hand everything back to the stylesheet
+  const m=tlm; if(!m) return; m.on=false; m.t=m.end; tlSeen=true;
+  [m.line,...m.ms.flatMap(o=>[o.node,o.stem,o.card,o.yr,...o.parts])].forEach(e=>{if(e){e.style.opacity='';e.style.transform='';e.style.clipPath=''}});
+  m.tl.classList.remove('drawing'); m.tl.classList.add('done');
+}
+window.timelineAt=t=>{if(!tlm) return; if(t>=tlm.end) return finishTimeline(); tlm.tl.classList.remove('done'); tlm.tl.classList.add('drawing'); tlm.t=t; paintTimeline()};
 function fitTimeline(){
   const tl=prof.querySelector('.tl'); if(!tl) return;
   if(innerWidth<=1100){tl.style.height='';return}
@@ -239,7 +283,7 @@ function setMode(m){
   prof.inert=m!=='profile'; storyEl.inert=m!=='story';
   prof.setAttribute('aria-hidden',m!=='profile'); storyEl.setAttribute('aria-hidden',m!=='story');
   if(m==='profile'){stopTour();secs.forEach(s=>s.classList.remove('on'));document.body.dataset.tone='teal';document.title=PAGE_TITLE}
-  else document.title=`${tx(UI.story)} · Hussein Thamer Sadeq`;
+  else document.title=`${tx(UI.story)} · Hussein Altaka`;
 }
 const PAGE_TITLE=document.title;
 function openStory(i=0){
@@ -361,6 +405,7 @@ function frame(ts){
   const dt=Math.min(.05,(ts-last)/1000); last=ts;
   if(!REDUCE){
     if(mode==='profile'&&pro&&pro.u<3){pro.u+=dt;paintProfile()}
+    if(mode==='profile'&&tlm&&tlm.on&&pro.u>1.2){tlm.t+=dt; if(tlm.t>=tlm.end) finishTimeline(); else paintTimeline()}
     if(mode==='story'){const m=mounted.find(x=>x.i===idx); if(m){m.u+=dt;paint(m)}}
   }
   tourTick(dt);
