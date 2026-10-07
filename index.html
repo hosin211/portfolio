@@ -56,6 +56,7 @@ a{color:inherit}
 .cta .note svg{width:64px;height:40px;overflow:visible}
 .cta.played .note{opacity:0;visibility:hidden}
 .cta .hint a,.cta .hint button{font:inherit;color:var(--ink2);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px}
+.cta .hint button{animation:none;box-shadow:none}.cta .hint button:hover{transform:none}
 .cta .hint{margin-top:26px;font:700 21px/1 Caveat,cursive;color:var(--mute)}
 .cta .turn{display:none;margin-top:8px;font:700 20px/1.1 Caveat,cursive;color:var(--teal)}
 /* achievements: four tiles, and the story opens out of them */
@@ -80,16 +81,25 @@ a{color:inherit}
 .skills{margin-top:30px;max-width:1100px}
 .skills .lbl{font:800 13px/1 Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
 .skills .lbl i{font:700 21px/1 Caveat,cursive;letter-spacing:0;text-transform:none;margin-left:8px}
-.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:12px}
-.chip{font:600 15px/1 Inter,sans-serif;padding:10px 14px;border-radius:999px;border:1.5px solid rgba(34,38,58,.3);background:var(--card);cursor:pointer;color:var(--ink);transition:transform .2s,background .2s,color .2s,border-color .2s}
-.chip:hover{transform:translateY(-2px);border-color:var(--ink)}
-.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-.receipts{display:grid;gap:8px;max-width:860px;margin:0 auto;max-height:0;overflow:hidden;text-align:left;transition:max-height .5s ease,margin-top .3s}
-.receipts.on{max-height:420px;margin-top:14px}
-.receipt{width:100%;border:0;border-left:4px solid var(--c);font:inherit;color:inherit;text-align:left;display:grid;grid-template-columns:140px 1fr auto;gap:12px;align-items:baseline;padding:11px 16px;background:var(--card);border-left:4px solid var(--c);border-radius:4px;cursor:pointer;font-size:15.5px;box-shadow:0 1px 0 rgba(34,38,58,.06);transition:transform .2s}
-.receipt:hover{transform:translateX(4px)}
-.receipt .at{font:700 20px/1 Caveat,cursive;color:var(--c)}
-.receipt .go{font:700 18px/1 Caveat,cursive;color:var(--c)}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;margin:10px auto 0;max-width:1080px}
+.chip{font:600 19px/1.3 Fraunces,Georgia,serif;color:var(--ink);background:none;border:0;padding:4px 7px;cursor:pointer;text-decoration:underline dotted rgba(34,38,58,.38);text-decoration-thickness:1.5px;text-underline-offset:6px;background-image:linear-gradient(100deg,transparent .1em,var(--hl-amb) .25em,var(--hl-amb) calc(100% - .15em),transparent calc(100% - .02em));background-repeat:no-repeat;background-size:0% 55%;background-position:0 80%;transition:background-size .35s cubic-bezier(.3,.7,.2,1)}
+.chip:hover,.chip.on{background-size:100% 55%}
+.chip.on{text-decoration-color:transparent}
+.chips .sep{color:var(--mute);font:600 19px/1.3 Fraunces,Georgia,serif;user-select:none}
+.receipts{max-width:820px;margin:20px auto 0;padding:18px 24px 10px;text-align:left;transform:rotate(-.4deg)}
+.receipts[hidden]{display:none}
+.receipts.pop{animation:rpop .45s cubic-bezier(.34,1.56,.64,1)}
+@keyframes rpop{from{opacity:0;transform:translateY(-8px) rotate(-1.4deg)}to{opacity:1;transform:rotate(-.4deg)}}
+.receipt{width:100%;display:grid;grid-template-columns:110px 1fr auto;gap:14px;align-items:baseline;padding:10px 2px;border:0;border-bottom:1.5px dashed rgba(34,38,58,.16);background:none;font:inherit;color:inherit;text-align:left;cursor:pointer}
+.receipt:last-child{border-bottom:0}
+.receipt .at{font:700 21px/1 Caveat,cursive;color:var(--c)}
+.receipt .rt{font-size:15.5px;line-height:1.4;color:var(--ink2)}
+.receipt .go{font:700 19px/1 Caveat,cursive;color:var(--c);white-space:nowrap}
+.receipt:hover .rt{color:var(--ink)}
+.receipt:hover .go{text-decoration:underline}
+.tiles .tile{transition:transform .3s cubic-bezier(.34,1.56,.64,1),opacity .35s,filter .35s}
+.tiles.focus .tile{opacity:.35;filter:saturate(.3)}
+.tiles.focus .tile.hit{opacity:1;filter:none}
 .foot{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 22px;margin-top:22px}
 .foot .walk,.foot .contact{margin-top:0}
 .walk{margin-top:22px;font:700 20px/1.2 Caveat,cursive;color:var(--mute)}
@@ -97,25 +107,40 @@ a{color:inherit}
 .contact a.cv{background:var(--ink);color:#fff;border-color:var(--ink)}
 .contact{margin-top:10px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
 .contact a{font:600 15px/1 Inter,sans-serif;text-decoration:none;padding:11px 16px;border-radius:999px;border:1.5px solid rgba(34,38,58,.3);background:var(--card)}
-/* ---------------------------------------------------------------- phones held upright: the same story as a scroll of cards */
-.vstory{position:fixed;inset:0;z-index:45;overflow-y:auto;-webkit-overflow-scrolling:touch;background:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px}
-.vstory[hidden]{display:none}
-.vtop{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(246,242,233,.95);border-bottom:1px solid rgba(34,38,58,.1)}
-.vtop b{font:800 19px/1 Fraunces,Georgia,serif}
-.vtop button{width:40px;height:40px;border-radius:50%;border:1.5px solid rgba(34,38,58,.3);background:#FFFDF7;font:600 18px/1 Inter,sans-serif;color:var(--ink)}
-#vlist{max-width:640px;margin:0 auto;padding:6px 16px 10px}
-.vch h2{margin:24px 0 4px;font:700 21px/1.25 Caveat,cursive;color:var(--c)}
-.vcard{margin-top:12px;padding:12px 14px 16px;background:var(--card);border:1.5px solid rgba(34,38,58,.55);border-radius:8px}
-.vcard svg{display:block;width:100%;height:auto;margin-bottom:8px}
-.vcard h3{font:800 21px/1.22 Fraunces,Georgia,serif}
-.vcard p{margin-top:6px;font-size:15px;line-height:1.45;color:var(--ink2)}
-.vcard .vnum{font:700 17px/1.3 Caveat,cursive;color:var(--c)}
-.vcard .vnum b{font:800 25px/1 Fraunces,Georgia,serif;color:var(--ink);margin-right:4px}
-.vthen{margin-top:16px;text-align:center;font:700 22px/1 Caveat,cursive;color:var(--mute)}
+/* ---------------------------------------------------------------- the story as a page: scroll it at your own pace */
+.vstory{position:relative;padding:24px 22px 10px}
+.vhead{max-width:940px;margin:10px auto 0;text-align:center}
+.vhead h2{font:800 clamp(34px,4.2vw,54px)/1.05 Fraunces,Georgia,serif}
+.vhead p{margin-top:6px;font:700 24px/1.1 Caveat,cursive;color:var(--mute)}
+#vlist{max-width:940px;margin:0 auto;padding:6px 0 10px}
+.vwait{text-align:center;margin-top:28px;font:700 22px/1 Caveat,cursive;color:var(--mute)}
+.vch{scroll-margin-top:72px}
+.vch>header{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 18px;margin:48px 0 4px;padding-bottom:6px;border-bottom:2px solid var(--c)}
+.vch h2{font:700 27px/1.2 Caveat,cursive;color:var(--c)}
+.vch .watch{font:700 21px/1 Caveat,cursive;color:var(--c);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px}
+.vcard{margin-top:18px;padding:20px 22px 10px;background:var(--card);border:1.5px solid rgba(34,38,58,.5);border-radius:6px;box-shadow:0 1px 0 rgba(34,38,58,.05);scroll-margin-top:80px;transition:box-shadow .5s}
+.vcard h3{font:800 clamp(22px,2.3vw,29px)/1.18 Fraunces,Georgia,serif}
+.vcard p{margin-top:6px;max-width:780px;font-size:16.5px;line-height:1.5;color:var(--ink2)}
+.vcard .vnum{font:700 19px/1.3 Caveat,cursive;color:var(--c)}
+.vcard .vnum b{font:800 26px/1 Fraunces,Georgia,serif;color:var(--ink);margin-right:5px}
+.vcard svg{display:block;width:100%;height:auto;margin-top:8px}
+.vcard.flash{box-shadow:0 0 0 5px var(--hl-amb)}
+.vcard .txt{transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+.reveal .vcard:not(.in) .txt{opacity:0;transform:translateY(14px)}
+.vthen{margin-top:24px;text-align:center;font:700 24px/1 Caveat,cursive;color:var(--mute)}
+.vend{max-width:940px;margin:0 auto;padding:30px 0 64px;text-align:center}
 .vend .vsky{display:block;width:100%;height:auto;margin-bottom:6px}
-.vend .vfin{font:800 26px/1.15 Fraunces,Georgia,serif;margin-bottom:8px}
-.vend{max-width:640px;margin:0 auto;padding:18px 16px 40px;text-align:center}
+.vend .vfin{font:800 clamp(30px,3.6vw,46px)/1.1 Fraunces,Georgia,serif;margin-bottom:10px}
 .vend .contact{justify-content:center}
+/* a slim bar that follows the reader down the story */
+.sbar{position:fixed;left:0;right:0;top:0;z-index:19;display:flex;align-items:center;gap:12px;padding:9px 120px 9px 22px;background:var(--paper);border-bottom:1px solid rgba(34,38,58,.12);transform:translateY(-110%);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.sbar.on{transform:none}
+.sbar b{font:800 19px/1 Fraunces,Georgia,serif;white-space:nowrap}
+.sbar .sr{font:600 14px/1 Inter,sans-serif;color:var(--mute)}
+.sbar .sp{flex:1}
+.sbar a{font:700 14px/1 Inter,sans-serif;text-decoration:none;padding:9px 14px;border-radius:999px;border:1.5px solid rgba(34,38,58,.3);background:var(--card)}
+.sbar a.cv{background:var(--ink);color:#fff;border-color:var(--ink)}
+body.open .sbar{display:none}
 /* ---------------------------------------------------------------- the story: one full page that opens out of a tile */
 .story{position:fixed;inset:0;z-index:40;display:none;background:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px}
 .story svg#stage{position:absolute;inset:0;width:100%;height:100%;user-select:none;-webkit-user-select:none}
@@ -128,6 +153,11 @@ a{color:inherit}
 .sctl{position:absolute;right:18px;bottom:16px;display:flex;gap:8px;align-items:center;padding:6px;border-radius:999px;background:rgba(255,253,247,.92);border:1px solid rgba(34,38,58,.16);box-shadow:0 8px 24px -14px rgba(0,0,0,.35);transition:opacity .45s,transform .45s}
 .sctl.idle{opacity:0;transform:translateY(10px);pointer-events:none}
 .sctl.gone{display:none}
+.mode{display:flex;align-items:center;padding:3px;border-radius:999px;border:1.5px solid rgba(34,38,58,.25);background:#FFFDF7}
+.mode button{border:0;background:none;font:700 13px/1 Inter,sans-serif;color:var(--mute);padding:9px 11px;border-radius:999px;cursor:pointer}
+.mode button[aria-pressed="true"]{background:rgba(34,38,58,.1);color:var(--ink)}
+.ctl.wait{background:var(--amb);border-color:var(--amb);color:#fff;animation:nudge 1.2s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateX(4px)}}
 /* the closing scene */
 .endcard{position:absolute;left:50%;top:8vh;width:min(880px,92vw);text-align:center;opacity:0;visibility:hidden;transform:translate(-50%,18px);transition:opacity .6s ease,transform .7s cubic-bezier(.2,.8,.2,1),visibility 0s .7s}
 .endcard.on{opacity:1;visibility:visible;transform:translate(-50%,0);transition:opacity .6s ease .15s,transform .7s cubic-bezier(.2,.8,.2,1) .15s,visibility 0s}
@@ -155,10 +185,10 @@ a{color:inherit}
 @media (min-width:1700px){.tiles{max-width:min(1520px,84vw)}}
 @media (min-width:1700px) and (min-height:1150px){.home h1{font-size:clamp(94px,5.8vw,132px)}.home .role{font-size:25px}.home .line{font-size:25px;max-width:1000px}.cta button{font-size:24px;padding:22px 40px 22px 22px}.cta button .pl{width:46px;height:46px}.cta .note{font-size:30px}.tiles{max-width:min(1680px,86vw);gap:56px}.tile{padding:30px 26px 24px}.tile .where{font-size:25px}.tile .big{font-size:38px}.tile p{font-size:18px}.tile .go{font-size:22px}.skills{max-width:1400px}.chip{font-size:17px;padding:12px 17px}.contact a{font-size:17px}}
 @media (max-width:1100px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px}.cta .note{display:none}}
-@media (max-width:640px){.home{padding:30px 16px}.tiles{grid-template-columns:1fr;gap:26px}.receipt{grid-template-columns:1fr auto}.receipt .at{grid-column:1/-1}}
+@media (max-width:640px){.vstory{padding:14px 14px 6px}.vcard{padding:14px 14px 8px}.vcard p{font-size:15px}.vch>header{margin-top:32px}.sbar{padding:8px 96px 8px 12px;gap:8px}.sbar .sr,.sbar .lg{display:none}.sbar b{font-size:16px}.sbar a{padding:8px 10px;font-size:13px}.mode button{padding:8px 8px}.home{padding:30px 16px}.tiles{grid-template-columns:1fr;gap:26px}.receipt{grid-template-columns:1fr auto}.receipt .at{grid-column:1/-1}}
 .story .rotate{display:none;position:absolute;left:50%;top:18px;transform:translateX(-50%);white-space:nowrap;font:700 21px/1 Caveat,cursive;color:var(--teal)}
 @media (orientation:portrait) and (max-width:700px){.cta .turn{display:block}.story .rotate{display:block}}
-@media (prefers-reduced-motion:reduce){.cta button{animation:none}.tile .big i{animation:none;background-size:100% 58%}}
+@media (prefers-reduced-motion:reduce){.reveal .vcard:not(.in) .txt{opacity:1;transform:none}.cta button{animation:none}.tile .big i{animation:none;background-size:100% 58%}}
 /* the language switch, top right */
 .langsw{position:fixed;top:12px;right:14px;z-index:20;display:flex;align-items:center;gap:2px;font:600 13px/1 Inter,sans-serif;color:var(--mute);background:rgba(246,242,233,.88);padding:6px 8px;border-radius:999px}
 .langsw button{background:none;border:0;padding:3px 5px;font:inherit;color:inherit;cursor:pointer;letter-spacing:.06em}
@@ -169,6 +199,7 @@ body.open .langsw{display:none}
 <body>
 <div class="grain"></div>
 
+<div class="sbar" id="sbar" aria-hidden="true"><b>Hussein Altaka</b><span class="sr">Full Stack Developer · Python &amp; Django</span><span class="sp"></span><a class="cv" href="Hussein-Altaka-CV.pdf" download data-t="sbarCv"><span class="lg">Download </span>CV</a><a href="mailto:hussinthamer211@gmail.com" data-t="email">Email</a></div>
 <nav class="langsw" aria-label="Language / Sprache"><button type="button" data-l="en" lang="en">EN</button><span aria-hidden="true">·</span><button type="button" data-l="de" lang="de">DE</button></nav>
 <main class="home" id="home">
   <h1>Hussein Altaka</h1>
@@ -181,7 +212,7 @@ body.open .langsw{display:none}
     <span class="btnwrap" id="btnwrap"><svg class="ring" id="ring" aria-hidden="true"></svg>
       <button id="playBtn"><span class="pl" aria-hidden="true">▶</span><span id="playLbl" data-t="play">Play my story</span></button>
       <span class="note" aria-hidden="true"><svg id="noteArrow"></svg><span data-t="start">start here</span></span></span>
-    <span class="hint" id="ctaHint" data-t="about">about 2 minutes</span>
+    <span class="hint" id="ctaHint" data-t="about">about 3 minutes · <button type="button" class="toStory">or just scroll ↓</button></span>
     <span class="turn" data-t="turn">↻ or turn your phone sideways for the animated version</span>
   </div>
 
@@ -189,34 +220,34 @@ body.open .langsw{display:none}
     <svg class="links" id="links" aria-hidden="true"></svg>
     <a class="tile hand" href="#" role="button" data-ch="0" style="--c:var(--teal);--hl:var(--hl-teal)"><svg class="edge"></svg><i class="tape"></i><span class="stamp">✓</span>
       <span class="where" data-t="t0w">Al-Hadi · my first job</span><span class="when">08/2021 → 05/2023</span><b class="big" data-t="t0b"><i>2,000</i> students a&nbsp;year</b>
-      <p data-t="t0p">on the platform I built for a college that ran on paper, fully online in one academic year.</p><span class="go" data-t="go">▶ play this part</span></a>
+      <p data-t="t0p">on the platform I built for a college that ran on paper, fully online in one academic year.</p><span class="go" data-t="go">↓ see this part</span></a>
     <a class="tile hand" href="#" role="button" data-ch="1" style="--c:var(--ind);--hl:var(--hl-ind)"><svg class="edge"></svg><i class="tape"></i><span class="stamp">✓</span>
       <span class="where">Apicbase</span><span class="when" data-t="t1n">05/2023 → today</span><b class="big" data-t="t1b"><i>500+</i> client locations</b>
-      <p data-t="t1p">run their stock on the event queue I built and own. None rolled back.</p><span class="go" data-t="go">▶ play this part</span></a>
+      <p data-t="t1p">run their stock on the pipeline I built and own. None rolled back.</p><span class="go" data-t="go">↓ see this part</span></a>
     <a class="tile hand" href="#" role="button" data-ch="2" style="--c:var(--amb);--hl:var(--hl-amb)"><svg class="edge"></svg><i class="tape"></i><span class="stamp">✓</span>
       <span class="where" data-t="t2w">my own system · Al-Nahrain</span><span class="when" data-t="t2n">2023 → today</span><b class="big" data-t="t2b"><i>every college</i></b>
-      <p data-t="t2p">of Al-Nahrain University runs on the ERP I built. 200+ staff daily.</p><span class="go" data-t="go">▶ play this part</span></a>
+      <p data-t="t2p">of Al-Nahrain University runs on the ERP I built. 200+ staff daily.</p><span class="go" data-t="go">↓ see this part</span></a>
     <a class="tile hand" href="#" role="button" data-ch="3" style="--c:var(--amb);--hl:var(--hl-amb)"><svg class="edge"></svg><i class="tape"></i><span class="stamp">✓</span>
       <span class="where" data-t="t3w">my own system · KMS</span><span class="when" data-t="t3n">12/2023 → today</span><b class="big" data-t="t3b"><i>2 power plants</i></b>
-      <p data-t="t3p">replaced a Siemens system with KMS, which I built. 730 MW and 650 MW.</p><span class="go" data-t="go">▶ play this part</span></a>
+      <p data-t="t3p">replaced a Siemens system with KMS, which I built. 730 MW and 650 MW.</p><span class="go" data-t="go">↓ see this part</span></a>
   </div>
 
   <div class="skills">
     <p class="lbl" data-t="skillsLbl">Skills <i>tap one to see where I used it</i></p>
     <div class="chips" id="chips"></div>
-    <div class="receipts" id="receipts"></div>
+    <div class="receipts hand" id="receipts" hidden><svg class="edge"></svg><i class="tape"></i><div id="rlist"></div></div>
   </div>
 
   <div class="foot"><p class="walk" data-t="walk">KMS and the Al-Nahrain system are private. <a href="mailto:hussinthamer211@gmail.com?subject=Live%20walkthrough">Ask me for a live walkthrough →</a></p>
   <div class="contact"><a class="cv" href="Hussein-Altaka-CV.pdf" download data-t="cv">Download CV (PDF)</a><a href="mailto:hussinthamer211@gmail.com">hussinthamer211@gmail.com</a><a href="https://www.linkedin.com/in/hosin211" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/hosin211" target="_blank" rel="noopener">GitHub</a></div></div>
 </main>
 
-<div class="vstory" id="vstory" hidden>
-  <div class="vtop"><b>Hussein Altaka</b><button id="vclose" aria-label="Back to the home page" data-ta="back">✕</button></div>
-  <div id="vlist"></div>
+<section class="vstory" id="vstory" aria-labelledby="vhead">
+  <header class="vhead"><h2 id="vhead" data-t="storyHead">My story</h2><p data-t="storySub">from my first job to today</p></header>
+  <div id="vlist"><p class="vwait" data-t="drawing">drawing…</p></div>
   <div class="vend"><h2 class="vfin" data-t="fin">That's the work so far.</h2><p class="walk" data-t="walk">KMS and the Al-Nahrain system are private. <a href="mailto:hussinthamer211@gmail.com?subject=Live%20walkthrough">Ask me for a live walkthrough →</a></p>
     <div class="contact"><a class="cv" href="Hussein-Altaka-CV.pdf" download data-t="cv">Download CV (PDF)</a><a href="mailto:hussinthamer211@gmail.com" data-t="email">Email</a><a href="https://www.linkedin.com/in/hosin211" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/hosin211" target="_blank" rel="noopener">GitHub</a></div></div>
-</div>
+</section>
 <div class="story" id="story">
   <p id="sr" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"></p>
   <svg id="stage" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet"><defs id="defs"></defs><g id="world"></g><g id="fx"></g><g id="hud"></g></svg>
@@ -231,6 +262,7 @@ body.open .langsw{display:none}
   <p class="rotate" aria-hidden="true" data-t="rotate">↻ turn your phone sideways</p>
   <button class="close" id="close" aria-label="Back to the home page" data-ta="back">✕</button>
   <div class="sctl" id="sctl">
+    <div class="mode" id="mode" role="group" aria-label="Playback" data-ta="mode"><button type="button" data-m="auto" data-t="auto" aria-pressed="true">Auto</button><button type="button" data-m="manual" data-t="manual" aria-pressed="false">Manual</button></div>
     <button class="ctl" id="prev" aria-label="Previous" data-ta="prev">←</button>
     <button class="ctl play" id="pause"><span id="pIco">❚❚</span><span id="pLbl">Pause</span></button>
     <button class="ctl" id="next" aria-label="Next" data-ta="next">→</button>
@@ -252,18 +284,26 @@ const I18N = {
     locale: 'en-US',
     kick: ['Al-Hadi University College · Baghdad · 08/2021 → 05/2023', 'Apicbase · Belgian food-tech SaaS · remote · 05/2023 → today', 'my own system · Al-Nahrain University · 2023 → today', 'my own system · Keppt · 12/2023 → today'],
     cap: {
-      paper: { l: ['My first job: a college', 'that ran on paper.'], s: 'Every routine request meant a visit to an office.' },
-      platform: { l: ['I built its platform,', 'alone.'], s: ['From the first data model to production.', 'The whole college was on it within one academic year, department by department.'] },
+      paper: { l: ['My first job: a college', 'that ran on paper.'], s: ['Paying the yearly fee meant hours in a queue. Results took weeks to work out by hand,', 'and students had to come in person to read them.'] },
+      platform: { l: ['The head of registration', 'asked me to fix it.'], s: ['He was tired of paper, and of Excel files in many versions.', 'I built the platform alone, with no senior to check my decisions.'] },
+      results: { l: ['No more queues: fees and', 'results went online.'], s: ['Results open in the app or on the website the moment they are announced.', 'When the ministry changes its grace marks, every result recalculates by itself.'] },
+      cert: { l: ['Graduation certificates', 'in under an hour.'], s: ['Final grades are audited once, then locked: nobody can edit them, not even me.', 'Elsewhere in Iraq a certificate takes weeks, sometimes two months.'] },
       infra: { l: ['Then its first server,', 'and a new website.'], s: 'I filled an empty rack, moved the DNS to Cloudflare, and rebuilt the legacy PHP site in Django.' },
       unit: { l: ['Then I led the unit:', '3 engineers.'], s: 'The Software Systems & Networks Unit: backend (me), frontend and mobile.' },
-      locations: { l: ['Then Apicbase, from', 'my desk in Baghdad.'], s: 'One multi-tenant Django platform, with clients across Europe.' },
-      queue: { l: ["Every client's stock runs on", 'the event queue I built.'], s: 'Ordered per outlet on Amazon SQS FIFO. Live since 2025, every client on it, none rolled back.' },
+      locations: { l: ['Then a Belgian company', 'took a leap of faith.'], s: ['I sent back their 7-day task in under 30 hours.', 'The CTO hired me, the first Arab developer on the team.'] },
+      queue: { l: ['Small features first. Then', 'they gave me the stock pipeline.'], s: ["Every client's stock runs through it now, ordered per outlet on Amazon SQS FIFO.", 'Live since 2025, every client on it, none rolled back.'] },
       page: { l: ['The 25-second page,', 'now under one second.'], s: 'Search, sorting and paging moved to the server, and a Count() aggregate became a correlated subquery.' },
       ci: { l: ['Testing every change:', '2 hours → 49 minutes.'], s: 'Then the test database: 16 minutes → 6 seconds per shard.' },
       perms: { l: ['Per-resource permissions,', 'for every tenant.'], s: 'I led the move off role-based checks across the whole platform.' },
-      uni: { l: ['Every college of Al-Nahrain', 'University runs on the ERP I built.'], s: 'It started in the College of Information Engineering. 200+ staff use it every day.' },
-      kms: { l: ['Two power plants replaced a', 'Siemens system with KMS.'], s: "I ran the migration with the plants' engineers and built KMS as the only developer." },
-      run: { l: ['KMS now runs both plants.'], s: '400+ engineers a day, and each plant runs its own copy.' },
+      demo: { l: ['A sales demo in the morning,', 'broken data the night before.'], s: ['After hours, my manager and I had it fixed by 9:30 pm: I wrote the fix, he ran it on production.', 'The demo went fine.'] },
+      call: { l: ['Then my old university', 'called me.'], s: ['Its Assistant Dean had seen my work at Al-Hadi and wanted the same for his college.', 'Every head of department kept his own Excel file, in several versions.'] },
+      council: { l: ['Then the university council', 'asked to see it.'], s: ['Every dean and the university president, in one meeting.', 'Their answer: the whole university, not just one college.'] },
+      uni: { l: ['Now every college', 'runs on it.'], s: ["A public university and one of Iraq's leading ones. 200+ staff use it every day.", 'Each college took three months to a year: first the internet, then training staff used to paper.'] },
+      kms: { l: ['Then two power plants', 'had to leave Siemens.'], s: ['A friend told me they needed someone, and I met the head of the company.', 'Siemens charged per feature and per user, and a change took days to a month to show.'] },
+      v1: { l: ['Three months later, KMS was in use.'], s: ['Maintenance first, then operations, stores, HR, attendance, training and overtime.', "I built it as the only developer, with the plants' engineers."] },
+      day: { l: ['A day at the plant', 'starts in KMS.'], s: ['Operations open it at 6:00, maintenance at 7:00 to see their work.', 'The office checks its archive, and the head of the station watches it all.'] },
+      safe: { l: ['No work on live equipment', 'without a permit.'], s: ['Six safety permit types, and an isolation lockout', 'that has to be approved before the work starts.'] },
+      ai: { l: ['Heads of department ask', 'AI for their reports.'], s: ['Through an OAuth2 MCP server I added to KMS:', '16 read-only tools, from failure trends to the maintenance backlog.'] },
     },
     office: 'office',
     tags: ['admissions', 'results', 'fees', 'documents', 'payroll'],
@@ -278,7 +318,15 @@ const I18N = {
     ciBar1: 'every change, through CI', ciBar2: 'the test database, per shard', hours2: '2 hours', min16: '16 min', min49: '49 min', s6: '6 s',
     tenant: n => `tenant ${n}`, permBefore: 'before: one role opened a whole tenant', permAfter: 'after: every resource has its own policy',
     ieFirst: 'Information Engineering, first', everyCollege: 'then every college', walkReq: 'live walkthrough on request',
-    mods: ['maintenance', 'safety permits', 'isolation & lockout', 'stores', 'HR', 'ISO quality'], mcp: ['an OAuth2 MCP server:', 'AI assistants can query it'],
+    mods: ['maintenance', 'operations', 'stores', 'HR', 'attendance', 'training', 'overtime'],
+    myResults: 'My results', published: 'published ✓', paid: 'paid ✓', feeLbl: 'Yearly fee', grace: ['ministry: grace marks 5 → 10', '↻ every result recalculated'],
+    gradesTitle: 'Final grades', locked: 'locked: nobody can edit them', certTitle: 'Certificate', under1h: 'under 1 hour',
+    demoLib: 'demo library', night: '9:30 pm', manager: 'my manager', toProd: 'fix → production', demoOk: ['demo ✓', 'the next morning'],
+    xls: ['staff.xlsx', 'staff_v2.xlsx', 'staff_final.xlsx', 'final (2).xlsx', 'staff_OLD.xlsx'], deanSays: ['"I want the same', 'for my college."'],
+    councilSays: ['"The whole university,', 'not just one college."'], councilLbl: 'the university council: every dean and the president', sysLbl: 'the system',
+    fnNote: ['6,500+ fault notifications', '7 departments'], dayRoles: ['06:00 · operations', '07:00 · maintenance', 'the office · archive', 'head of the station'], eng400: '400+ engineers a day',
+    permitTitle: 'Permit to work', permits: ['entry', 'hot work', 'electrical', 'work at height', 'lifting', 'hazardous substances'], approved: 'APPROVED', lockTag: 'DO NOT OPERATE', isolated: 'isolated and locked out',
+    aiQ: ['Which equipment failed', 'most this year?'], aiTitle: 'Most failures this year', aiItems: ['pump', 'fan', 'valve', 'motor', 'heater'], headLbl: 'head of department',
     wo: '20,000+', workOrders: 'work orders',
     sky: ['Al-Hadi', 'the server room', 'Apicbase', 'Al-Nahrain', 'Keppt · KMS'],
     skyAria: 'Everything on one line: Al-Hadi, the server room, Apicbase, Al-Nahrain, and the two power plants',
@@ -286,18 +334,19 @@ const I18N = {
     then: 'then', thenArrow: 'then →',
     hintTouch: 'swipe to skip · ✕ to go back', hintKeys: 'space pauses · ← → skip · esc closes',
     getInTouch: 'Get in touch', finHint: '<a href="Hussein-Altaka-CV.pdf" download>download my CV</a> · <button type="button" id="againLink">↻ play again</button>',
-    play: 'Play my story', about: 'about 2 minutes', pause: 'Pause', resume: 'Play', watch: '▶ watch it',
+    play: 'Play my story', about: 'about 3 minutes · <button type="button" class="toStory">or just scroll ↓</button>', pause: 'Pause', resume: 'Play',
+    seeIt: 'see it ↓', watchPart: '▶ watch this part as a film', hintManual: 'press → or click for the next part', hintManualTouch: 'tap or swipe for the next part',
     skills: [
-      { t: 'performance', r: [['b-page', '25 s → under 1 s on the slowest inventory pages'], ['b-ci', 'testing every change: 2 hours → 49 minutes']] },
-      { t: 'system design', r: [['b-queue', 'stock moved off the request path onto an ordered event queue'], ['c-run', 'one system for a power plant: maintenance, permits, stores, HR and quality'], ['d-uni', 'a multi-tenant ERP for a whole university']] },
+      { t: 'performance', r: [['b-page', '25 s → under 1 s on the slowest inventory pages'], ['b-ci', 'testing every change: 2 hours → 49 minutes'], ['a-cert', 'graduation certificates in under an hour']] },
+      { t: 'system design', r: [['b-queue', 'stock moved off the request path onto an ordered event queue'], ['a-cert', 'final grades audited once, then locked for good'], ['c-v1', 'one system for a power company, from maintenance to HR'], ['d-uni', 'a multi-tenant ERP for a whole university']] },
       { t: 'legacy migrations', r: [['c-kms', 'Siemens → KMS at two power plants'], ['a-infra', 'legacy PHP → Django'], ['b-queue', 'stock inside the request → an event queue, none rolled back'], ['b-perms', 'role checks → per-resource policies']] },
       { t: 'multi-tenancy & security', r: [['b-perms', 'per-resource policies for every tenant, platform-wide'], ['d-uni', 'each college in its own sealed space']] },
       { t: 'CI & testing', r: [['b-ci', 'CI 2 hours → 49 minutes, then the test database 16 minutes → 6 seconds']] },
       { t: 'infrastructure', r: [['a-infra', "the college's first server: hardware, Linux, the rack and DNS on Cloudflare"], ['b-queue', 'Amazon SQS FIFO and Celery in production']] },
-      { t: 'leading engineers', r: [['a-unit', 'led the software unit: 3 engineers'], ['c-kms', "ran the Siemens migration with the plants' engineers"], ['b-perms', 'led the platform-wide move to per-resource policies']] },
-      { t: 'end-to-end ownership', r: [['a-platform', 'the college platform, from the first data model to production'], ['c-kms', 'KMS, from the Siemens migration to running it every day'], ['d-uni', 'the Al-Nahrain ERP, from one college to every college']] },
-      { t: 'AI integration', r: [['c-run', 'an OAuth2 MCP server, so AI assistants can query the plant data']] },
-      { t: 'Python & Django', r: [['a-platform', 'the Al-Hadi platform'], ['b-queue', 'the Apicbase stock pipeline'], ['c-kms', 'KMS'], ['d-uni', 'the Al-Nahrain ERP']] },
+      { t: 'leading engineers', r: [['a-unit', 'led the software unit: 3 engineers'], ['c-v1', "built KMS with the plants' engineers"], ['b-perms', 'led the platform-wide move to per-resource policies']] },
+      { t: 'end-to-end ownership', r: [['a-platform', 'the college platform, built alone from the first data model'], ['c-v1', 'KMS, from the first talk to live in three months'], ['d-uni', 'the Al-Nahrain ERP, from one college to every college'], ['b-demo', 'a broken sales demo fixed the night before']] },
+      { t: 'AI integration', r: [['c-ai', 'an OAuth2 MCP server, so heads of department ask AI for reports']] },
+      { t: 'Python & Django', r: [['a-platform', 'the Al-Hadi platform'], ['b-queue', 'the Apicbase stock pipeline'], ['c-v1', 'KMS'], ['d-uni', 'the Al-Nahrain ERP']] },
       { t: 'PostgreSQL', r: [['b-page', 'a Count() aggregate replaced by a correlated subquery'], ['b-ci', 'the test database cached as a dump keyed by the migrations']] },
       { t: 'Celery & Amazon SQS', r: [['b-queue', 'SQS FIFO, ordered per outlet']] },
     ],
@@ -306,18 +355,26 @@ const I18N = {
     locale: 'de-DE',
     kick: ['Al-Hadi University College · Bagdad · 08/2021 → 05/2023', 'Apicbase · belgisches Food-Tech-SaaS · remote · 05/2023 → heute', 'mein eigenes System · Al-Nahrain-Universität · 2023 → heute', 'mein eigenes System · Keppt · 12/2023 → heute'],
     cap: {
-      paper: { l: ['Mein erster Job: ein College,', 'das auf Papier lief.'], s: 'Für jeden Routineantrag musste man persönlich ins Büro.' },
-      platform: { l: ['Ich habe seine Plattform gebaut,', 'allein.'], s: ['Vom ersten Datenmodell bis in die Produktion.', 'Innerhalb eines Studienjahres war das ganze College darauf, Abteilung für Abteilung.'] },
+      paper: { l: ['Mein erster Job: ein College,', 'das auf Papier lief.'], s: ['Für die Jahresgebühr stand man stundenlang an. Noten wurden wochenlang von Hand berechnet,', 'und man musste persönlich vorbeikommen, um sie zu erfahren.'] },
+      platform: { l: ['Der Leiter der Studienverwaltung', 'bat mich, das zu ändern.'], s: ['Er hatte genug von Papier und von Excel-Dateien in vielen Versionen.', 'Ich baute die Plattform allein, ohne einen Senior, der meine Entscheidungen prüfte.'] },
+      results: { l: ['Keine Warteschlangen mehr:', 'Gebühren und Noten online.'], s: ['Die Noten stehen in der App und auf der Website, sobald sie veröffentlicht sind.', 'Ändert das Ministerium seine Bonuspunkte, berechnet das System alle Noten neu.'] },
+      cert: { l: ['Abschlusszeugnisse in', 'unter einer Stunde.'], s: ['Die Endnoten werden einmal geprüft und dann gesperrt: niemand kann sie ändern, nicht einmal ich.', 'Anderswo im Irak dauert ein Zeugnis Wochen, manchmal zwei Monate.'] },
       infra: { l: ['Dann sein erster Server', 'und eine neue Website.'], s: ['Ich habe ein leeres Rack bestückt und das DNS zu Cloudflare umgezogen,', 'dann die alte PHP-Seite in Django neu gebaut.'] },
       unit: { l: ['Dann leitete ich die Einheit:', '3 Entwickler.'], s: 'Die Einheit für Softwaresysteme und Netzwerke: Backend (ich), Frontend und Mobile.' },
-      locations: { l: ['Dann Apicbase, von meinem', 'Schreibtisch in Bagdad aus.'], s: 'Eine mandantenfähige Django-Plattform mit Kunden in ganz Europa.' },
-      queue: { l: ['Der Bestand jedes Kunden läuft über', 'die Event-Queue, die ich gebaut habe.'], s: ['Pro Standort geordnet auf Amazon SQS FIFO.', 'Seit 2025 live, alle Kunden darauf, kein einziger Rollback.'] },
+      locations: { l: ['Dann gab mir eine belgische', 'Firma einen Vertrauensvorschuss.'], s: ['Ihre 7-Tage-Aufgabe schickte ich in unter 30 Stunden zurück.', 'Der CTO stellte mich ein, als ersten arabischen Entwickler im Team.'] },
+      queue: { l: ['Erst kleine Features. Dann', 'bekam ich die Bestandspipeline.'], s: ['Der Bestand jedes Kunden läuft heute darüber, pro Standort geordnet auf Amazon SQS FIFO.', 'Seit 2025 live, alle Kunden darauf, kein einziger Rollback.'] },
       page: { l: ['Die 25-Sekunden-Seite,', 'jetzt unter einer Sekunde.'], s: ['Suche, Sortierung und Paginierung laufen jetzt auf dem Server,', 'und aus einem Count()-Aggregat wurde eine korrelierte Unterabfrage.'] },
       ci: { l: ['Tests für jede Änderung:', '2 Stunden → 49 Minuten.'], s: 'Dann die Testdatenbank: 16 Minuten → 6 Sekunden pro Shard.' },
       perms: { l: ['Berechtigungen pro Ressource,', 'für jeden Mandanten.'], s: 'Ich habe die Ablösung der rollenbasierten Prüfungen auf der ganzen Plattform geleitet.' },
-      uni: { l: ['Jede Fakultät der Al-Nahrain-Universität', 'läuft auf dem ERP, das ich gebaut habe.'], s: ['Angefangen hat es in der Fakultät für Information Engineering.', 'Über 200 Mitarbeitende nutzen es täglich.'] },
-      kms: { l: ['Zwei Kraftwerke haben ein Siemens-System', 'durch KMS ersetzt.'], s: ['Die Migration habe ich mit den Ingenieuren der Kraftwerke durchgeführt,', 'und KMS habe ich als einziger Entwickler gebaut.'] },
-      run: { l: ['KMS läuft heute in beiden Kraftwerken.'], s: 'Über 400 Ingenieure täglich, und jedes Kraftwerk betreibt seine eigene Instanz.' },
+      demo: { l: ['Morgens eine Sales-Demo,', 'am Abend davor kaputte Daten.'], s: ['Nach Feierabend war es um 21:30 Uhr behoben: ich schrieb den Fix, mein Manager spielte ihn ein.', 'Die Demo lief problemlos.'] },
+      call: { l: ['Dann rief mich meine', 'alte Universität an.'], s: ['Ihr Prodekan hatte meine Arbeit am Al-Hadi gesehen und wollte dasselbe für seine Fakultät.', 'Jede Abteilungsleitung führte ihre eigene Excel-Datei, in mehreren Versionen.'] },
+      council: { l: ['Dann wollte der Universitätsrat', 'es sehen.'], s: ['Alle Dekane und der Universitätspräsident, in einer Sitzung.', 'Ihre Antwort: die ganze Universität, nicht nur eine Fakultät.'] },
+      uni: { l: ['Heute läuft jede', 'Fakultät darauf.'], s: ['Eine staatliche Universität und eine der führenden im Irak. Über 200 Mitarbeitende nutzen es täglich.', 'Pro Fakultät drei Monate bis ein Jahr: erst das Internet, dann Schulungen für das Personal.'] },
+      kms: { l: ['Dann mussten zwei Kraftwerke', 'weg von Siemens.'], s: ['Ein Freund erzählte mir, dass sie jemanden suchten, und ich traf den Chef der Firma.', 'Siemens kostete pro Funktion und Nutzer, und Änderungen wirkten erst nach Tagen bis einem Monat.'] },
+      v1: { l: ['Drei Monate später war KMS im Einsatz.'], s: ['Erst die Instandhaltung, dann Betrieb, Lager, Personal, Zeiterfassung, Schulungen und Überstunden.', 'Gebaut habe ich es als einziger Entwickler, mit den Ingenieuren der Kraftwerke.'] },
+      day: { l: ['Ein Tag im Kraftwerk', 'beginnt in KMS.'], s: ['Der Betrieb öffnet es um 6:00, die Instandhaltung um 7:00 für ihre Aufgaben.', 'Die Verwaltung nutzt das Archiv, und die Kraftwerksleitung behält alles im Blick.'] },
+      safe: { l: ['Keine Arbeit an laufenden', 'Anlagen ohne Freigabe.'], s: ['Sechs Arten von Arbeitsfreigaben und eine Freischaltung,', 'die genehmigt sein muss, bevor die Arbeit beginnt.'] },
+      ai: { l: ['Abteilungsleitungen holen sich', 'ihre Berichte per KI.'], s: ['Über einen OAuth2-MCP-Server, den ich in KMS eingebaut habe:', '16 Werkzeuge nur zum Lesen, von Ausfalltrends bis zum Wartungsrückstand.'] },
     },
     office: 'Büro',
     tags: ['Zulassung', 'Noten', 'Gebühren', 'Dokumente', 'Gehälter'],
@@ -332,7 +389,15 @@ const I18N = {
     ciBar1: 'jede Änderung durch die CI', ciBar2: 'die Testdatenbank pro Shard', hours2: '2 Std.', min16: '16 Min.', min49: '49 Min.', s6: '6 s',
     tenant: n => `Mandant ${n}`, permBefore: 'vorher: eine Rolle öffnete einen ganzen Mandanten', permAfter: 'nachher: jede Ressource hat ihre eigene Richtlinie',
     ieFirst: 'zuerst Information Engineering', everyCollege: 'dann jede Fakultät', walkReq: 'Live-Vorführung auf Anfrage',
-    mods: ['Instandhaltung', 'Arbeitsfreigaben', 'Freischaltung & Sicherung', 'Lager', 'Personal', 'ISO-Qualität'], mcp: ['ein OAuth2-MCP-Server:', 'KI-Assistenten können ihn abfragen'],
+    mods: ['Instandhaltung', 'Betrieb', 'Lager', 'Personal', 'Zeiterfassung', 'Schulungen', 'Überstunden'],
+    myResults: 'Meine Noten', published: 'veröffentlicht ✓', paid: 'bezahlt ✓', feeLbl: 'Jahresgebühr', grace: ['Ministerium: Bonuspunkte 5 → 10', '↻ alle Noten neu berechnet'],
+    gradesTitle: 'Endnoten', locked: 'gesperrt: niemand kann sie ändern', certTitle: 'Zeugnis', under1h: 'unter 1 Stunde',
+    demoLib: 'Demo-Bibliothek', night: '21:30 Uhr', manager: 'mein Manager', toProd: 'Fix → live', demoOk: ['Demo ✓', 'am nächsten Morgen'],
+    xls: ['Personal.xlsx', 'Personal_v2.xlsx', 'Personal_final.xlsx', 'final (2).xlsx', 'Personal_ALT.xlsx'], deanSays: ['„Ich will dasselbe', 'für meine Fakultät.“'],
+    councilSays: ['„Die ganze Universität,', 'nicht nur eine Fakultät.“'], councilLbl: 'der Universitätsrat: alle Dekane und der Präsident', sysLbl: 'das System',
+    fnNote: ['6.500+ Störmeldungen', '7 Abteilungen'], dayRoles: ['06:00 · Betrieb', '07:00 · Instandhaltung', 'Verwaltung · Archiv', 'Kraftwerksleitung'], eng400: '400+ Ingenieure täglich',
+    permitTitle: 'Arbeitsfreigabe', permits: ['Befahren', 'Heißarbeiten', 'Elektrik', 'Arbeiten in der Höhe', 'Heben', 'Gefahrstoffe'], approved: 'GENEHMIGT', lockTag: 'NICHT SCHALTEN', isolated: 'freigeschaltet und gesichert',
+    aiQ: ['Welche Anlagen fielen dieses', 'Jahr am häufigsten aus?'], aiTitle: 'Häufigste Ausfälle dieses Jahr', aiItems: ['Pumpe', 'Lüfter', 'Ventil', 'Motor', 'Heizung'], headLbl: 'Abteilungsleitung',
     wo: '20.000+', workOrders: 'Arbeitsaufträge',
     sky: ['Al-Hadi', 'der Serverraum', 'Apicbase', 'Al-Nahrain', 'Keppt · KMS'],
     skyAria: 'Alles auf einer Linie: Al-Hadi, der Serverraum, Apicbase, Al-Nahrain und die zwei Kraftwerke',
@@ -340,18 +405,19 @@ const I18N = {
     then: 'dann', thenArrow: 'dann →',
     hintTouch: 'wischen zum Springen · ✕ zurück', hintKeys: 'Leertaste pausiert · ← → springen · Esc schließt',
     getInTouch: 'Kontakt aufnehmen', finHint: '<a href="Hussein-Altaka-CV.pdf" download>Lebenslauf herunterladen</a> · <button type="button" id="againLink">↻ noch einmal ansehen</button>',
-    play: 'Meine Geschichte ansehen', about: 'etwa 2 Minuten', pause: 'Pause', resume: 'Weiter', watch: '▶ ansehen',
+    play: 'Meine Geschichte ansehen', about: 'etwa 3 Minuten · <button type="button" class="toStory">oder einfach scrollen ↓</button>', pause: 'Pause', resume: 'Weiter',
+    seeIt: 'ansehen ↓', watchPart: '▶ diesen Teil als Film ansehen', hintManual: '→ oder Klick: der nächste Teil', hintManualTouch: 'tippen oder wischen: der nächste Teil',
     skills: [
-      { t: 'Performance', r: [['b-page', '25 s → unter 1 s auf den langsamsten Inventurseiten'], ['b-ci', 'Tests für jede Änderung: 2 Stunden → 49 Minuten']] },
-      { t: 'Systemdesign', r: [['b-queue', 'der Bestand raus aus dem Request, rein in eine geordnete Event-Queue'], ['c-run', 'ein System für ein Kraftwerk: Instandhaltung, Freigaben, Lager, Personal und Qualität'], ['d-uni', 'ein mandantenfähiges ERP für eine ganze Universität']] },
+      { t: 'Performance', r: [['b-page', '25 s → unter 1 s auf den langsamsten Inventurseiten'], ['b-ci', 'Tests für jede Änderung: 2 Stunden → 49 Minuten'], ['a-cert', 'Abschlusszeugnisse in unter einer Stunde']] },
+      { t: 'Systemdesign', r: [['b-queue', 'der Bestand raus aus dem Request, rein in eine geordnete Event-Queue'], ['a-cert', 'Endnoten einmal geprüft, dann für immer gesperrt'], ['c-v1', 'ein System für ein Energieunternehmen, von der Instandhaltung bis zum Personal'], ['d-uni', 'ein mandantenfähiges ERP für eine ganze Universität']] },
       { t: 'Legacy-Migrationen', r: [['c-kms', 'Siemens → KMS in zwei Kraftwerken'], ['a-infra', 'altes PHP → Django'], ['b-queue', 'Bestand im Request → eine Event-Queue, kein einziger Rollback'], ['b-perms', 'Rollenprüfungen → Richtlinien pro Ressource']] },
       { t: 'Mandantenfähigkeit & Sicherheit', r: [['b-perms', 'Richtlinien pro Ressource für jeden Mandanten, plattformweit'], ['d-uni', 'jede Fakultät in ihrem eigenen, abgeschotteten Bereich']] },
       { t: 'CI & Tests', r: [['b-ci', 'CI 2 Stunden → 49 Minuten, dann die Testdatenbank 16 Minuten → 6 Sekunden']] },
       { t: 'Infrastruktur', r: [['a-infra', 'der erste Server des College: Hardware, Linux, das Rack und DNS über Cloudflare'], ['b-queue', 'Amazon SQS FIFO und Celery in Produktion']] },
-      { t: 'Teams leiten', r: [['a-unit', 'Leitung der Software-Einheit: 3 Entwickler'], ['c-kms', 'die Siemens-Migration mit den Ingenieuren der Kraftwerke durchgeführt'], ['b-perms', 'die plattformweite Umstellung auf Richtlinien pro Ressource geleitet']] },
-      { t: 'End-to-End-Verantwortung', r: [['a-platform', 'die College-Plattform, vom ersten Datenmodell bis in die Produktion'], ['c-kms', 'KMS, von der Siemens-Migration bis zum täglichen Betrieb'], ['d-uni', 'das Al-Nahrain-ERP, von einer Fakultät bis zu allen Fakultäten']] },
-      { t: 'KI-Integration', r: [['c-run', 'ein OAuth2-MCP-Server, damit KI-Assistenten die Kraftwerksdaten abfragen können']] },
-      { t: 'Python & Django', r: [['a-platform', 'die Al-Hadi-Plattform'], ['b-queue', 'die Bestandspipeline bei Apicbase'], ['c-kms', 'KMS'], ['d-uni', 'das Al-Nahrain-ERP']] },
+      { t: 'Teams leiten', r: [['a-unit', 'Leitung der Software-Einheit: 3 Entwickler'], ['c-v1', 'KMS gemeinsam mit den Ingenieuren der Kraftwerke gebaut'], ['b-perms', 'die plattformweite Umstellung auf Richtlinien pro Ressource geleitet']] },
+      { t: 'End-to-End-Verantwortung', r: [['a-platform', 'die College-Plattform, allein gebaut vom ersten Datenmodell an'], ['c-v1', 'KMS, vom ersten Gespräch bis live in drei Monaten'], ['d-uni', 'das Al-Nahrain-ERP, von einer Fakultät bis zu allen Fakultäten'], ['b-demo', 'eine kaputte Sales-Demo am Abend davor repariert']] },
+      { t: 'KI-Integration', r: [['c-ai', 'ein OAuth2-MCP-Server: Abteilungsleitungen holen sich Berichte per KI']] },
+      { t: 'Python & Django', r: [['a-platform', 'die Al-Hadi-Plattform'], ['b-queue', 'die Bestandspipeline bei Apicbase'], ['c-v1', 'KMS'], ['d-uni', 'das Al-Nahrain-ERP']] },
       { t: 'PostgreSQL', r: [['b-page', 'ein Count()-Aggregat durch eine korrelierte Unterabfrage ersetzt'], ['b-ci', 'die Testdatenbank als Dump zwischengespeichert, mit den Migrationen als Schlüssel']] },
       { t: 'Celery & Amazon SQS', r: [['b-queue', 'SQS FIFO, pro Standort geordnet']] },
     ],
@@ -360,19 +426,20 @@ const I18N = {
       role: 'Full Stack Developer · Python &amp; Django · 5 Jahre',
       now: '<span class="live" aria-hidden="true"></span>Aktuell bei <b>Apicbase</b> · belgisches Food-Tech-SaaS · remote · seit 05/2023',
       line: 'Ich entwickle und betreibe Software, die zwei Kraftwerke, jede Fakultät einer Universität und über 500 Kundenstandorte täglich nutzen.',
-      play: 'Meine Geschichte ansehen', start: 'hier starten', about: 'etwa 2 Minuten', turn: '↻ oder das Handy quer halten für die animierte Version',
+      play: 'Meine Geschichte ansehen', start: 'hier starten', about: 'etwa 3 Minuten · <button type="button" class="toStory">oder einfach scrollen ↓</button>', turn: '↻ oder das Handy quer halten für die animierte Version',
       t0w: 'Al-Hadi · mein erster Job', t0b: '<i>2.000</i> Studierende pro&nbsp;Jahr', t0p: 'auf der Plattform, die ich für ein College gebaut habe, das noch auf Papier lief. In einem Studienjahr komplett online.',
-      t1n: '05/2023 → heute', t1b: '<i>500+</i> Kundenstandorte', t1p: 'führen ihren Bestand über die Event-Queue, die ich gebaut habe und verantworte. Kein einziger Rollback.',
+      t1n: '05/2023 → heute', t1b: '<i>500+</i> Kundenstandorte', t1p: 'führen ihren Bestand über die Pipeline, die ich gebaut habe und verantworte. Kein einziger Rollback.',
       t2w: 'mein eigenes System · Al-Nahrain', t2n: '2023 → heute', t2b: '<i>jede Fakultät</i>', t2p: 'der Al-Nahrain-Universität läuft auf dem ERP, das ich gebaut habe. Über 200 Mitarbeitende täglich.',
       t3w: 'mein eigenes System · KMS', t3n: '12/2023 → heute', t3b: '<i>2 Kraftwerke</i>', t3p: 'haben ein Siemens-System durch KMS ersetzt, das ich gebaut habe. 730 MW und 650 MW.',
-      go: '▶ diesen Teil ansehen',
+      go: '↓ diesen Teil ansehen',
       skillsLbl: 'Skills <i>antippen, um zu sehen, wo ich sie eingesetzt habe</i>',
       walk: 'KMS und das Al-Nahrain-System sind nicht öffentlich. <a href="mailto:hussinthamer211@gmail.com?subject=Live-Vorf%C3%BChrung">Fragen Sie mich nach einer Live-Vorführung →</a>',
       walkSubject: 'Live-Vorführung',
       cv: 'Lebenslauf (PDF, Englisch)', email: 'E-Mail',
       fin: 'Meine Arbeit bis heute.', ek: '08/2021 → heute', ep: 'KMS und das Al-Nahrain-System sind nicht öffentlich, deshalb zeige ich sie live.',
       askWalk: 'Live-Vorführung anfragen', again: '↻ noch einmal ansehen', backPage: 'zurück zur Seite', rotate: '↻ Handy quer halten',
-      aria: { back: 'Zurück zur Startseite', prev: 'Zurück', next: 'Weiter' },
+      storyHead: 'Meine Geschichte', storySub: 'vom ersten Job bis heute', drawing: 'wird gezeichnet…', sbarCv: 'Lebenslauf', auto: 'Auto', manual: 'Manuell',
+      aria: { back: 'Zurück zur Startseite', prev: 'Zurück', next: 'Weiter', mode: 'Wiedergabe' },
     },
   },
 };
@@ -485,6 +552,7 @@ const $ = id => document.getElementById(id);
 const story = $('story'), stage = $('stage'), DEFS = $('defs'), LW = $('world'), LF = $('fx'), LH = $('hud');
 const S = {};
 let RUN = 0, FAST = false, PAUSED = false, NOW = 0, last = performance.now();
+let ADV = null, MANUAL = false; try { MANUAL = localStorage.getItem('storyMode') === 'manual'; } catch (e) {}
 const timers = new Set(), ticks = new Set(), SPEED = +(new URLSearchParams(location.search).get('speed') || 1);
 function loop(t) {
   const dt = Math.min(64, t - last) * SPEED; last = t;
@@ -493,7 +561,7 @@ function loop(t) {
 }
 requestAnimationFrame(loop);
 function wait(ms = 0) { if (FAST) return Promise.resolve(); const tok = RUN; return new Promise(res => timers.add({ at: NOW + ms, fire: () => { if (tok === RUN) res(); } })); }
-function cancelAll() { RUN++; timers.clear(); }
+function cancelAll() { RUN++; timers.clear(); ADV = null; const nb = document.getElementById('next'); if (nb) nb.classList.remove('wait'); }
 const live = a => { if (PAUSED) a.pause(); return a; };
 const ez = { inOut: p => (p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2), out: p => 1 - Math.pow(1 - p, 3), lin: p => p };
 async function tween(ms, fn, ease = ez.lin) { if (FAST) { fn(1); return; } const t0 = NOW; for (;;) { await wait(1); const p = Math.min(1, (NOW - t0) / ms); fn(ease(p)); if (p >= 1) return; } }
@@ -780,6 +848,33 @@ const CH = [
   { tone: AMB, kick: TXT.kick[3] },
 ];
 const BEATS = [];
+// ---------------- drawings for the parts added on 6 Oct 2026
+function bigLock(parent, cx, cy, tone) {          // a padlock big enough to read
+  const g = grp(parent), k = kit(g);
+  k.arc(cx, cy - 18, 56, 64, Math.PI, Math.PI * 2, { stroke: tone, strokeWidth: 5 });
+  k.rect(cx - 40, cy - 20, 80, 64, { fill: CARD, fillStyle: 'solid', stroke: 'none' });
+  k.rect(cx - 40, cy - 20, 80, 64, { stroke: tone, fill: MARK[tone] || 'rgba(201,72,61,.25)', fillStyle: 'solid', strokeWidth: 3 });
+  k.circle(cx, cy + 6, 12, { stroke: tone, fill: tone, fillStyle: 'solid' }); k.line(cx, cy + 10, cx, cy + 28, { stroke: tone, strokeWidth: 4 });
+  return g;
+}
+function clockAt(parent, cx, cy, d, h, m, tone = INK) {   // a wall clock at h:m
+  const g = grp(parent), k = kit(g), r = d / 2;
+  k.circle(cx, cy, d, { fill: CARD, fillStyle: 'solid', strokeWidth: 2.4, stroke: tone });
+  for (let i = 0; i < 12; i++) { const a = i * Math.PI / 6; k.line(cx + Math.sin(a) * (r - 10), cy - Math.cos(a) * (r - 10), cx + Math.sin(a) * (r - 4), cy - Math.cos(a) * (r - 4), { stroke: tone, strokeWidth: 1.2 }); }
+  const ah = ((h % 12) + m / 60) * Math.PI / 6, am = m * Math.PI / 30;
+  k.line(cx, cy, cx + Math.sin(ah) * r * 0.5, cy - Math.cos(ah) * r * 0.5, { stroke: tone, strokeWidth: 4 });
+  k.line(cx, cy, cx + Math.sin(am) * r * 0.76, cy - Math.cos(am) * r * 0.76, { stroke: tone, strokeWidth: 2.4 });
+  return g;
+}
+function xlsAt(parent, x, y, name) {              // one more copy of the same spreadsheet
+  const g = grp(parent), k = kit(g);
+  k.poly([[x, y], [x + 92, y], [x + 120, y + 28], [x + 120, y + 140], [x, y + 140]], { fill: CARD, fillStyle: 'solid', strokeWidth: 1.8 });
+  k.line(x + 92, y, x + 92, y + 28, { strokeWidth: 1.2 }); k.line(x + 92, y + 28, x + 120, y + 28, { strokeWidth: 1.2 });
+  for (let i = 0; i < 4; i++) k.line(x + 14, y + 46 + i * 20, x + 106, y + 46 + i * 20, { stroke: TEAL, strokeWidth: 1.1 });
+  for (let j = 1; j < 3; j++) k.line(x + 14 + j * 31, y + 46, x + 14 + j * 31, y + 106, { stroke: TEAL, strokeWidth: 1.1 });
+  T(g, x + 60, y + 166, name, { font: IN, size: 15, weight: 600, color: INK2, anchor: 'middle' });
+  return g;
+}
 const beat = (ch, id, dur, run) => BEATS.push({ ch, id, dur, run });
 
 // ---------------- 1 · Al-Hadi: my first job (short: Apicbase should start within the first half-minute)
@@ -812,9 +907,61 @@ beat(0, 'a-platform', 7400, async () => {
   await lightUp(S.hadi, TEAL, 26);
   await (S.m2000 = mark(LW, 1500, 470, TXT.students2000, TEAL, TXT.students2000Size))._show();
 });
+beat(0, 'a-results', 9200, async () => {
+  caption(CH[0].kick, TXT.cap.results.l, TEAL, TXT.cap.results.s);
+  drop('tags', 'pop', 300); drop('net', 'unink', 400); drop('m2000', 'fade', 300);
+  await to(S.hadi, { x: -430, s: 0.62 }, 700, EASE);
+  // results on the phone
+  const px = 640, py = 404, pw = 200, ph = 360, phone = S.phone = grp(LW), kp = kit(phone);
+  kp.rect(px, py, pw, ph, { fill: CARD, fillStyle: 'solid', strokeWidth: 2.6 });
+  kp.rect(px + 12, py + 34, pw - 24, ph - 64, { stroke: MUTE, strokeWidth: 1.2 });
+  kp.line(px + pw / 2 - 20, py + 17, px + pw / 2 + 20, py + 17, { strokeWidth: 2 });
+  T(phone, px + 26, py + 70, TXT.myResults, { font: IN, size: 19, weight: 800 });
+  const rows = S.rows = grp(phone, ''), kr = kit(rows);
+  for (let i = 0; i < 5; i++) { const y = py + 104 + i * 38; kr.line(px + 26, y, px + 118 - (i % 3) * 14, y, { stroke: MUTE, strokeWidth: 1.4 }); kr.circle(px + pw - 42, y - 4, 22, { stroke: TEAL, fill: MARK[TEAL], fillStyle: 'solid', strokeWidth: 1.3 }); }
+  const pub = T(phone, px + pw / 2, py + ph - 42, TXT.published, { size: 27, color: TEAL, anchor: 'middle' });
+  pop(phone, 500); ink(rows, { delay: 300, dur: 500, stagger: 30 }); fadeIn(pub, 400, 900);
+  await wait(1000);
+  // the yearly fee, paid from home
+  const rx = 930, ry = 560, rc = S.receipt = grp(LW), kc = kit(rc);
+  kc.rect(rx, ry, 200, 170, { fill: CARD, fillStyle: 'solid', strokeWidth: 1.8 });
+  T(rc, rx + 18, ry + 36, TXT.feeLbl, { font: IN, size: 18, weight: 700, color: INK2 });
+  for (let i = 0; i < 3; i++) kc.line(rx + 18, ry + 62 + i * 22, rx + 182 - i * 30, ry + 62 + i * 22, { stroke: MUTE, strokeWidth: 1.1 });
+  const st = grp(rc); kit(st).rect(rx + 40, ry + 114, 130, 42, { stroke: TEAL, strokeWidth: 2.6 }); T(st, rx + 105, ry + 145, TXT.paid, { size: 28, color: TEAL, anchor: 'middle' }); set(st, { r: -8 });
+  pop(rc, 450); pop(st, 380, 500);
+  await wait(1200);
+  // the ministry changes its grace marks: every result follows by itself
+  pop(S.grace = sticky(LW, 1550, 380, TXT.grace, { anchor: 'end', color: TEAL, rot: 2 }), 450);
+  await wait(800);
+  for (let i = 0; i < 2; i++) { await to(rows, { o: 0.15 }, 220, 'ease'); await to(rows, { o: 1 }, 280, 'ease'); }
+});
+beat(0, 'a-cert', 9000, async () => {
+  caption(CH[0].kick, TXT.cap.cert.l, TEAL, TXT.cap.cert.s);
+  drop('grace', 'pop', 300); drop('receipt', 'pop', 300, 100); delete S.rows; await drop('phone', 'pop', 350, 150);
+  // the final grades: audited once, then locked for good
+  const gx = 620, gy = 410, gw = 300, gh = 310, gs = S.grades = grp(LW), kg = kit(gs);
+  kg.rect(gx, gy, gw, gh, { fill: CARD, fillStyle: 'solid', strokeWidth: 2 });
+  T(gs, gx + 22, gy + 40, TXT.gradesTitle, { font: IN, size: 19, weight: 800 });
+  for (let i = 0; i < 6; i++) { const y = gy + 76 + i * 36; kg.line(gx + 22, y, gx + 170, y, { stroke: MUTE, strokeWidth: 1.2 }); kg.line(gx + 206, y, gx + 270, y, { stroke: INK2, strokeWidth: 1.8 }); }
+  pop(gs, 450); await wait(700);
+  pop(S.lock = bigLock(LW, gx + gw / 2, gy + gh / 2 + 24, TEAL), 450); shake(3);
+  fadeIn(S.lockLbl = T(LW, gx + gw / 2, gy + gh + 44, TXT.locked, { size: 30, color: TEAL, anchor: 'middle' }), 400, 200);
+  await wait(900);
+  // so the certificate is ready the moment a graduate asks
+  const ar = S.arrow = grp(LW, ''); kit(ar).arrow(gx + gw + 24, gy + 150, 1020, gy + 150, { stroke: TEAL, strokeWidth: 2.6 }); ink(ar, { dur: 450 });
+  const cx = 1040, cy = 400, cw = 420, chh = 300, ce = S.cert = grp(LW), kc = kit(ce);
+  kc.rect(cx, cy, cw, chh, { fill: CARD, fillStyle: 'solid', strokeWidth: 2.4 });
+  kc.rect(cx + 14, cy + 14, cw - 28, chh - 28, { stroke: TEAL, strokeWidth: 1.4 });
+  T(ce, cx + cw / 2, cy + 76, TXT.certTitle, { font: FR, size: 40, weight: 800, anchor: 'middle' });
+  for (let i = 0; i < 3; i++) kc.line(cx + 70, cy + 124 + i * 32, cx + cw - 70 - i * 40, cy + 124 + i * 32, { stroke: MUTE, strokeWidth: 1.2 });
+  kc.circle(cx + cw - 72, cy + chh - 66, 64, { stroke: AMB, fill: MARK[AMB], fillStyle: 'solid', strokeWidth: 2 });
+  pop(ce, 500);
+  await wait(600);
+  await (S.m1h = mark(LW, cx + cw / 2, cy + chh + 74, TXT.under1h, TEAL, 46, 'middle'))._show();
+});
 beat(0, 'a-infra', 7400, async () => {
   caption(CH[0].kick, TXT.cap.infra.l, TEAL, TXT.cap.infra.s);
-  drop('tags', 'pop', 300); drop('net', 'unink', 400); drop('m2000', 'fade', 300);
+  drop('grades', 'pop', 300); drop('lock', 'pop', 300); drop('lockLbl', 'fade', 250); drop('arrow', 'unink', 300); drop('cert', 'pop', 350); drop('m1h', 'fade', 300);
   await to(S.hadi, { x: -380, s: 0.66 }, 700, EASE);
   // the server room: an empty rack, then a full one
   const r = S.rack = rackAt(LW, 640, 220, 340); grow(r, 600);
@@ -975,21 +1122,79 @@ beat(1, 'b-perms', 8500, async () => {
   for (const [r, c] of cells) { pop(lockAt(locks, x0 + c * cw + (cw - 12) / 2, y0 + r * ch + (ch - 14) / 2, IND), 300); await wait(34); }
 });
 
+beat(1, 'b-demo', 9400, async () => {
+  caption(CH[1].kick, TXT.cap.demo.l, IND, TXT.cap.demo.s);
+  if (S.grid) out(S.grid, 'fade', 350); delete S.grid; drop('locks', 'fade', 350); drop('af', 'fade', 300);
+  await wait(400);
+  // late evening, and the demo is in the morning
+  const ck = S.clock = grp(LW); clockAt(ck, 230, 470, 150, 9, 30, IND);
+  T(ck, 230, 596, TXT.night, { size: 40, color: IND, anchor: 'middle' });
+  [[118, 392, 22], [344, 380, 18], [334, 560, 15]].forEach(([x, y, z]) => T(ck, x, y, '✦', { font: IN, size: z, color: IND }));
+  pop(ck, 500);
+  // the demo library: broken rows, fixed one by one
+  const X = 470, Y = 400, BW = 560, BH = 340, br = S.lib = grp(LW); browserAt(br, X, Y, BW, BH, TXT.demoLib); pop(br, 450);
+  const kb = kit(br), xs = [];
+  for (let i = 0; i < 6; i++) { const y = Y + 78 + i * 42; kb.line(X + 28, y, X + 330 - (i % 3) * 40, y, { stroke: MUTE, strokeWidth: 1.3 }); xs.push(T(br, X + BW - 52, y + 9, '✕', { font: IN, size: 26, weight: 800, color: RED, anchor: 'middle' })); }
+  await wait(1000);
+  for (const t of xs) { t.textContent = '✓'; t.setAttribute('fill', TEAL); pop(t, 260); await wait(150); }
+  // my manager runs the fix on production
+  const mg = S.mgr = person(LW, 1272, { s: 0.85, shirt: IND, hair: '#5A3A2E' }); set(mg, { y: 30, o: 0 }); to(mg, { y: 0, o: 1 }, 500, BACK);
+  fadeIn(S.mgrLbl = T(LW, 1272, G + 40, TXT.manager, { size: 32, anchor: 'middle' }), 400, 200);
+  const ar = S.toProd = grp(LW, ''); kit(ar).arrow(X + BW + 16, Y + 190, 1196, Y + 230, { stroke: IND, strokeWidth: 2.4 }); T(ar, 1121, Y + 280, TXT.toProd, { size: 25, color: IND, anchor: 'middle' }); ink(ar, { dur: 500 });
+  await wait(900);
+  pop(S.demoOk = sticky(LW, 1560, 372, TXT.demoOk, { anchor: 'end', color: IND, rot: 3 }), 450);
+});
+
 // ---------------- 3 · Al-Nahrain, my own system
-beat(2, 'd-uni', 9400, async () => {
-  caption(CH[2].kick, TXT.cap.uni.l, AMB, TXT.cap.uni.s);
+beat(2, 'd-call', 9200, async () => {
+  caption(CH[2].kick, TXT.cap.call.l, AMB, TXT.cap.call.s);
   const ie = S.ie = seeded(4242, () => college(LW, 90, 280, 300, { stroke: INK2 })); grow(ie, 900, 200);
-  await wait(1100);
-  await lightUp(ie, AMB, 32);
-  const l1 = S.l1 = T(LW, 230, G + 42, TXT.ieFirst, { size: 30, color: AMB, anchor: 'middle' }); fadeIn(l1, 500);
+  await wait(700);
+  // every head of department kept his own copy of the same file
+  S.xls = [];
+  for (const [i, [x, y, r]] of [[470, 400, -6], [630, 470, 4], [790, 400, -3], [530, 600, 7], [710, 610, -5]].entries()) { const f = xlsAt(LW, x, y, TXT.xls[i]); set(f, { r }); pop(f, 380); S.xls.push(f); await wait(110); }
   await wait(500);
+  // then the phone rang
+  const call = S.call = grp(LW), kc = kit(call);
+  kc.rect(1000, 470, 96, 170, { fill: CARD, fillStyle: 'solid', strokeWidth: 2.4 }); kc.rect(1010, 492, 76, 116, { stroke: AMB, fill: WASH[AMB], fillStyle: 'hachure', hachureGap: 8, strokeWidth: 1.2 });
+  for (let i = 0; i < 3; i++) kc.arc(1048, 555, 150 + i * 46, 150 + i * 46, -Math.PI * 0.32, Math.PI * 0.32, { stroke: AMB, strokeWidth: 2 });
+  pop(call, 450);
+  await wait(500);
+  pop(S.dean = sticky(LW, 1560, 400, TXT.deanSays, { anchor: 'end', color: AMB, rot: -2 }), 450);
+});
+beat(2, 'd-council', 10600, async () => {
+  caption(CH[2].kick, TXT.cap.council.l, AMB, TXT.cap.council.s);
+  drop('dean', 'pop', 300); drop('call', 'pop', 300);
+  // the copies go, and one system takes their place in my old college
+  for (const f of [...S.xls].reverse()) { flyTo(f, 230, G - 40, { s: 0.12, r: 20, op: 0, lift: 140, ms: 650 }).then(() => f.remove()); await wait(60); }
+  S.xls = [];
+  await wait(400);
+  await lightUp(S.ie, AMB, 32);
+  fadeIn(S.l1 = T(LW, 230, G + 42, TXT.ieFirst, { size: 30, color: AMB, anchor: 'middle' }), 500);
+  await wait(300);
+  // the system, on the screen of the meeting room
+  const sc = S.screen = grp(LW); browserAt(sc, 640, 360, 420, 190, TXT.sysLbl);
+  const ks = kit(sc); for (let i = 0; i < 3; i++) ks.line(664, 424 + i * 32, 960 - i * 50, 424 + i * 32, { stroke: AMB, strokeWidth: 2.2 });
+  pop(sc, 450);
+  // every dean and the president, around one table
+  S.people = [];
+  const shirts = ['#6A79C9', '#C45B84', '#18A393', '#E4A13E', '#5B8F68', '#4A4F63', '#9C6ADE'];
+  for (let i = 0; i < 7; i++) { const p = person(LW, 520 + i * 110, { s: 0.78, shirt: shirts[i], hair: i % 3 ? INK : '#5A3A2E' }); set(p, { y: 24, o: 0 }); to(p, { y: 0, o: 1 }, 450, BACK); S.people.push(p); await wait(90); }
+  const tb = S.table = grp(LW), kt = kit(tb); kt.rect(470, 736, 760, 22, { fill: WOOD, fillStyle: 'solid', strokeWidth: 2.2 }); kt.rect(490, 758, 720, 42, { fill: CARD, fillStyle: 'solid', stroke: 'none' }); kt.rect(490, 758, 720, 42, { fill: 'rgba(122,127,144,.2)', fillStyle: 'hachure', hachureGap: 9, strokeWidth: 1.6 }); grow(tb, 500);
+  fadeIn(S.councilLbl = T(LW, 850, G + 42, TXT.councilLbl, { size: 30, anchor: 'middle' }), 400, 300);
+  await wait(1100);
+  pop(S.verdict = sticky(LW, 1560, 400, TXT.councilSays, { anchor: 'end', color: AMB, rot: 3 }), 500); shake(4);
+});
+beat(2, 'd-uni', 9000, async () => {
+  caption(CH[2].kick, TXT.cap.uni.l, AMB, TXT.cap.uni.s);
+  drop('verdict', 'pop', 300); drop('councilLbl', 'fade', 250); drop('screen', 'pop', 350); drop('table', 'sink', 400); await drop('people', 'fade', 350);
   S.others = [];
   const hs = [250, 230, 270, 240, 262, 228, 256];
   for (let i = 0; i < 7; i++) { const c = seeded(4400 + i, () => college(LW, 400 + i * 163, 140, hs[i], { stroke: INK2 })); grow(c, 600); S.others.push(c); await wait(140); }
   await wait(400);
   for (const c of S.others) { lightUp(c, AMB, 12); await wait(230); }
   await wait(500);
-  const l2 = S.l2 = T(LW, 970, G + 42, TXT.everyCollege, { size: 30, color: AMB, anchor: 'middle' }); fadeIn(l2, 500);
+  fadeIn(S.l2 = T(LW, 970, G + 42, TXT.everyCollege, { size: 30, color: AMB, anchor: 'middle' }), 500);
   fadeIn(T(LW, 1540, G + 44, TXT.walkReq, { size: 27, color: MUTE, anchor: 'end' }), 500, 500);
 });
 
@@ -1011,17 +1216,92 @@ beat(3, 'c-kms', 7700, async () => {
   pop(kb, 600); shake(6);
   const kl = S.kmsLines = grp(LW, ''); kit(kl).line(720, 468, p1._roof[0], p1._roof[1], { stroke: AMB, strokeWidth: 2.4 }); kit(kl).line(860, 468, p2._roof[0], p2._roof[1], { stroke: AMB, strokeWidth: 2.4 }); LW.insertBefore(kl, p1); ink(kl, { delay: 300, dur: 600 });
 });
-beat(3, 'c-run', 8800, async () => {
-  caption(CH[3].kick, TXT.cap.run.l, AMB, TXT.cap.run.s);
+beat(3, 'c-v1', 9200, async () => {
+  caption(CH[3].kick, TXT.cap.v1.l, AMB, TXT.cap.v1.s);
   await wait(900);
   await bigNum(TXT.wo, TXT.workOrders, AMB, 20000, fmt);
   S.mods = [];
-  let mx = 0; const names = TXT.mods, gs = names.map(n => tagAt(LW, 0, 296, n, AMB));
+  let mx = 0; const gs = TXT.mods.map(n => tagAt(LW, 0, 296, n, AMB));
   const total = gs.reduce((a, g) => a + g.getBBox().width, 0) + 14 * (gs.length - 1); mx = W / 2 - total / 2;
   for (const g of gs) { const w = g.getBBox().width; set(g, { x: mx - g.getBBox().x }); mx += w + 14; pop(g, 380); S.mods.push(g); await wait(140); }
   await wait(400);
-  pop(S.mcp = sticky(LW, 1550, 372, TXT.mcp, { anchor: 'end', color: AMB, rot: 3 }), 500);
-  fadeIn(T(LW, 1540, G + 44, TXT.walkReq, { size: 27, color: MUTE, anchor: 'end' }), 500, 500);
+  pop(S.fn = sticky(LW, 1550, 372, TXT.fnNote, { anchor: 'end', color: AMB, rot: 3 }), 500);
+});
+beat(3, 'c-day', 9600, async () => {
+  caption(CH[3].kick, TXT.cap.day.l, AMB, TXT.cap.day.s);
+  drop('fn', 'pop', 300); drop('mods', 'pop', 300); drop('plants', 'fade', 450); drop('mw', 'fade', 300); drop('kmsLines', 'unink', 350);
+  await to(S.kms, { y: -14, s: 0.8 }, 600, EASE);
+  // who opens it, and when
+  const cols = [260, 620, 980, 1340], tones = [AMB, IND, TEAL, INK2];
+  const links = S.links = grp(LW, ''); cols.forEach(x => kit(links).line(790, 446, x, 492, { stroke: MUTE, strokeWidth: 1.6 })); LW.insertBefore(links, S.kms); ink(links, { dur: 500, stagger: 80 });
+  const icons = [x => clockAt(LW, x, 540, 92, 6, 0, AMB), x => clockAt(LW, x, 540, 92, 7, 0, IND),
+    x => { const g = grp(LW), k = kit(g); k.rect(x - 46, 500, 92, 78, { fill: CARD, fillStyle: 'solid', strokeWidth: 2 }); k.line(x - 46, 526, x + 46, 526, { strokeWidth: 1.4 }); k.line(x - 46, 552, x + 46, 552, { strokeWidth: 1.4 }); [513, 539, 565].forEach(y => k.line(x - 10, y, x + 10, y, { stroke: TEAL, strokeWidth: 2.4 })); return g; },
+    x => { const g = grp(LW), k = kit(g); k.rect(x - 50, 500, 100, 78, { fill: CARD, fillStyle: 'solid', strokeWidth: 2 }); [[22, 30], [44, 46], [66, 22]].forEach(([dx, h]) => k.rect(x - 50 + dx - 6, 570 - h, 14, h, { stroke: INK2, fill: MARK[INK], fillStyle: 'solid', strokeWidth: 1.2 })); return g; }];
+  S.day = [];
+  for (let i = 0; i < 4; i++) {
+    const ic = icons[i](cols[i]); pop(ic, 400);
+    const p = person(LW, cols[i], { s: 0.66, shirt: tones[i] }); set(p, { y: 24, o: 0 }); to(p, { y: 0, o: 1 }, 450, BACK);
+    const l = T(LW, cols[i], G + 40, TXT.dayRoles[i], { size: 28, color: tones[i] === INK2 ? INK : tones[i], anchor: 'middle' }); fadeIn(l, 400, 150);
+    S.day.push(ic, p, l); await wait(520);
+  }
+  await (S.m400 = mark(LW, 1560, 400, TXT.eng400, AMB, 36))._show();
+});
+beat(3, 'c-safe', 10000, async () => {
+  caption(CH[3].kick, TXT.cap.safe.l, AMB, TXT.cap.safe.s);
+  drop('m400', 'fade', 300); drop('links', 'unink', 300); drop('kms', 'pop', 350); await drop('day', 'fade', 300);
+  // the panel is isolated and locked before anyone touches it
+  const px = 1060, py = 470, pn = S.panel = grp(LW), kp = kit(pn);
+  kp.rect(px, py, 230, 330, { fill: CARD, fillStyle: 'solid', strokeWidth: 2.6 });
+  kp.rect(px + 30, py + 40, 170, 110, { stroke: MUTE, fill: 'rgba(122,127,144,.18)', fillStyle: 'hachure', hachureGap: 8, strokeWidth: 1.4 });
+  kp.rect(px + 95, py + 180, 40, 84, { strokeWidth: 2 }); kp.line(px + 115, py + 192, px + 115, py + 236, { strokeWidth: 5 });
+  grow(pn, 600);
+  await wait(700);
+  pop(S.plock = bigLock(LW, px + 115, py + 250, RED), 400); shake(3);
+  const tg = S.tag = grp(LW), kt = kit(tg); kt.rect(px + 168, py + 222, 176, 62, { fill: CARD, fillStyle: 'solid', stroke: 'none' }); kt.rect(px + 168, py + 222, 176, 62, { stroke: RED, fill: 'rgba(201,72,61,.12)', fillStyle: 'solid', strokeWidth: 2 }); kt.line(px + 152, py + 256, px + 168, py + 252, { stroke: RED, strokeWidth: 1.6 }); T(tg, px + 256, py + 260, TXT.lockTag, { font: IN, size: 17, weight: 800, color: RED, anchor: 'middle' }); set(tg, { r: 5 }); pop(tg, 380);
+  fadeIn(S.isoLbl = T(LW, px + 115, G + 42, TXT.isolated, { size: 30, color: RED, anchor: 'middle' }), 400);
+  await wait(700);
+  // the permit: six types, each checked, then approved
+  const fx = 300, fy = 350, fw = 500, fh = 440, pf = S.permit = grp(LW), kf = kit(pf);
+  kf.rect(fx, fy, fw, fh, { fill: WOOD, fillStyle: 'solid', strokeWidth: 2.2 });
+  kf.rect(fx + 20, fy + 28, fw - 40, fh - 46, { fill: CARD, fillStyle: 'solid', strokeWidth: 1.4 });
+  kf.rect(fx + fw / 2 - 60, fy - 12, 120, 30, { fill: '#B8BCC8', fillStyle: 'solid', strokeWidth: 1.6 });
+  T(pf, fx + fw / 2, fy + 74, TXT.permitTitle, { font: FR, size: 30, weight: 800, anchor: 'middle' });
+  const boxes = TXT.permits.map((p, i) => { const by = fy + 100 + i * 40; kf.rect(fx + 50, by, 26, 26, { strokeWidth: 1.6 }); T(pf, fx + 92, by + 22, p, { size: 28 }); return [fx + 50, by]; });
+  pop(pf, 500);
+  await wait(800);
+  S.ticks = [];
+  for (const [bx, by] of boxes) { const t = grp(LW, ''); kit(t).curve([[bx + 3, by + 13], [bx + 11, by + 22], [bx + 32, by - 8]], { stroke: TEAL, strokeWidth: 3.2 }); ink(t, { dur: 220 }); S.ticks.push(t); await wait(170); }
+  await wait(300);
+  const sp = S.stamp = grp(LW), ks = kit(sp); ks.rect(fx + 250, fy + fh - 92, 214, 54, { stroke: TEAL, strokeWidth: 3.4 }); T(sp, fx + 357, fy + fh - 54, TXT.approved, { font: IN, size: 27, weight: 800, color: TEAL, anchor: 'middle' }); set(sp, { r: -8 }); pop(sp, 380); shake(4);
+  await wait(700);
+  // only now can the work start
+  const wk = S.worker = person(LW, 1470, { s: 0.8, shirt: AMB }); set(wk, { x: 160, o: 0 }); await to(wk, { x: 0, o: 1 }, 900, EASE);
+});
+beat(3, 'c-ai', 9400, async () => {
+  caption(CH[3].kick, TXT.cap.ai.l, AMB, TXT.cap.ai.s);
+  drop('worker', 'fade', 300); drop('stamp', 'pop', 300); drop('ticks', 'fade', 250); drop('tag', 'pop', 300); drop('plock', 'pop', 300); drop('isoLbl', 'fade', 250); drop('panel', 'sink', 450); await drop('permit', 'pop', 400);
+  // a head of department asks
+  const hd = S.head = person(LW, 240, { s: 0.85, shirt: '#5B8F68' }); set(hd, { y: 30, o: 0 }); to(hd, { y: 0, o: 1 }, 500, BACK);
+  fadeIn(S.headLbl = T(LW, 240, G + 40, TXT.headLbl, { size: 30, anchor: 'middle' }), 400, 200);
+  const bb = S.bubble = grp(LW), kb = kit(bb); kb.rect(120, 380, 540, 132, { fill: CARD, fillStyle: 'solid', strokeWidth: 2.2 }); kb.poly([[210, 512], [252, 512], [226, 560]], { fill: CARD, fillStyle: 'solid', strokeWidth: 2 });
+  TXT.aiQ.forEach((l, i) => T(bb, 148, 434 + i * 42, l, { font: IN, size: 26, weight: 600 }));
+  pop(bb, 450);
+  await wait(1000);
+  // KMS answers through the MCP server
+  const kq = S.kmsAi = grp(LW), kk = kit(kq); kk.rect(700, 600, 230, 90, { fill: CARD, fillStyle: 'solid', stroke: 'none' }); kk.rect(700, 600, 230, 90, { stroke: AMB, fill: 'rgba(196,121,21,.45)', fillStyle: 'hachure', hachureGap: 6, strokeWidth: 3 }); T(kq, 815, 664, 'KMS', { font: FR, size: 52, weight: 800, anchor: 'middle' });
+  pop(kq, 450);
+  const tg = S.mcpTag = tagAt(LW, 0, 530, 'MCP · OAuth2', AMB); set(tg, { x: 815 - tg.getBBox().width / 2 - tg.getBBox().x }); pop(tg, 380, 200);
+  const a1 = S.a1 = grp(LW, ''); kit(a1).arrow(560, 516, 694, 620, { stroke: AMB, strokeWidth: 2.4 }); ink(a1, { dur: 450 });
+  await wait(700);
+  // the answer comes back as a report
+  const rx = 1040, ry = 400, rw = 480, rh = 360, rp = S.report = grp(LW), kr = kit(rp);
+  kr.rect(rx, ry, rw, rh, { fill: CARD, fillStyle: 'solid', strokeWidth: 2.2 });
+  T(rp, rx + 26, ry + 46, TXT.aiTitle, { font: IN, size: 21, weight: 800 });
+  const bars = grp(rp, ''), wid = [290, 230, 180, 130, 90];
+  TXT.aiItems.forEach((n, i) => { const by = ry + 84 + i * 52; T(rp, rx + 26, by + 27, n, { size: 28 }); kit(bars).rect(rx + 150, by + 6, wid[i], 28, { stroke: AMB, fill: MARK[AMB], fillStyle: 'solid', strokeWidth: 1.4 }); });
+  const a2 = S.a2 = grp(LW, ''); kit(a2).arrow(936, 640, 1032, 600, { stroke: AMB, strokeWidth: 2.4 }); ink(a2, { dur: 400 });
+  pop(rp, 450); ink(bars, { delay: 300, dur: 700, stagger: 60 });
+  fadeIn(T(LW, 1540, G + 44, TXT.walkReq, { size: 27, color: MUTE, anchor: 'end' }), 500, 700);
 });
 
 // ---------------- the end: everything on one ground line, and what to do next
@@ -1115,10 +1395,29 @@ async function playFrom(k) {
     await b.run();
     (window.__log = window.__log || []).push([b.id, Math.round(NOW - T0)]);
     if (b.id === 'end') { ATEND = true; ENDED = true; ui(); poke(); const f = document.querySelector('#endcard .ebtn'); if (f) f.focus({ preventScroll: true }); return; }
-    await wait(Math.max(2400, b.dur - (NOW - T0)));
+    await hold(Math.max(2400, b.dur - (NOW - T0)));
   }
 }
+// between beats: in Auto the story moves on by itself, in Manual it waits for the viewer
+async function hold(ms) {
+  const tok = RUN, until = NOW + ms;
+  while (tok === RUN) {
+    if (MANUAL) { $('next').classList.add('wait'); manualHint(); await new Promise(r => (ADV = r)); return; }
+    if (NOW >= until) return;
+    await wait(Math.min(150, until - NOW));
+  }
+}
+function advance() { const r = ADV; ADV = null; $('next').classList.remove('wait'); if (r) r(); }
+let MHINT = false;
+function manualHint() {
+  if (MHINT) return; MHINT = true;
+  const h = $('khint'); h.textContent = matchMedia('(hover: none)').matches ? TXT.hintManualTouch : TXT.hintManual;
+  h.classList.remove('show'); void h.offsetWidth; h.classList.add('show');
+}
+function paintMode() { document.querySelectorAll('#mode button').forEach(b => b.setAttribute('aria-pressed', String((b.dataset.m === 'manual') === MANUAL))); }
+function setMode(m) { MANUAL = m; try { localStorage.setItem('storyMode', m ? 'manual' : 'auto'); } catch (e) {} paintMode(); if (!m && ADV) advance(); }
 async function go(k) {                // jump straight to beat k: the page is rebuilt as it is when that beat begins
+  await buildStatic();                // the page's copy of the story is drawn on the same stage, so it goes first
   cancelAll(); resume(true); ENDED = false; ATEND = false; played();
   const ch = BEATS[k].ch, first = BEATS.findIndex(b => b.ch === ch);
   const wasOpen = story.style.display === 'block';
@@ -1129,7 +1428,7 @@ async function go(k) {                // jump straight to beat k: the page is re
   if (!wasOpen) { openFrom(ch); showHint(); await wait(350); } else { story.getAnimations().forEach(a => a.cancel()); story.style.clipPath = FULL; storyShow(true); }
   playFrom(k);
 }
-function startStory() { unfinish(); SEEN.clear(); if (PORTRAIT.matches) return openStatic(0); go(0); }
+function startStory() { unfinish(); SEEN.clear(); if (PORTRAIT.matches) return toStory(0); go(0); }
 function showHint() {
   if (HINTED) return; HINTED = true;
   const h = $('khint'); h.textContent = matchMedia('(hover: none)').matches ? TXT.hintTouch : TXT.hintKeys;
@@ -1146,11 +1445,11 @@ function finish() {
 function unfinish() {
   if (!FINISHED) return; FINISHED = false;
   $('playLbl').textContent = TXT.play; const pl = $('playBtn').querySelector('.pl'); pl.textContent = '▶'; pl.style.paddingLeft = ''; pl.style.fontSize = '';
-  $('ctaHint').textContent = TXT.about;
+  $('ctaHint').innerHTML = TXT.about;
 }
 const PORTRAIT = matchMedia('(orientation: portrait) and (max-width: 700px)');
 let VBUILT = null;
-function buildStatic() {               // every beat drawn in its finished state, with its words, as a card
+function buildStatic() {               // every beat drawn as it ends, with its words, as a card on the page
   if (VBUILT) return VBUILT;
   return (VBUILT = (async () => {
     const list = $('vlist'); list.innerHTML = '';
@@ -1163,37 +1462,63 @@ function buildStatic() {               // every beat drawn in its finished state
         if (lastCh >= 0) { const t = document.createElement('p'); t.className = 'vthen'; t.textContent = TXT.thenArrow; list.appendChild(t); }
         lastCh = b.ch; startChapter(b.ch);
         sec = document.createElement('section'); sec.className = 'vch'; sec.id = 'v' + b.ch; sec.style.setProperty('--c', CH[b.ch].tone);
-        const h2 = document.createElement('h2'); h2.textContent = CH[b.ch].kick; sec.appendChild(h2); list.appendChild(sec);
+        const hd = document.createElement('header'), h2 = document.createElement('h2'), wb = document.createElement('button');
+        h2.textContent = CH[b.ch].kick; wb.type = 'button'; wb.className = 'watch'; wb.textContent = TXT.watchPart; wb.onclick = () => go(k);
+        hd.append(h2, wb); sec.appendChild(hd); list.appendChild(sec);
       }
       CAP.last = null; CAP.num = null; SEED = 1000 + k * 71;
       await b.run();
       if (b.id === 'end') {
         const fig = document.createElementNS(NS, 'svg'); fig.setAttribute('viewBox', '30 540 1540 330'); fig.setAttribute('class', 'vsky'); fig.setAttribute('role', 'img');
-        fig.setAttribute('aria-label', TXT.skyAria); fig.appendChild(LW.cloneNode(true));
+        const w = LW.cloneNode(true); w.removeAttribute('id');
+        fig.setAttribute('aria-label', TXT.skyAria); fig.appendChild(w);
         const v = document.querySelector('.vend'); v.querySelector('.vsky')?.remove(); v.insertBefore(fig, v.firstChild);
         continue;
       }
       const card = document.createElement('article'); card.className = 'vcard'; card.id = 'vb-' + b.id;
-      const svg = document.createElementNS(NS, 'svg'); svg.setAttribute('viewBox', '0 280 1600 600'); svg.setAttribute('role', 'img'); svg.appendChild(LW.cloneNode(true)); card.appendChild(svg);
-      const c = CAP.last || {}, h3 = document.createElement('h3'); h3.textContent = (c.lines || []).join(' '); card.appendChild(h3);
-      if (c.sub) { const pp = document.createElement('p'); pp.textContent = [].concat(c.sub).join(' '); card.appendChild(pp); }   // the stage's line breaks mean nothing on a narrow card
-      if (CAP.num) { const pp = document.createElement('p'); pp.className = 'vnum'; const bb = document.createElement('b'); bb.textContent = CAP.num.final; pp.append(bb, CAP.num.sub); card.appendChild(pp); }
-      svg.setAttribute('aria-label', h3.textContent);
-      sec.appendChild(card);
+      const txt = document.createElement('div'); txt.className = 'txt';
+      const c = CAP.last || {}, h3 = document.createElement('h3'); h3.textContent = (c.lines || []).join(' '); txt.appendChild(h3);
+      if (c.sub) { const pp = document.createElement('p'); pp.textContent = [].concat(c.sub).join(' '); txt.appendChild(pp); }   // the stage's line breaks mean nothing on a card
+      if (CAP.num) { const pp = document.createElement('p'); pp.className = 'vnum'; const bb = document.createElement('b'); bb.textContent = CAP.num.final; pp.append(bb, CAP.num.sub); txt.appendChild(pp); }
+      const svg = document.createElementNS(NS, 'svg'), w = LW.cloneNode(true), bx = worldBox(); w.removeAttribute('id');
+      const top = bx ? Math.max(280, Math.floor(bx[0]) - 26) : 280, bot = bx ? Math.min(900, Math.max(G + 30, Math.ceil(bx[1]) + 18)) : 880;
+      svg.setAttribute('viewBox', `0 ${top} 1600 ${bot - top}`); svg.setAttribute('role', 'img'); svg.setAttribute('aria-label', h3.textContent); svg.appendChild(w);
+      card.append(txt, svg); sec.appendChild(card);
     }
     FAST = false;
     [LW, LF, LH].forEach(l => (l.innerHTML = '')); CAP.g = null; OPEN = -1; endcardShow(false);
     story.style.display = 'none'; story.style.visibility = '';
+    reveal();
   })());
 }
-async function openStatic(target) {     // a part (number) or a beat (id)
-  played();
-  await buildStatic();
-  $('vstory').hidden = false; document.body.classList.add('open');
-  const el = typeof target === 'number' ? $('v' + target) : $('vb-' + target);
-  if (el) el.scrollIntoView({ block: 'start' }); else $('vstory').scrollTop = 0;
+function worldBox() {                  // how high and low this beat drew, in stage units (CSS transforms included)
+  const m = stage.getScreenCTM(); if (!m) return null;
+  const inv = m.inverse(); let y0 = Infinity, y1 = -Infinity;
+  for (const c of LW.children) {
+    if (c === S.ground) continue;
+    const r = c.getBoundingClientRect(); if (!r.width || !r.height) continue;
+    y0 = Math.min(y0, new DOMPoint(r.left, r.top).matrixTransform(inv).y); y1 = Math.max(y1, new DOMPoint(r.right, r.bottom).matrixTransform(inv).y);
+  }
+  return isFinite(y0) ? [y0, y1] : null;
 }
-function closeStatic() { $('vstory').hidden = true; document.body.classList.remove('open'); }
+function reveal() {                     // each card writes itself in as it comes onto the screen
+  const list = $('vlist');
+  if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  list.classList.add('reveal');
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    io.unobserve(e.target); e.target.classList.add('in');
+    const g = e.target.querySelector('svg > g'); if (g) ink(g, { dur: 900, stagger: 6 });
+  }), { threshold: 0.15 });
+  list.querySelectorAll('.vcard').forEach(c => io.observe(c));
+}
+async function toStory(target) {        // a part (number) or a beat (id) of the story further down the page
+  await buildStatic();
+  const el = target == null ? $('vstory') : typeof target === 'number' ? $('v' + target) : $('vb-' + target);
+  if (!el) return;
+  el.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+  if (el.classList.contains('vcard')) { el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash'); setTimeout(() => el.classList.remove('flash'), 1800); }
+}
 function played() { $('cta').classList.add('played'); if (document.activeElement && document.activeElement !== document.body) document.activeElement.blur(); }
 async function closeStory() {
   cancelAll(); resume(true);
@@ -1217,19 +1542,22 @@ function ui() {
   $('sctl').classList.toggle('gone', ATEND);
 }
 function poke() { lastPoke = performance.now(); $('sctl').classList.remove('idle'); $('close').classList.remove('idle'); }
-setInterval(() => { if (OPEN >= 0 && !PAUSED && !ATEND && performance.now() - lastPoke > 2600) { $('sctl').classList.add('idle'); $('close').classList.add('idle'); } }, 300);
 ['mousemove', 'pointerdown', 'touchstart', 'keydown'].forEach(ev => addEventListener(ev, poke, { passive: true }));
 $('playBtn').onclick = () => (FINISHED ? (location.href = MAIL) : startStory());
 $('eAgain').onclick = startStory;
 $('eBack').onclick = closeStory;
-TILES.forEach((t, i) => t.addEventListener('click', e => { e.preventDefault(); if (PORTRAIT.matches) return openStatic(i); go(BEATS.findIndex(b => b.ch === i)); }));
-$('vclose').onclick = closeStatic;
+TILES.forEach((t, i) => t.addEventListener('click', e => { e.preventDefault(); toStory(i); }));
+document.querySelectorAll('#mode button').forEach(b => (b.onclick = () => setMode(b.dataset.m === 'manual')));
+paintMode();
+story.addEventListener('click', e => { if (!MANUAL || OPEN < 0 || ATEND || e.target.closest('button,a,.sctl,.endcard')) return; $('next').onclick(); });   // Manual: a click anywhere turns the page
+$('cta').addEventListener('click', e => { if (e.target.closest('.toStory')) toStory(); });
+const SBAR = $('sbar'); SBAR.inert = true;
+new IntersectionObserver(([e]) => { const on = !e.isIntersecting && e.boundingClientRect.top < 0; SBAR.classList.toggle('on', on); SBAR.setAttribute('aria-hidden', String(!on)); SBAR.inert = !on; }).observe($('tiles'));
 $('pause').onclick = () => (PAUSED ? resume() : pause());
 $('prev').onclick = () => { if (CUR > 0) go(CUR - 1); };
-$('next').onclick = () => { if (CUR >= 0 && CUR < BEATS.length - 1) go(CUR + 1); };
+$('next').onclick = () => { if (ADV) return advance(); if (CUR >= 0 && CUR < BEATS.length - 1) go(CUR + 1); };
 $('close').onclick = closeStory;
 addEventListener('keydown', e => {
-  if (!$('vstory').hidden) { if (e.key === 'Escape') closeStatic(); return; }
   if (OPEN < 0) { if (e.key === 'Enter' && document.activeElement === document.body) startStory(); return; }
   if (e.key === 'Escape') closeStory();
   if (e.key === ' ' && !ATEND && !e.target.closest('button,a')) { e.preventDefault(); PAUSED ? resume() : pause(); }
@@ -1245,13 +1573,25 @@ const PLACE = ['Al-Hadi', 'Apicbase', 'Al-Nahrain', 'KMS'];
 const SK = TXT.skills;
 let ACTIVE = null;
 function pick(s) {
-  if (ACTIVE === s) { ACTIVE = null; document.querySelectorAll('.chip').forEach(c => c.classList.remove('on')); $('receipts').classList.remove('on'); return; }
+  const box = $('receipts'), tiles = $('tiles');
+  if (ACTIVE === s) { ACTIVE = null; document.querySelectorAll('.chip').forEach(c => c.classList.remove('on')); box.hidden = true; tiles.classList.remove('focus'); TILES.forEach(t => t.classList.remove('hit')); return; }
   ACTIVE = s; document.querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c._s === s));
-  $('receipts').innerHTML = s.r.map(([id, txt]) => { const b = BEATS.find(x => x.id === id); return `<button class="receipt" data-id="${id}" style="--c:${CH[b.ch].tone}"><span class="at">${PLACE[b.ch]}</span><span>${txt}</span><span class="go">${TXT.watch}</span></button>`; }).join('');
-  $('receipts').querySelectorAll('.receipt').forEach(el => (el.onclick = () => (PORTRAIT.matches ? openStatic(el.dataset.id) : go(BEATS.findIndex(b => b.id === el.dataset.id)))));
-  $('receipts').classList.add('on');
+  const hit = new Set();
+  $('rlist').innerHTML = s.r.map(([id, txt]) => { const b = BEATS.find(x => x.id === id); hit.add(b.ch); return `<button type="button" class="receipt" data-id="${id}" style="--c:${CH[b.ch].tone}"><span class="at">${PLACE[b.ch]}</span><span class="rt">${txt}</span><span class="go">${TXT.seeIt}</span></button>`; }).join('');
+  $('rlist').querySelectorAll('.receipt').forEach(el => (el.onclick = () => toStory(el.dataset.id)));
+  tiles.classList.add('focus'); TILES.forEach((t, i) => t.classList.toggle('hit', hit.has(i)));
+  box.hidden = false; box.classList.remove('pop'); void box.offsetWidth; box.classList.add('pop'); paperEdge(box, 91);
 }
-SK.forEach(s => { const b = document.createElement('button'); b.className = 'chip'; b.textContent = s.t; b._s = s; b.onclick = () => pick(s); $('chips').appendChild(b); });
+function sepFix() {                    // a dot that would end or start a line of skills is hidden
+  document.querySelectorAll('.chips .sep').forEach(d => {
+    const a = d.previousElementSibling, b = d.nextElementSibling, t = d.getBoundingClientRect().top;
+    d.style.visibility = a && b && Math.abs(a.getBoundingClientRect().top - t) < 14 && Math.abs(b.getBoundingClientRect().top - t) < 14 ? '' : 'hidden';
+  });
+}
+SK.forEach((s, i) => {
+  if (i) { const d = document.createElement('span'); d.className = 'sep'; d.setAttribute('aria-hidden', 'true'); d.textContent = '·'; $('chips').appendChild(d); }
+  const b = document.createElement('button'); b.type = 'button'; b.className = 'chip'; b.textContent = s.t; b._s = s; b.onclick = () => pick(s); $('chips').appendChild(b);
+});
 
 // the hand-drawn bits of the home page: card borders, the ring around the button, the arrow to it
 function drawEdge(el) {
@@ -1259,6 +1599,12 @@ function drawEdge(el) {
   const w = el.clientWidth, h = el.clientHeight; if (!w || !h) return;
   svg.innerHTML = ''; svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
   kit(svg).rect(3, 3, w - 6, h - 6, { fill: CARD, fillStyle: 'solid', roughness: 1.05, strokeWidth: 1.5, stroke: 'rgba(34,38,58,.72)', seed: 7 + TILES.indexOf(el) * 13 });
+}
+function paperEdge(el, sd) {          // the same hand-drawn border, for paper that is not a tile
+  const svg = el.querySelector(':scope > svg.edge'); if (!svg) return;
+  const w = el.clientWidth, h = el.clientHeight; if (!w || !h) return;
+  svg.innerHTML = ''; svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+  kit(svg).rect(3, 3, w - 6, h - 6, { fill: CARD, fillStyle: 'solid', roughness: 1.05, strokeWidth: 1.5, stroke: 'rgba(34,38,58,.72)', seed: sd });
 }
 function ringDraw() {
   const svg = $('ring'), b = svg.getBoundingClientRect(); if (!b.width) return;
@@ -1280,11 +1626,14 @@ function ringLoop() {
   const ro = new ResizeObserver(() => { TILES.forEach(drawEdge); linksDraw(); });
   ro.observe($('tiles'));
   new ResizeObserver(ringDraw).observe($('btnwrap'));
+  new ResizeObserver(() => { if (!$('receipts').hidden) paperEdge($('receipts'), 91); }).observe($('receipts'));
+  new ResizeObserver(sepFix).observe($('chips'));
   ringLoop();
   window.ready = true;
+  (window.requestIdleCallback || (f => setTimeout(f, 400)))(() => buildStatic(), { timeout: 1500 });   // the story under the home screen
 });
 window.BEATS = BEATS; window.go = go; window.__cur = () => CUR; window.__open = () => OPEN; window.__atend = () => ATEND; window.__finished = () => FINISHED;
 // for checking: the page as it is when beat k has finished
-window.__show = async k => { cancelAll(); resume(true); const ch = BEATS[k].ch, first = BEATS.findIndex(b => b.ch === ch); homeState(); startChapter(ch); storyShow(true); story.style.clipPath = FULL; FAST = true; for (let i = first; i <= k; i++) { SEED = 1000 + i * 71; await BEATS[i].run(); } FAST = false; CUR = k; ui(); };
+window.__show = async k => { await buildStatic(); cancelAll(); resume(true); const ch = BEATS[k].ch, first = BEATS.findIndex(b => b.ch === ch); homeState(); startChapter(ch); storyShow(true); story.style.clipPath = FULL; FAST = true; for (let i = first; i <= k; i++) { SEED = 1000 + i * 71; await BEATS[i].run(); } FAST = false; CUR = k; ui(); };
 </script>
 </body></html>
