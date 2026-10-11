@@ -1,0 +1,1786 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hussein Altaka · Full Stack Developer</title>
+<meta name="description" content="Full Stack Developer, Python and Django, 5 years. Software that two power plants, seven colleges of Al-Nahrain University and 500+ client locations run on every day.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Hussein Altaka">
+<meta property="og:title" content="Hussein Altaka · Full Stack Developer">
+<meta property="og:description" content="Full Stack Developer, Python and Django, 5 years. Software that two power plants, seven colleges of Al-Nahrain University and 500+ client locations run on every day.">
+<meta property="og:url" content="https://hosin211.github.io/portfolio/">
+<meta property="og:image" content="https://hosin211.github.io/portfolio/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1c1c1e">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter","Segoe UI",system-ui,sans-serif;
+  --text:#1d1d1f;--text2:#5e5e63;--text3:#8a8a8e;--line:rgba(0,0,0,.09);--hover:rgba(0,0,0,.06);--chip:rgba(120,120,128,.12);
+  --glass:rgba(240,240,245,.6);--pane:rgba(255,255,255,.8);--side:rgba(236,236,241,.42);--edge:rgba(255,255,255,.55);
+  --bar:rgba(246,246,250,.46);--dockbg:rgba(255,255,255,.24);--accent:#0A84FF;
+  --shadow:0 24px 70px rgba(0,0,0,.34),0 0 0 .5px rgba(0,0,0,.24);
+  --blur:28px;
+  /* WALLPAPER: a file named wallpaper.jpg next to this page is picked up by itself (see setWallpaper) */
+  --wall:none;
+  --wall-fallback:radial-gradient(1100px 760px at 18% 16%,#3d6aa0 0%,transparent 62%),radial-gradient(1000px 700px at 82% 74%,#2c8173 0%,transparent 58%),linear-gradient(140deg,#1a2740,#123c3b);
+}
+:root[data-theme=dark]{--text:#f5f5f7;--text2:#b4b4b9;--text3:#8e8e93;--line:rgba(255,255,255,.1);--hover:rgba(255,255,255,.08);--chip:rgba(120,120,128,.24);
+  --glass:rgba(38,38,44,.62);--pane:rgba(28,28,32,.8);--side:rgba(44,44,50,.4);--edge:rgba(255,255,255,.14);--bar:rgba(28,28,32,.5);--dockbg:rgba(40,40,46,.34)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--text:#f5f5f7;--text2:#b4b4b9;--text3:#8e8e93;--line:rgba(255,255,255,.1);--hover:rgba(255,255,255,.08);--chip:rgba(120,120,128,.24);
+  --glass:rgba(38,38,44,.62);--pane:rgba(28,28,32,.8);--side:rgba(44,44,50,.4);--edge:rgba(255,255,255,.14);--bar:rgba(28,28,32,.5);--dockbg:rgba(40,40,46,.34)}}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;overflow:hidden}
+body{font:400 14px/1.45 var(--font);color:var(--text);background:#111;-webkit-font-smoothing:antialiased;user-select:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+a{color:var(--accent);text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+.wall{position:fixed;inset:0;z-index:0;background:var(--wall) center/cover no-repeat,var(--wall-fallback)}
+.wall::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.2),transparent 22%,transparent 70%,rgba(0,0,0,.3))}
+
+/* ---------------------------------------------------------------- the menu bar: the system, never the content */
+.menubar{position:fixed;left:0;right:0;top:0;height:28px;z-index:900;display:flex;align-items:center;gap:1px;padding:0 8px;font:500 13px/1 var(--font);background:var(--bar);-webkit-backdrop-filter:blur(30px) saturate(1.8);backdrop-filter:blur(30px) saturate(1.8);border-bottom:.5px solid rgba(0,0,0,.08)}
+.menubar>button,.menubar .mi{height:22px;padding:0 9px;border-radius:5px;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.menubar>button:hover,.menubar>button.open{background:var(--hover)}
+.menubar .logo{font:800 11.5px/1 var(--font);letter-spacing:.03em;padding:0 10px}
+.menubar .app{font-weight:700}
+.menubar .sp{flex:1}
+.menubar .clock{font-variant-numeric:tabular-nums}
+.menubar svg{display:block}
+.pop{position:fixed;z-index:950;min-width:230px;padding:5px;border-radius:9px;background:var(--glass);-webkit-backdrop-filter:blur(30px) saturate(1.8);backdrop-filter:blur(30px) saturate(1.8);border:.5px solid var(--edge);box-shadow:0 14px 40px rgba(0,0,0,.28),0 0 0 .5px rgba(0,0,0,.2);font:400 13px/1 var(--font)}
+.pop[hidden]{display:none}
+.pop button{display:flex;width:100%;align-items:center;gap:8px;padding:6px 10px;border-radius:5px;text-align:left}
+.pop button:hover{background:var(--accent);color:#fff}
+.pop .chk{width:12px;flex:none}
+.pop .k{margin-left:auto;padding-left:24px;color:var(--text3)}
+.pop button:hover .k{color:rgba(255,255,255,.85)}
+.pop hr{border:0;height:1px;background:var(--line);margin:5px 8px}
+
+/* ---------------------------------------------------------------- the desktop: his work, as apps and files */
+.desk{position:fixed;top:44px;right:14px;bottom:100px;z-index:2;display:flex;flex-direction:column;flex-wrap:wrap-reverse;align-content:flex-start;gap:12px 8px}
+.dicon{width:100px;display:flex;flex-direction:column;align-items:center;gap:6px;padding:6px 2px;border-radius:9px}
+.dicon .art{width:66px;height:66px;display:grid;place-items:center;border-radius:12px;filter:drop-shadow(0 5px 10px rgba(0,0,0,.35))}
+.dicon .lbl{max-width:98px;padding:2px 6px;border-radius:4px;font:600 12px/1.25 var(--font);color:#fff;text-align:center;text-shadow:0 1px 3px rgba(0,0,0,.75)}
+.dicon:hover .art{background:rgba(255,255,255,.12)}
+.dicon.sel .art{background:rgba(255,255,255,.2)}
+.dicon.sel .lbl{background:var(--accent);text-shadow:none}
+.dicon .lbl small{display:block;margin-top:1px;font-weight:500;font-size:11px;color:#a9d1ff}
+.dicon.sel .lbl small{color:#fff}
+.dicon.cv{margin-top:6px}
+.dhd{align-self:center;padding:4px 10px;border-radius:999px;background:rgba(0,0,0,.26);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);font:600 12px/1 var(--font);color:#fff;letter-spacing:.01em}
+.appic{display:grid;place-items:center;color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -1px 0 rgba(0,0,0,.18)}
+.appic svg{width:52%;height:52%}
+
+/* ---------------------------------------------------------------- widgets */
+.widgets{position:fixed;top:44px;left:16px;z-index:2;display:grid;gap:14px}
+.wdg{width:168px;height:168px;border-radius:26px;background:rgba(255,255,255,.32);-webkit-backdrop-filter:blur(24px) saturate(1.6);backdrop-filter:blur(24px) saturate(1.6);border:.5px solid rgba(255,255,255,.45);box-shadow:0 12px 30px rgba(0,0,0,.22);display:grid;place-items:center}
+.wdg svg{width:150px;height:150px}
+
+/* ---------------------------------------------------------------- the dock: the ways to explore */
+.dock{position:fixed;left:50%;bottom:8px;transform:translateX(-50%);z-index:800;display:flex;align-items:flex-end;gap:5px;padding:6px 8px;border-radius:22px;background:var(--dockbg);-webkit-backdrop-filter:blur(26px) saturate(1.8);backdrop-filter:blur(26px) saturate(1.8);border:.5px solid rgba(255,255,255,.4);box-shadow:0 10px 40px rgba(0,0,0,.28)}
+.dk{position:relative;width:54px;height:54px;flex:none;transition:width .1s ease,height .1s ease}
+.dk>.ic{display:block;width:100%;height:100%}
+.dk>.ic>svg,.dk>.ic>.appic{width:100%;height:100%;border-radius:23%}
+.dk .tip{position:absolute;bottom:calc(100% + 12px);left:50%;transform:translateX(-50%);padding:5px 10px;border-radius:7px;background:var(--glass);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);font:500 12px/1 var(--font);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .12s;color:var(--text);box-shadow:0 4px 14px rgba(0,0,0,.22)}
+.dk:hover .tip,.dk:focus-visible .tip{opacity:1}
+.dk.on::after{content:'';position:absolute;left:50%;bottom:-5px;width:4px;height:4px;margin-left:-2px;border-radius:50%;background:rgba(255,255,255,.9)}
+.dsep{width:1px;align-self:stretch;margin:6px 3px;background:rgba(255,255,255,.4)}
+
+/* ---------------------------------------------------------------- windows: glass, like macOS */
+.win{position:fixed;z-index:10;display:flex;flex-direction:column;min-width:300px;min-height:160px;border-radius:12px;background:var(--glass);-webkit-backdrop-filter:blur(var(--blur)) saturate(1.8);backdrop-filter:blur(var(--blur)) saturate(1.8);border:.5px solid var(--edge);box-shadow:var(--shadow);overflow:hidden;animation:winIn .22s cubic-bezier(.2,.8,.2,1)}
+@keyframes winIn{from{opacity:0;transform:scale(.965)}}
+.win.min{display:none}
+.win.max{left:0!important;top:28px!important;width:100%!important;height:calc(100% - 28px)!important;max-height:none!important;border-radius:0}
+.tb{height:34px;flex:none;display:flex;align-items:center;gap:10px;padding:0 12px;cursor:default}
+.lights{display:flex;gap:8px;width:52px;flex:none}
+.lights button{position:relative;width:12px;height:12px;border-radius:50%;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.2)}
+.lights .c{background:#FF5F57}.lights .m{background:#FEBC2E}.lights .x{background:#28C840}
+.win:not(.front) .lights button{background:rgba(128,128,128,.38)}
+.lights button::after{position:absolute;inset:0;display:grid;place-items:center;font:700 9.5px/1 var(--font);color:rgba(0,0,0,.6);opacity:0}
+.lights .c::after{content:'×'}.lights .m::after{content:'−'}.lights .x::after{content:'+'}
+.lights:hover button::after{opacity:1}
+.ttl{flex:1;text-align:center;font:600 13px/1 var(--font);color:var(--text3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.win.front .ttl{color:var(--text)}
+.tbx{width:52px;flex:none;display:flex;justify-content:flex-end}
+.wc{flex:1;min-height:0;overflow:auto;background:var(--pane);user-select:text}
+.rz{position:absolute;right:0;bottom:0;width:18px;height:18px;cursor:nwse-resize}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:28px;padding:0 14px;border-radius:7px;background:var(--chip);font:500 13px/1 var(--font);color:var(--text);white-space:nowrap}
+.btn:hover{filter:brightness(.96)}
+.btn.p{background:var(--accent);color:#fff}
+
+/* about Hussein, like About This Mac */
+.about{padding:24px 30px 22px;text-align:center}
+.av{width:116px;height:116px;margin:0 auto 14px;border-radius:50%;background:linear-gradient(160deg,#33496a,#141c29) center 22%/cover;display:grid;place-items:center;color:#fff;font:700 40px/1 var(--font);box-shadow:0 8px 22px rgba(0,0,0,.28)}
+.av.ph{color:transparent}
+.about h1{font:700 25px/1.15 var(--font)}
+.about .sub{margin-top:5px;color:var(--text2);font-size:13px}
+.about .head{margin:14px auto 0;max-width:380px;font:600 14.5px/1.42 var(--font);text-wrap:balance}
+.about dl{margin:18px auto 0;display:grid;grid-template-columns:auto 1fr;gap:7px 12px;text-align:left;max-width:390px;font-size:12.5px;line-height:1.35}
+.about dt{color:var(--text2);text-align:right;font-weight:600;white-space:nowrap}
+.about .acts{margin-top:20px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.about2{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr)}
+.about2 .about{padding:24px 26px 22px}
+.aproj{display:flex;flex-direction:column;justify-content:center;padding:26px 24px 22px;border-left:.5px solid var(--line)}
+.aproj h2{font:700 17px/1.2 var(--font)}
+.aproj>p{margin-top:5px;color:var(--text2);font-size:12.5px;line-height:1.4}
+.plist{margin-top:14px;border-radius:12px;background:var(--s-bg);box-shadow:0 0 0 .5px var(--s-line),0 1px 2px rgba(0,0,0,.04);overflow:hidden}
+.prow{display:grid;grid-template-columns:40px minmax(0,1fr) 10px;align-items:center;gap:12px;width:100%;padding:11px 14px 11px 12px;text-align:left;border-bottom:.5px solid var(--s-line)}
+.prow:last-child{border-bottom:0}
+.prow:hover{background:var(--hover)}
+.prow:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.prow b{display:block;font:600 14px/1.25 var(--font)}
+.prow .pl{display:block;margin-top:2px;color:var(--text2);font-size:12.5px;line-height:1.35}
+.chev{width:10px;height:10px;fill:none;stroke:var(--text3);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.win[data-key=about] .wc{container-type:inline-size}
+@container (max-width:700px){.about2{grid-template-columns:1fr}.aproj{border-left:0;border-top:.5px solid var(--line);padding-top:20px}}
+
+/* Files, like Finder */
+.win[data-key=files] .wc,.win[data-key=notes] .wc{background:transparent}
+.finder{display:flex;height:100%}
+.side{width:180px;flex:none;padding:10px 8px;background:var(--side);border-right:.5px solid var(--line);overflow:auto}
+.side p{font:700 11px/1 var(--font);color:var(--text3);padding:10px 8px 6px}
+.side button{display:flex;align-items:center;gap:8px;width:100%;padding:6px 8px;border-radius:6px;font-size:13px;text-align:left}
+.side button.on{background:rgba(120,120,128,.2)}
+.side svg{width:16px;height:16px;flex:none;color:var(--accent)}
+.fmain{flex:1;display:flex;flex-direction:column;min-width:0;background:var(--pane)}
+.fgrid{flex:1;display:grid;grid-template-columns:repeat(auto-fill,minmax(124px,1fr));gap:16px;padding:22px;align-content:start;overflow:auto}
+.fitem{display:flex;flex-direction:column;align-items:center;gap:7px;padding:10px 6px;border-radius:9px;text-align:center}
+.fitem:hover{background:var(--hover)}
+.fitem .l{font:500 12.5px/1.25 var(--font)}
+.fitem .s{font-size:11px;color:var(--text3)}
+.fstat{padding:6px 12px;font-size:11px;color:var(--text3);border-top:.5px solid var(--line);text-align:center}
+
+/* a project window */
+.proj{padding:22px 26px 26px}
+.proj .hd{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.proj .org{font:700 20px/1.1 var(--font)}
+.proj .orgsub{font-size:12.5px;color:var(--text2);margin-top:4px}
+.pill{margin-left:auto;display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;background:rgba(52,199,89,.15);color:#1d8a40;font:600 12px/1 var(--font)}
+.pill i{width:7px;height:7px;border-radius:50%;background:#34C759;animation:pulse 2s ease-out infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 6px rgba(52,199,89,0)}0%{box-shadow:0 0 0 0 rgba(52,199,89,.5)}}
+.pill.done{background:var(--chip);color:var(--text2)}.pill.done i{background:#8e8e93;animation:none}
+.proj h2{margin-top:18px;font:700 21px/1.28 var(--font);max-width:720px;text-wrap:balance}
+.proj .intro{margin-top:8px;color:var(--text2);font-size:14.5px;line-height:1.55;max-width:720px;text-wrap:pretty}
+.metrics{margin:18px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:10px}
+.metrics li{padding:12px 14px;border-radius:11px;background:var(--chip)}
+.metrics .v{font:700 23px/1.1 var(--font);font-variant-numeric:tabular-nums}
+.metrics .f{font:500 12.5px/1 var(--font);color:var(--text3);text-decoration:line-through;margin-right:7px}
+.metrics .l{display:block;margin-top:5px;font-size:12px;color:var(--text2);line-height:1.3}
+.proj h3{margin-top:26px;font:700 15px/1.3 var(--font)}
+.built{margin-top:8px;padding-left:18px}
+.built li{margin-top:7px;font-size:14px;line-height:1.5}
+.facts{margin-top:18px;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:13px}
+.facts dt{color:var(--text3);font-weight:600}
+.private{margin-top:16px;font-size:12.5px;color:var(--text2)}
+.proj .sum{margin-top:8px;font-size:15.5px;line-height:1.55;max-width:720px;text-wrap:pretty}
+.proj .see{margin-top:6px;color:var(--text2);font-size:14.5px;line-height:1.55;max-width:720px;text-wrap:pretty}
+.proj .see+.demo{margin-top:14px}
+/* the screen and the caption that explains it */
+.demo{--a:var(--ac);margin:18px 0 0}
+:root[data-theme=dark] .demo{--a:var(--ac2)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .demo{--a:var(--ac2)}}
+.demo .shot{margin-top:0}
+.guide{margin:10px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(176px,1fr));gap:6px}
+.guide li{display:grid;grid-template-columns:20px minmax(0,1fr);gap:10px;padding:10px 12px 11px;border-radius:11px;font-size:12.5px;line-height:1.42;color:var(--text2);transition:background .35s var(--ease)}
+.guide li b{display:block;margin-bottom:2px;font-size:13px;font-weight:600;color:var(--text)}
+.guide li[data-g].on,.guide li[data-g]:hover,.guide li[data-g]:focus-visible{background:color-mix(in srgb,var(--a) 10%,transparent);outline:none}
+.gn,.gm{display:inline-grid;place-items:center;flex:none;border-radius:50%;background:var(--a);color:#fff;font:700 11px/1 var(--font);font-variant-numeric:tabular-nums}
+.gn{width:20px;height:20px;margin-top:-1px}
+.gm{width:17px;height:17px;font-size:10px;transition:box-shadow .35s var(--ease)}
+.gm.on,.gm.hov{box-shadow:0 0 0 4px color-mix(in srgb,var(--a) 24%,transparent)}
+.guide .hint{align-items:center;color:var(--text3)}
+.guide .hint .i{width:16px;height:16px;justify-self:center;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.shot [data-g]{transition:box-shadow .35s var(--ease),background .35s var(--ease)}
+.shot [data-g].gon,.shot [data-g].ghov{box-shadow:0 0 0 2px var(--a),0 0 0 6px color-mix(in srgb,var(--a) 16%,transparent)}
+.shot .half[data-g].gon,.shot .half[data-g].ghov{box-shadow:inset 0 0 0 2px var(--a)}
+.shot .nfoot[data-g].gon,.shot .nfoot[data-g].ghov{box-shadow:none;background:color-mix(in srgb,var(--a) 9%,transparent)}
+
+/* step 2: each system shown as its own product screen (illustrations; KMS and Al-Nahrain are private) */
+:root{--s-bg:#fff;--s-bar:#f7f7f9;--s-sub:#f1f1f4;--s-line:rgba(0,0,0,.08);--paper2:#f1ebe0;
+  --ok-bg:rgba(52,199,89,.15);--ok-tx:#1c7a34;--wa-bg:rgba(255,159,10,.17);--wa-tx:#965600;--in-bg:rgba(10,132,255,.13);--in-tx:#0a5bd8;--ease:cubic-bezier(.2,.9,.25,1)}
+:root[data-theme=dark]{--s-bg:#1c1c1f;--s-bar:#242428;--s-sub:#2b2b30;--s-line:rgba(255,255,255,.09);--paper2:#2a2621;--ok-tx:#5bd27a;--wa-tx:#ffb340;--in-tx:#5aa9ff}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--s-bg:#1c1c1f;--s-bar:#242428;--s-sub:#2b2b30;--s-line:rgba(255,255,255,.09);--paper2:#2a2621;--ok-tx:#5bd27a;--wa-tx:#ffb340;--in-tx:#5aa9ff}}
+.shot{--a:var(--ac);margin-top:18px;border-radius:14px;overflow:hidden;background:var(--s-bg);box-shadow:0 0 0 .5px var(--s-line),0 1px 1px rgba(0,0,0,.04),0 16px 36px -16px rgba(0,0,0,.28);font-size:12.5px;line-height:1.35;user-select:none}
+:root[data-theme=dark] .shot{--a:var(--ac2)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .shot{--a:var(--ac2)}}
+.shot .i{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.sbar{display:flex;align-items:center;gap:10px;height:38px;padding:0 8px 0 12px;background:var(--s-bar);border-bottom:.5px solid var(--s-line)}
+.sbar .app{display:flex;align-items:center;gap:7px;font-weight:600}
+.sbar .app .i{color:var(--a)}
+.sbar .ctx{color:var(--text3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sbar .ill{margin-left:auto;padding:3px 9px;border-radius:999px;background:var(--s-sub);color:var(--text2);font-size:11px;cursor:help;white-space:nowrap}
+.sbar .rp{flex:none;width:26px;height:26px;border-radius:7px;display:grid;place-items:center;color:var(--text2)}
+.sbar .rp:hover{background:var(--hover)}
+.sbody{padding:14px}
+.pane{border-radius:11px;background:var(--s-bg);box-shadow:0 0 0 .5px var(--s-line),0 1px 2px rgba(0,0,0,.04)}
+.ph{display:flex;align-items:center;gap:8px;min-height:38px;padding:0 12px;border-bottom:.5px solid var(--s-line);font-weight:600}
+.ph .i{color:var(--text3)}
+.ph .r{margin-left:auto;font-weight:500;color:var(--text3);font-variant-numeric:tabular-nums;white-space:nowrap}
+.ph .r b{font-weight:600;color:var(--text)}
+.pill2{display:inline-flex;align-items:center;gap:5px;height:22px;padding:0 9px;border-radius:999px;font-size:11.5px;font-weight:600;white-space:nowrap;transition:background .35s,color .35s}
+.pill2.ok{background:var(--ok-bg);color:var(--ok-tx)}.pill2.wa{background:var(--wa-bg);color:var(--wa-tx)}.pill2.in{background:var(--in-bg);color:var(--in-tx)}.pill2.mu{background:var(--s-sub);color:var(--text2)}
+.mono{font-size:11.5px;font-weight:500;color:var(--text3);font-variant-numeric:tabular-nums;white-space:nowrap}
+.code{font:500 11.5px/1 ui-monospace,"SF Mono",Menlo,monospace;color:var(--text2)}
+/* KMS: the interlock, then the work, then the question */
+.kms{display:grid;grid-template-columns:1.45fr 1fr;gap:12px}
+.wo{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:12px;padding:9px 12px;border-bottom:.5px solid var(--s-line)}
+.wo:last-child{border-bottom:0}
+.wo .eq{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500}
+.wo .eq small{display:block;margin-top:2px;font-size:11px;font-weight:400;color:var(--text3)}
+.wo.hl{background:color-mix(in srgb,var(--a) 7%,transparent)}
+.ptw{margin-top:12px;padding:12px}
+.ptw .top{display:flex;align-items:center;gap:8px}
+.ptw .top .i{color:var(--a)}
+.ptw .top b{font-size:13px}
+.ptw .top .pill2{margin-left:auto}
+.ptw .sub{margin:3px 0 0 49px;color:var(--text3);font-size:11.5px}
+.ptw ol{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:9px}
+.ptw li{display:grid;grid-template-columns:22px minmax(0,1fr) auto;align-items:center;gap:9px;color:var(--text3);transition:color .35s}
+.ptw li:not(.ok) .mono{visibility:hidden}
+.ptw .dot{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--s-sub);color:var(--text3);transition:background .35s,color .35s}
+.ptw .dot .i{width:12px;height:12px}
+.ptw li.on,.ptw li.ok{color:var(--text)}
+.ptw li.on .dot{background:var(--a);color:#fff}
+.ptw li.ok .dot{background:#34C759;color:#fff}
+.locks{display:flex;gap:4px}
+.locks span{width:20px;height:20px;border-radius:6px;display:grid;place-items:center;background:var(--s-sub);color:var(--text3);transition:background .3s var(--ease),color .3s,transform .3s var(--ease)}
+.locks span .i{width:11px;height:11px}
+.locks span.on{background:color-mix(in srgb,var(--a) 16%,transparent);color:var(--a);transform:scale(1.08)}
+.asst{display:flex;flex-direction:column;min-width:0}
+.asst .msgs{flex:1;display:flex;flex-direction:column;gap:9px;padding:12px}
+.bub{max-width:90%;padding:8px 11px;border-radius:15px;opacity:0;transform:translateY(6px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.bub.in{opacity:1;transform:none}
+.bub.q{align-self:flex-end;background:#0A84FF;color:#fff;border-bottom-right-radius:5px}
+.bub.a{align-self:stretch;max-width:none;background:var(--s-sub);border-bottom-left-radius:5px}
+.bub.a b{font-weight:600}
+.typing{align-self:flex-start;display:none;gap:4px;padding:10px 12px;border-radius:15px;background:var(--s-sub)}
+.typing.in{display:flex}
+.typing i{width:5px;height:5px;border-radius:50%;background:var(--text3);animation:typ 1.1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes typ{0%,60%,100%{opacity:.3}30%{opacity:1}}
+.rank{margin-top:9px;display:grid;gap:7px}
+.rank em{display:block;margin-bottom:3px;font-style:normal;font-size:11.5px;color:var(--text2)}
+.rank span{display:block;height:6px;width:0;border-radius:3px;background:var(--a);transition:width .9s var(--ease)}
+.sugg{margin-top:auto;display:flex;flex-wrap:wrap;gap:6px;opacity:0;transition:opacity .45s var(--ease)}
+.sugg.in{opacity:1}
+.sugg span{padding:5px 10px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--s-line);color:var(--text2);font-size:11.5px}
+.asst .tool{display:flex;align-items:center;gap:7px;padding:9px 12px;border-top:.5px solid var(--s-line);color:var(--text3);font-size:11.5px}
+/* Apicbase: each outlet's events, in order */
+.flow{--cols:112px minmax(0,1fr) 92px 92px}
+.fhead{display:grid;grid-template-columns:var(--cols);gap:10px;padding:0 2px 6px;color:var(--text3);font-size:11.5px}
+.fhead>span{display:flex;align-items:center;gap:6px;min-width:0}
+.flane{position:relative;display:grid;grid-template-columns:var(--cols);gap:10px;align-items:center;height:44px}
+.node{height:34px;border-radius:9px;display:flex;align-items:center;gap:7px;padding:0 10px;background:var(--s-bg);box-shadow:0 0 0 .5px var(--s-line),0 1px 2px rgba(0,0,0,.05);font-weight:600;font-size:12px;white-space:nowrap;transition:box-shadow .25s}
+.node .i{color:var(--text3)}
+.qgrp{position:relative;height:34px;border-radius:9px;background:var(--s-sub);box-shadow:inset 0 0 0 .5px var(--s-line);overflow:hidden}
+.qgrp::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 21px,var(--s-line) 21px 22px)}
+.wk{justify-content:center}
+.wk.busy{box-shadow:0 0 0 1.5px var(--a),0 1px 2px rgba(0,0,0,.05)}
+.wk.busy .i{color:var(--a);animation:spin 1.2s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.st{justify-content:space-between}
+.st em{font-style:normal;font-size:12px;font-weight:600;color:var(--text2);font-variant-numeric:tabular-nums}
+.st.flash{animation:flash .8s ease}
+@keyframes flash{0%{box-shadow:0 0 0 2px #34C759}100%{box-shadow:0 0 0 .5px var(--s-line)}}
+.pkt{position:absolute;top:50%;left:0;z-index:2;height:24px;margin-top:-12px;padding:0 8px;border-radius:7px;display:flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:#fff;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,.2);opacity:0}
+.pkt .i{width:12px;height:12px}
+.pkt .n{opacity:.85;font-variant-numeric:tabular-nums}
+.fnote{margin-top:8px;display:flex;align-items:center;gap:7px;color:var(--ok-tx);font-size:12px;font-weight:600}
+.fnote .i{width:14px;height:14px}
+.evl{margin-top:14px}
+.evl .ph .r{display:flex;align-items:center;gap:7px}
+.evl .ph .r i{width:7px;height:7px;border-radius:50%;background:#34C759;box-shadow:0 0 0 3px rgba(52,199,89,.18)}
+.evs{position:relative;height:184px;overflow:hidden}
+.ev{display:grid;grid-template-columns:26px minmax(0,1fr) auto auto;align-items:center;gap:10px;height:46px;padding:0 12px;border-bottom:.5px solid var(--s-line)}
+.ev .ki{width:26px;height:26px;border-radius:7px;display:grid;place-items:center;color:#fff}
+.ev .ki .i{width:14px;height:14px}
+.ev b{display:block;font-weight:600}
+.ev small{display:block;margin-top:1px;font-size:11px;color:var(--text3)}
+/* Al-Nahrain: one college, the council, then seven colleges */
+.nah{display:grid;grid-template-columns:1.55fr 1fr;gap:12px}
+.nah>.pane:first-child{display:flex;flex-direction:column}
+.ten{flex:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:1fr;gap:8px;padding:12px}
+.cell{min-height:74px;border-radius:10px;padding:9px 10px;background:var(--s-sub);display:flex;flex-direction:column;justify-content:space-between;transition:background .5s var(--ease),box-shadow .5s var(--ease)}
+.cell .i{color:var(--text3);transition:color .5s}
+.cell .nm{font-weight:600;font-size:12px;line-height:1.2;hyphens:manual;overflow-wrap:break-word}
+.cell .n1{margin-left:8px;font-style:normal;font-weight:500;font-size:11px;color:var(--text3)}
+.cell.on .n1{color:var(--a)}
+.cell .lb{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text3)}
+.cell .lb i{width:6px;height:6px;border-radius:50%;background:#c7c7cc;transition:background .4s}
+.cell .lb b{font-weight:500}
+.cell.first{grid-column:1/-1}
+.cell.on{background:color-mix(in srgb,var(--a) 11%,var(--s-bg));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--a) 32%,transparent)}
+.cell.on .i{color:var(--a)}.cell.on .lb{color:var(--text)}.cell.on .lb i{background:#34C759}
+.log{margin:0;padding:6px 12px 4px;list-style:none}
+.log li{position:relative;display:grid;grid-template-columns:12px minmax(0,1fr);gap:11px;padding:8px 0;color:var(--text3);transition:color .45s}
+.log li::before{content:'';width:9px;height:9px;margin-top:3px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #c7c7cc;transition:background .45s,box-shadow .45s}
+.log li::after{content:'';position:absolute;left:4px;top:23px;bottom:-5px;width:1px;background:var(--s-line)}
+.log li:last-child::after{display:none}
+.log li.on{color:var(--text)}
+.log li.on::before{background:var(--a);box-shadow:none}
+.log b{display:block;font-weight:600;font-size:12px}
+.log span{font-size:11.5px;color:var(--text2)}
+.nfoot{display:flex;align-items:center;gap:8px;padding:10px 12px;border-top:.5px solid var(--s-line);border-radius:0 0 11px 11px;font-weight:600}
+.nfoot .i{color:var(--a)}
+/* Al-Hadi: paper on the left, the portal on the right */
+.ba2{position:relative;--x:100%;height:284px;border-radius:11px;overflow:hidden;box-shadow:0 0 0 .5px var(--s-line);touch-action:none;cursor:ew-resize}
+.ba2 .half{position:absolute;inset:0;display:flex;align-items:center;gap:20px;padding:26px 28px}
+.ba2 .before{background:var(--paper2)}
+.ba2 .after{justify-content:flex-end;background:var(--s-bg);clip-path:inset(0 0 0 var(--x))}
+.ba2 .lbl2{position:absolute;top:11px;display:flex;align-items:center;gap:5px;padding:3px 8px;border-radius:6px;font-size:11px;font-weight:600}
+.ba2 .before .lbl2{left:11px;background:rgba(120,110,90,.16);color:var(--text2)}
+.ba2 .after .lbl2{right:11px;background:var(--ok-bg);color:var(--ok-tx)}
+.tkt{flex:none;width:140px;padding:12px 14px;border-radius:10px;background:#fff;color:#1d1d1f;box-shadow:0 1px 1px rgba(0,0,0,.06),0 10px 20px -10px rgba(0,0,0,.3);transform:rotate(-3deg)}
+.tkt>.i{color:#965600}
+.tkt .k{margin-top:7px;font-size:10.5px;color:#8a8a8e}
+.tkt .no{margin-top:1px;font-size:34px;font-weight:700;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.tkt .w{margin-top:2px;font-size:11.5px;color:#5e5e63}
+.tkt hr{margin:10px -14px 0;border:0;border-top:1px dashed #d1d1d6}
+.tkt .v{display:flex;align-items:center;gap:5px;margin-top:2px;font-weight:600;font-size:12.5px;color:#c2410c}
+.tkt .v .i{width:13px;height:13px}
+.sheet2{flex:none;display:flex;flex-direction:column;gap:8px;width:158px;height:190px;padding:12px;border-radius:3px;background:#fbf8f1;color:#1d1d1f;box-shadow:0 1px 1px rgba(0,0,0,.06),0 10px 20px -10px rgba(0,0,0,.3);transform:rotate(2.5deg)}
+.sheet2 .tt{display:flex;align-items:center;gap:6px;font-weight:600;font-size:12px}
+.sheet2 .tt .i{color:#7d7464}
+.sheet2 .ruled{flex:1;min-height:0;background:repeating-linear-gradient(transparent 0 13px,#e5ddcc 13px 14px)}
+.sheet2 .ruled svg{display:block;width:100%;height:100%;fill:none;stroke:#7d7464;stroke-width:1.3;stroke-linecap:round}
+.sheet2 .fn{font-size:10.5px;line-height:1.3;color:#8a7f6b}
+.phone2{flex:none;width:150px;height:248px;padding:7px;border-radius:28px;background:#1d1d1f;box-shadow:0 0 0 1.5px #4a4a4f,0 1px 1px rgba(0,0,0,.1),0 14px 28px -12px rgba(0,0,0,.45)}
+.scr2{position:relative;height:100%;border-radius:22px;background:#f2f2f7;padding:26px 9px 9px;color:#1d1d1f;display:flex;flex-direction:column;gap:7px;overflow:hidden}
+.scr2::before{content:"";position:absolute;top:7px;left:50%;width:40px;height:11px;margin-left:-20px;border-radius:6px;background:#1d1d1f}
+.scr2 .pt{font-weight:700;font-size:13px}
+.card2{padding:8px 9px;border-radius:10px;background:#fff;font-size:11px}
+.card2 b{display:block;font-weight:600;font-size:11px}
+.card2 .rw{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:6px}
+.card2 .pill2{height:18px;padding:0 6px;font-size:10px;background:rgba(52,199,89,.16);color:#1c7a34}
+.row2{display:flex;align-items:center;justify-content:space-between;gap:6px}
+.sk{display:block;height:6px;border-radius:3px;background:#e5e5ea}
+.cert2{flex:none;width:178px;padding:14px;border-radius:11px;background:#fff;color:#1d1d1f;box-shadow:0 0 0 1px color-mix(in srgb,var(--a) 22%,transparent),0 14px 28px -14px rgba(0,0,0,.35);display:grid;gap:8px}
+.cert2 .aw{width:24px;height:24px;color:var(--ac);stroke-width:1.4}
+.cert2 .ct{font-weight:700;font-size:13px}
+.cert2 .lk{display:flex;align-items:center;gap:6px;margin-top:4px;font-size:11.5px;font-weight:600;color:var(--ac)}
+.cert2 .lk .i{width:13px;height:13px}
+.cert2 .rd{font-size:11.5px;font-weight:600;color:#1c7a34}
+.ba2 .divider{position:absolute;top:0;bottom:0;left:var(--x);border-left:2px solid #fff;filter:drop-shadow(0 0 1px rgba(0,0,0,.35))}
+.ba2 .divider span{position:absolute;top:50%;left:-1px;width:30px;height:30px;transform:translate(-50%,-50%);border-radius:50%;background:#fff;display:grid;place-items:center;color:#3a3a3c;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.ba2 .divider .i{width:14px;height:14px}
+@media (max-width:760px){
+  .kms,.nah{grid-template-columns:1fr}
+  .wo{grid-template-columns:minmax(0,1fr) auto}
+  .wo .mono,.ptw .top .mono{display:none}
+  .flow{--cols:28px minmax(0,1fr) 34px 54px}
+  .fhead>span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .fhead>span:nth-child(1),.fhead>span:nth-child(3){visibility:hidden}
+  .node{padding:0 6px;justify-content:center}
+  .node .t,.node.src .i,.st .i{display:none}
+  .node.src::after{content:attr(data-k)}
+  .fhead>span[data-s]{font-size:0}.fhead>span[data-s]::after{content:attr(data-s);font-size:11.5px}
+  .evl .lt{display:none}.evl .ph .r::after{content:'Live'}
+  .sbar .ctx{display:none}.sbar .app{white-space:nowrap}
+  .wo:nth-child(5),.sugg{display:none}
+  .sheet2 .tt .i{display:none}
+  .ten{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:auto}
+  .cell{min-height:0;flex-direction:row;align-items:center;gap:7px;padding:10px 9px}
+  .cell .nm{flex:1;min-width:0;font-size:11.5px}.cell .n1{display:block;margin:2px 0 0}
+  .cell .lb{margin-left:auto}.cell .lb b{display:none}
+  .guide{grid-template-columns:1fr;gap:2px}
+  .guide li{padding:9px 10px}
+  .guide .hint{display:none}
+  .fhead>span .gm{visibility:visible}
+  .ba2{height:auto;cursor:default}
+  .ba2 .half{position:relative;padding:42px 12px 20px;justify-content:center;gap:14px}
+  .ba2 .after{clip-path:none}
+  .ba2 .divider{display:none}
+  .tkt{width:124px;padding:12px}.tkt hr{margin:10px -12px 0}
+  .sheet2{width:136px;height:auto;min-height:172px}
+  .phone2{width:136px;height:226px}
+  .cert2{width:150px;padding:12px}
+}
+@media (prefers-reduced-motion:reduce){.wk.busy .i,.typing i{animation:none}}
+
+/* Notes: skills, each with its proof */
+.notes{display:flex;height:100%}
+.nlist{width:250px;flex:none;overflow:auto;border-right:.5px solid var(--line);background:var(--side);padding:8px}
+.nlist button{display:block;width:100%;text-align:left;padding:9px 12px;border-radius:8px}
+.nlist button.on{background:#FFD52E;color:#1d1d1f}
+.nlist b{display:block;font:600 13.5px/1.25 var(--font)}
+.nlist span{font-size:12px;color:var(--text3)}
+.nlist button.on span{color:rgba(29,29,31,.65)}
+.ndoc{flex:1;min-width:0;overflow:auto;padding:24px 30px;background:var(--pane)}
+.ndoc h2{font:700 25px/1.15 var(--font)}
+.ndoc .lede{margin-top:6px;font-size:12.5px;color:var(--text3)}
+.ndoc ul{margin-top:16px;padding:0;list-style:none}
+.ndoc li{display:flex;gap:12px;align-items:baseline;padding:11px 0;border-bottom:.5px solid var(--line);font-size:14px;line-height:1.45}
+.tag{flex:none;padding:3px 8px;border-radius:6px;font:600 11.5px/1.2 var(--font);color:#fff}
+.ndoc li button{margin-left:auto;flex:none;color:var(--accent);font-size:12.5px}
+
+/* Mail */
+.mail .row{display:grid;grid-template-columns:72px 1fr;gap:10px;align-items:center;padding:9px 18px;border-bottom:.5px solid var(--line);font-size:13px}
+.mail .row label{color:var(--text3);text-align:right}
+.mail input,.mail textarea{width:100%;border:0;background:transparent;font:inherit;color:var(--text);outline:none}
+.mail textarea{display:block;min-height:170px;padding:14px 18px;resize:none;font-size:14px;line-height:1.5}
+.mail .acts{display:flex;gap:8px;flex-wrap:wrap;padding:12px 18px;border-top:.5px solid var(--line)}
+.mail .note{padding:0 18px 16px;font-size:12.5px;color:var(--text2)}
+
+/* Preview */
+.pv{display:flex;flex-direction:column;height:100%}
+.pv iframe{flex:1;border:0;width:100%;background:#fff}
+.pv .bar{display:flex;align-items:center;gap:10px;padding:8px 12px;border-bottom:.5px solid var(--line);font-size:12.5px;color:var(--text2)}
+.pv .bar .btn{margin-left:auto}
+
+/* Trash: what his software replaced */
+.trash .top{display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:.5px solid var(--line);font-size:12.5px;color:var(--text2)}
+.trash .top .btn{margin-left:auto}
+.trash .row{display:grid;grid-template-columns:38px 1fr auto;gap:14px;align-items:center;padding:11px 16px;border-bottom:.5px solid var(--line)}
+.trash .row svg{width:34px;height:34px}
+.trash .n{font:600 13.5px/1.25 var(--font)}
+.trash .d{margin-top:3px;font-size:12.5px;color:var(--text2);line-height:1.4}
+.trash .by{font-size:12px;color:var(--text3);text-align:right;white-space:nowrap}
+.trash .by button{color:var(--accent);font-weight:600}
+.sheet{margin:14px 16px;padding:12px 14px;border-radius:10px;background:var(--chip);font-size:13px;line-height:1.45}
+.help{padding:22px 26px;font-size:14px;line-height:1.55}
+.help p+p{margin-top:10px}
+
+/* ---------------------------------------------------------------- step 3: Spotlight, Terminal, Settings */
+:root{--ios-bg:#fff;--ios-bar:#f9f9f9;--set-bg:#f2f2f7;--set-cell:#fff;--io-wd:rgba(255,255,255,.3)}
+:root[data-theme=dark]{--ios-bg:#000;--ios-bar:#1c1c1e;--set-bg:#000;--set-cell:#1c1c1e;--io-wd:rgba(40,40,44,.42)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--ios-bg:#000;--ios-bar:#1c1c1e;--set-bg:#000;--set-cell:#1c1c1e;--io-wd:rgba(40,40,44,.42)}}
+.spot{position:fixed;inset:0;z-index:980}
+.spot[hidden]{display:none}
+.sp-box{position:absolute;left:0;right:0;top:max(84px,17vh);width:min(700px,calc(100% - 32px));margin:0 auto;border-radius:18px;background:var(--glass);-webkit-backdrop-filter:blur(40px) saturate(1.8);backdrop-filter:blur(40px) saturate(1.8);border:.5px solid var(--edge);box-shadow:0 30px 80px rgba(0,0,0,.35),0 0 0 .5px rgba(0,0,0,.2);overflow:hidden}
+.sp-bar{position:relative;display:flex;align-items:center;gap:12px;height:58px;padding:0 18px}
+.sp-bar>svg{width:21px;height:21px;flex:none;color:var(--text2)}
+.sp-in{flex:1;min-width:0;border:0;background:transparent;outline:none;font:400 22px/1.2 var(--font);color:var(--text)}
+.sp-in::placeholder{color:var(--text3)}
+.sp-x{display:none}
+.sp-try{display:flex;align-items:center;flex-wrap:wrap;gap:6px;padding:0 18px 14px 51px;font-size:12.5px;color:var(--text3)}
+.sp-try[hidden],.sp-none[hidden],.sp-res[hidden]{display:none}
+.sp-try span{margin-right:2px}
+.sp-chip{padding:4px 10px;border-radius:999px;background:var(--chip);font-size:12.5px;color:var(--text)}
+.sp-chip:hover{background:var(--hover)}
+.sp-none{padding:14px 18px 18px 51px;border-top:.5px solid var(--line);font-size:13px;color:var(--text2)}
+.sp-none b{display:block;margin-bottom:2px;font-weight:600;color:var(--text)}
+.sp-res{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);height:min(410px,58vh);border-top:.5px solid var(--line)}
+.sp-list{overflow:auto;padding:4px 8px 10px;border-right:.5px solid var(--line)}
+.sp-h{padding:11px 8px 4px;font:600 11.5px/1 var(--font);color:var(--text3)}
+.sp-row{display:flex;align-items:center;gap:9px;height:32px;padding:0 8px;border-radius:7px;cursor:default}
+.sp-row.on{background:var(--accent);color:#fff}
+.sp-ic{width:22px;height:22px;flex:none;display:grid;place-items:center}
+.sp-ic>svg,.sp-ic>.appic{width:22px!important;height:22px!important;border-radius:6px!important}
+.sp-ic>.appic{font-size:8px!important}
+.sp-t{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13.5px}
+.sp-t mark{background:none;color:inherit;font-weight:700}
+.sp-s{flex:none;max-width:40%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px;color:var(--text3)}
+.sp-row.on .sp-s{color:rgba(255,255,255,.8)}
+.sp-pv{overflow:auto;padding:22px 24px 20px}
+.sp-pvh{display:flex;align-items:center;gap:14px}
+.sp-pvh>svg,.sp-pvh>.appic{width:52px!important;height:52px!important;flex:none;border-radius:12px!important}
+.sp-pvh b{display:block;font:700 17px/1.2 var(--font)}
+.sp-pvh small{display:block;margin-top:3px;font-size:12.5px;color:var(--text2)}
+.sp-pvt{margin-top:14px;font:600 14.5px/1.42 var(--font)}
+.sp-kv{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sp-kv span{padding:9px 11px;border-radius:9px;background:var(--chip);font-size:11.5px;line-height:1.3;color:var(--text2)}
+.sp-kv b{display:block;margin-bottom:2px;font:700 16px/1.15 var(--font);color:var(--text)}
+.sp-pvs{margin-top:12px;font-size:12px;line-height:1.5;color:var(--text3)}
+.sp-big{font:700 30px/1.1 var(--font);letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.sp-from{display:flex;align-items:center;gap:7px;margin-top:14px;font-size:12.5px;color:var(--text2)}
+.sp-from .appic{width:18px!important;height:18px!important;border-radius:5px!important}
+.sp-proof{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:9px}
+.sp-proof li{display:grid;grid-template-columns:8px minmax(0,1fr);gap:9px;font-size:13px;line-height:1.42}
+.sp-proof i{width:8px;height:8px;margin-top:6px;border-radius:50%}
+.sp-pvc{display:flex;flex-direction:column;align-items:center;gap:8px;padding-top:22px;text-align:center}
+.sp-pvc>svg,.sp-pvc>.appic{width:64px!important;height:64px!important;border-radius:15px!important}
+.sp-pvc b{font:700 16px/1.25 var(--font)}
+.sp-pvc p{max-width:300px;font-size:13px;line-height:1.45;color:var(--text2)}
+.sp-hint{margin-top:18px;font-size:12px;color:var(--text3)}
+.sp-pvc+.sp-hint{text-align:center}
+.sp-hint kbd{display:inline-block;min-width:20px;padding:1px 5px;border-radius:5px;border:.5px solid var(--line);background:var(--chip);font:500 11px/1.5 var(--font);text-align:center;color:var(--text2)}
+
+/* Terminal: commands that work */
+.win[data-key=terminal] .wc{display:flex;flex-direction:column;overflow:hidden;background:rgba(24,24,27,.95)}
+.term{flex:1;min-height:0;overflow:auto;padding:10px 14px 16px;font:400 12.5px/1.55 ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;color:#e8e8ec;cursor:text;user-select:text}
+.t-out>div{min-height:1.55em;white-space:pre-wrap;word-break:break-word}
+.t-line{display:flex;gap:7px}
+.t-ps{flex:none;white-space:pre}
+.t-in{flex:1;min-width:0;padding:0;border:0;outline:none;background:transparent;font:inherit;color:inherit;caret-color:#e8e8ec}
+.term a{color:#64d2ff;text-decoration:underline;text-underline-offset:2px}
+.term b{color:#fff}
+.term mark{background:none;color:#ff6961;font-weight:700}
+.c-g{color:#32d74b}.c-b{color:#64d2ff}.c-y{color:#ffd60a}.c-r{color:#ff6961}.c-m{color:#da8fff}.c-c{color:#5ac8f5}.c-d{color:#98989f}
+.nf{display:grid;grid-template-columns:auto minmax(0,1fr);gap:22px;margin:6px 0;white-space:pre}
+.nf>div:first-child{line-height:1.12;padding-top:3px}
+.t-chips{display:none}
+
+/* Settings, like iOS */
+.win[data-key=settings] .wc{background:var(--set-bg)}
+.set{padding:18px 16px 26px}
+.set-prof{display:flex;align-items:center;gap:14px;width:100%;padding:12px 14px;border-radius:12px;background:var(--set-cell);text-align:left}
+.set-prof .av{width:58px;height:58px;margin:0;font-size:20px;box-shadow:none;flex:none}
+.set-prof b{display:block;font:600 17px/1.2 var(--font)}
+.set-prof small{display:block;margin-top:2px;font-size:13px;color:var(--text2)}
+.set-prof .chev{margin-left:auto;color:var(--text3)}
+.set-h{margin:22px 14px 7px;font-size:13px;color:var(--text2)}
+.set-g{border-radius:12px;background:var(--set-cell);overflow:hidden}
+.set-g>*{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:44px;padding:0 14px;border-bottom:.5px solid var(--line);font-size:15px;color:var(--text);text-align:left}
+.set-g>*:last-child{border-bottom:0}
+.set-g a{color:var(--accent)}
+.set-g .ck{color:var(--accent)}
+.set-gap{margin-top:26px}
+
+/* the iPhone home screen (phones only) */
+.ios,.back{display:none}
+.win.closing{pointer-events:none}
+
+/* ---------------------------------------------------------------- phones: the desktop becomes an iPhone home screen */
+@media (max-width:760px){
+  .menubar,.widgets,.desk,.dock{display:none}
+  .ios{display:block}
+  .io-home{position:fixed;inset:0;z-index:2;overflow-y:auto;padding:calc(env(safe-area-inset-top) + 22px) 22px calc(env(safe-area-inset-bottom) + 178px)}
+  .io-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:80px;grid-auto-flow:row dense;gap:18px 16px;max-width:430px;margin:0 auto}
+  .io-app{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0}
+  .io-ic{display:block;width:60px;height:60px;border-radius:14px;filter:drop-shadow(0 4px 9px rgba(0,0,0,.24));transition:transform .15s ease}
+  .io-ic>svg,.io-ic>.appic{display:block;width:60px!important;height:60px!important;border-radius:14px!important}
+  .io-app:active .io-ic{transform:scale(.92)}
+  .io-lb{max-width:calc(100% + 14px);font:500 11.5px/1.2 var(--font);color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .io-wd{border-radius:22px;background:var(--io-wd);-webkit-backdrop-filter:blur(24px) saturate(1.6);backdrop-filter:blur(24px) saturate(1.6);border:.5px solid rgba(255,255,255,.38);box-shadow:0 10px 26px rgba(0,0,0,.2)}
+  .io-me{grid-column:1/-1;grid-row:span 2;display:flex;align-items:center;gap:16px;padding:18px;text-align:left;color:#fff;transition:transform .15s ease}
+  .io-me:active{transform:scale(.98)}
+  .io-me .av{width:74px;height:74px;margin:0;flex:none;font-size:25px}
+  .io-mt b{display:block;font:700 19px/1.2 var(--font);text-shadow:0 1px 2px rgba(0,0,0,.25)}
+  .io-mt span{display:block;margin-top:3px;font-size:13.5px;opacity:.92}
+  .io-clk{grid-column:span 2;grid-row:span 2;display:grid;place-items:center}
+  .io-clk svg{width:138px;height:138px}
+  .io-proj{grid-column:1/-1;grid-row:span 3;display:flex;flex-direction:column;padding:13px 16px 4px;color:#fff}
+  .io-proj h2{margin:0 0 3px;font:700 15px/1.2 var(--font);text-shadow:0 1px 2px rgba(0,0,0,.2)}
+  .io-prow{flex:1;min-height:0;display:grid;grid-template-columns:38px minmax(0,1fr) 9px;align-items:center;gap:12px;text-align:left;color:#fff;border-top:.5px solid rgba(255,255,255,.16)}
+  .io-proj h2+.io-prow{border-top:0}
+  .io-prow .appic{width:38px!important;height:38px!important;border-radius:9px!important}
+  .io-prow b{display:block;font:600 14px/1.2 var(--font)}
+  .io-prow small{display:block;margin-top:2px;font-size:12px;line-height:1.25;opacity:.82;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .io-prow .chev{width:9px;height:9px;stroke:rgba(255,255,255,.6);stroke-width:2.2}
+  .io-prow:active{opacity:.7}
+  .io-search{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 118px);z-index:3;transform:translateX(-50%);display:flex;align-items:center;gap:6px;height:32px;padding:0 14px;border-radius:999px;background:rgba(255,255,255,.24);-webkit-backdrop-filter:blur(20px) saturate(1.6);backdrop-filter:blur(20px) saturate(1.6);color:#fff;font:600 13px/1 var(--font)}
+  .io-search svg{width:13px;height:13px}
+  .io-dock{position:fixed;left:12px;right:12px;bottom:calc(env(safe-area-inset-bottom) + 12px);z-index:3;max-width:430px;height:92px;margin:0 auto;display:flex;align-items:center;justify-content:space-around;border-radius:34px;background:rgba(255,255,255,.24);-webkit-backdrop-filter:blur(26px) saturate(1.8);backdrop-filter:blur(26px) saturate(1.8);border:.5px solid rgba(255,255,255,.34)}
+  /* a window is an app, full screen, with a back button */
+  .win{left:0!important;top:0!important;width:100%!important;height:100%!important;max-height:none!important;min-width:0;min-height:0;border:0;border-radius:0;box-shadow:none;animation:none;background:var(--ios-bg);-webkit-backdrop-filter:none;backdrop-filter:none}
+  .win.max{top:0!important;height:100%!important}
+  .tb{position:relative;height:auto;min-height:calc(env(safe-area-inset-top) + 46px);padding:env(safe-area-inset-top) 12px 0;background:var(--ios-bar);border-bottom:.5px solid var(--line)}
+  .lights,.tbx,.rz{display:none}
+  .ttl{padding:0 92px;font:600 16px/46px var(--font);color:var(--text)!important}
+  .tb .back{position:absolute;left:4px;bottom:0;display:flex;align-items:center;gap:1px;max-width:42%;height:46px;padding:0 8px;color:var(--accent);font:400 16px/1 var(--font)}
+  .tb .back svg{width:20px;height:20px;flex:none}
+  .tb .back span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .wc{background:var(--ios-bg);padding-bottom:env(safe-area-inset-bottom)}
+  .about dl{grid-template-columns:1fr}.about dt{text-align:left}
+  .finder,.notes{flex-direction:column}.side,.nlist{width:auto;max-height:38%}
+  /* Spotlight becomes the iPhone search sheet */
+  .spot{background:var(--ios-bg)}
+  .sp-box{top:0;bottom:0;width:100%;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top);border:0;border-radius:0;box-shadow:none;background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}
+  .sp-bar{height:auto;gap:10px;padding:10px 14px 8px}
+  .sp-bar>svg{position:absolute;left:25px;top:50%;width:16px;height:16px;margin-top:-7px;color:var(--text3)}
+  .sp-in{height:38px;padding:0 10px 0 33px;border-radius:11px;background:var(--chip);font-size:17px}
+  .sp-x{display:block;color:var(--accent);font-size:17px}
+  .sp-try{padding:6px 16px 12px}
+  .sp-none{padding:16px;border:0}
+  .sp-res{display:block;flex:1;height:auto;overflow:auto;border:0}
+  .sp-list{padding:0 10px 30px;border:0}
+  .sp-pv{display:none}
+  .sp-h{padding:16px 8px 6px;font-size:13px}
+  .sp-row{height:48px;gap:12px;border-radius:10px}
+  .sp-row.on{background:none;color:inherit}.sp-row.on .sp-s{color:var(--text3)}
+  .sp-row:active{background:var(--hover)}
+  .sp-ic,.sp-ic>svg,.sp-ic>.appic{width:30px!important;height:30px!important}
+  .sp-t{font-size:16px}
+  /* Terminal on a phone: tap a command instead of typing it */
+  .term{font-size:13px;padding:10px 12px 12px}
+  .nf{grid-template-columns:1fr;gap:10px}
+  .t-chips{display:flex;gap:6px;overflow-x:auto;padding:8px 12px;background:#1c1c1e;border-top:.5px solid rgba(255,255,255,.1)}
+  .t-chips button{flex:none;padding:7px 11px;border-radius:999px;background:rgba(255,255,255,.12);color:#e8e8ec;font:500 13px/1 ui-monospace,"SF Mono",Menlo,monospace}
+}
+@media (prefers-reduced-transparency:reduce){
+  .win,.menubar,.dock,.pop,.wdg,.dk .tip,.sp-box,.io-wd,.io-dock,.io-search{-webkit-backdrop-filter:none;backdrop-filter:none}
+  .io-wd,.io-dock,.io-search{background:rgba(60,60,67,.88)}
+  :root{--glass:#ececf1;--pane:#fff;--side:#f2f2f6;--bar:#ececf1;--dockbg:#e4e4ea}
+  :root[data-theme=dark]{--glass:#2c2c31;--pane:#1c1c1f;--side:#262629;--bar:#2c2c31;--dockbg:#333338}
+}
+@media (prefers-reduced-motion:reduce){.win{animation:none}.dk{transition:none}.pill i{animation:none}}
+</style>
+</head>
+<body>
+<div class="wall" id="wall"></div>
+<header class="menubar" id="menubar"></header>
+<div class="widgets" id="widgets"><div class="wdg" id="clockWdg"><svg viewBox="0 0 150 150" class="aclock" role="img"></svg></div></div>
+<nav class="desk" id="desk" aria-label="Desktop"></nav>
+<div id="wins"></div>
+<nav class="dock" id="dock" aria-label="Dock"></nav>
+<div class="pop" id="pop" hidden></div>
+<div class="ios" id="ios"></div>
+<div class="spot" id="spot" hidden></div>
+
+<script>
+'use strict';
+// ------------------------------------------------------------------ facts (EN + DE). Every word on the desktop lives here.
+const EMAIL = 'hussinthamer211@gmail.com', LINKEDIN = 'https://www.linkedin.com/in/hosin211', GITHUB = 'https://github.com/hosin211', CV = 'Hussein-Altaka-CV.pdf';
+const STORY = 'https://hosin211.github.io/portfolio/';   // the scroll-story page; it moves to story/ when this desktop goes live
+const ORDER = ['kms', 'apicbase', 'nahrain', 'hadi'];
+const TINT = { kms: ['#FB923C', '#C2410C'], apicbase: ['#60A5FA', '#1D4ED8'], nahrain: ['#34D399', '#047857'], hadi: ['#A78BFA', '#6D28D9'] };
+const CONTENT = {
+en: {
+  ui: {
+    desktop: 'Desktop', aboutApp: 'About Hussein', files: 'Files', notes: 'Notes', mail: 'Mail', preview: 'Preview', trash: 'Trash', help: 'Help',
+    menuAbout: 'About Hussein', menuSimple: 'View as a simple page', appearance: 'Appearance', auto: 'Automatic', light: 'Light', dark: 'Dark',
+    mFile: 'File', mWindow: 'Window', mHelp: 'Help', closeWin: 'Close Window', downloadCv: 'Download CV', minimize: 'Minimize', zoom: 'Zoom', allFront: 'Bring All to Front', howTo: 'How this desktop works',
+    clockTitle: 'Time in Baghdad', baghdad: 'BAGHDAD', switchLang: 'Deutsch', theme: 'Light or dark',
+    sub: 'Full Stack Developer · since 2021',
+    head: 'I build the software two power plants, seven colleges of a university and 500+ client locations run on every day.',
+    specs: [['Chip', 'Python & Django, 5 years'], ['Running', '3 systems in production'], ['Storage', '20,000+ work orders'], ['Displays', '500+ client locations · 2 power plants · 7 colleges of a university'], ['Location', 'Baghdad · remote for Apicbase, Belgium'], ['Serial number', 'since 08/2021']],
+    moreInfo: 'More Info…', email: 'Email', projHint: 'Open one to see what it does and how I built it.', started: 'How it started', seeHint: 'Each number is explained under the drawing.',
+    favorites: 'Favorites', projects: 'Projects', documents: 'Documents', items: n => `${n} items`,
+    live: 'In production', firstJob: 'My first job, until 05/2023', built: 'What I built', period: 'Period', role: 'Role', context: 'Context', stack: 'Stack',
+    notesLede: 'Where I used it', open: 'Open', notesCount: n => n === 1 ? '1 place' : `${n} places`,
+    to: 'To', subject: 'Subject', hello: 'Hello Hussein', write: 'Write your message here…', send: 'Send', walk: 'Ask for a live walkthrough', walkSubject: 'Live walkthrough',
+    mailNote: 'KMS and the Al-Nahrain system are private, so I show them live on a call.',
+    trashLede: n => `${n} things my software replaced`, replacedBy: 'replaced by', empty: 'Empty Trash', emptied: 'Already gone in real life: each of these was replaced by software that runs every day.',
+    lv: {
+      illus: 'Illustration', privTitle: 'An illustration. The real system is private.', illusTitle: 'An illustration of the idea, not a screenshot.', replay: 'Replay',
+      kms: { ctx: 'Plant overview', wo: 'Work orders', total: 'in total', rows: [['WO-20142', 'Feed water pump P-102', 'Mechanical', 'wait'], ['WO-20141', 'Gas turbine air filter', 'Mechanical', 'done'], ['WO-20140', 'Transformer oil sample', 'Electrical', 'done'], ['WO-20139', 'Pressure transmitter check', 'Instruments', 'sched']],
+        status: { wait: 'Waiting for permit', prog: 'In progress', done: 'Done', sched: 'Today 07:00' }, ptw: 'Hot work permit', pending: 'Pending', approved: 'Approved', req: 'Requested by maintenance', iso: 'Isolation points locked', appr: 'Approved by operations',
+        asst: 'AI assistant', mcp: 'MCP, read-only', q: 'Which equipment failed most this year?', ans: 'Most fault notifications this year', items: ['Feed water pumps', 'Cooling fans', 'Control valves', 'Motors', 'Heaters'], ro: 'read-only tool', more: ['Failure trend by month', 'Overdue work orders'] },
+      api: { ctx: 'Stock pipeline', cols: ['Location', 'Queue, one per location', 'Worker', 'Stock'], qShort: 'Queue', wk: 'Ready', wkBusy: 'Busy', outlets: ['Location A', 'Location B', 'Location C'], kinds: ['Stock count', 'Waste', 'Delivery'], inOrder: 'Each location’s changes are applied in the order they happened.',
+        evTitle: 'Stock changes', live: 'Live updates', st: { q: 'Waiting', p: 'Updating', d: 'Done' } },
+      nahrain: { ctx: 'Colleges', tenants: 'Colleges using it', first: 'Information Engineering', firstNote: 'Where it started', colleges: ['Law', 'Engineering', 'Science', 'Political Science', 'Business Economics', 'Bio­technology'], live: 'Live', pending: 'Not yet', oneLive: '1 college live', allLive: '7 colleges live', rollout: 'Rollout',
+        log: [['2023', 'Information Engineering goes live'], ['University council', 'Every dean and the president see it'], ['Decision', 'The whole university, not just one college'], ['Rollout', 'Each college in three months to a year']], staff: '200+ staff use it every day' },
+      hadi: { ctx: 'Before and after', before: 'Before', after: 'After', ticket: 'Ticket', window: 'Fee payment', wait: 'Estimated wait', waitV: 'several hours', sheet: 'Year results', sheetNote: 'Worked out by hand. Ready in a few weeks.',
+        portal: 'Student portal', results: 'Final results are out', passed: 'Passed', fee: 'Yearly fee', paid: 'Paid', cert: 'Graduation certificate', locked: 'Grades locked', ready: 'Ready in under an hour', drag: 'Drag to compare before and after' }
+    },
+    helpText: ['This is Hussein’s portfolio, shaped like a Mac.', 'His four projects are listed in About Hussein and sit on the right of the desktop. Open one to see what it does, what he built and the numbers.', 'In the dock: Files to browse everything, Notes for his skills with proof, Mail to write to him, Terminal for those who like commands, and the Trash for what his software replaced.', 'Press {MOD}K, or click the magnifier in the menu bar, to search his skills, projects and numbers.', 'Esc closes the front window. Drag a window by its title bar, and resize it from its bottom right corner.'],
+    helpPhone: ['This is Hussein’s portfolio, shaped like an iPhone.', 'His four projects are in the Projects card under his name. Tap one to see what it does, what he built and the numbers.', 'Search finds any skill, project or number. Notes lists his skills with proof, Mail writes to him, and Terminal is for those who like commands.', 'Tap Home at the top left to come back here.'],
+    terminal: 'Terminal',
+    ios: { home: 'Home', search: 'Search', settings: 'Settings', tips: 'Tips', cv: 'CV', role: 'Full Stack Developer', line: 'Python & Django, 5 years', short: { nahrain: 'Al-Nahrain', hadi: 'Al-Hadi' }, appearance: 'Appearance', language: 'Language' },
+    spot: { label: 'Spotlight', ph: 'Spotlight Search', tryLbl: 'Try', chips: ['Django', 'Performance', 'AI', 'Leading engineers'], top: 'Top Hit',
+      sec: { project: 'Projects', skill: 'Skills', fact: 'Facts', app: 'Apps', doc: 'Documents', replaced: 'Replaced by his software', action: 'Actions' },
+      none: q => `No results for “${q}”`, noneHint: 'Try Python, Django, Vue or PostgreSQL.', open: 'Open', cancel: 'Cancel',
+      desc: { about: 'Who Hussein is, with the main numbers and his CV.', files: 'All projects and documents in one place.', notes: 'His skills, each with where he used it.', mail: 'Write to Hussein.', terminal: 'Commands that work: whoami, ls projects, open kms, git log.', trash: 'The things his software replaced.', settings: 'Appearance and language.', help: 'How this desktop works.' },
+      akeys: { about: 'profile bio cv resume profil', files: 'finder projects documents projekte dokumente', notes: 'skills fahigkeiten', mail: 'email e-mail contact message write kontakt nachricht', terminal: 'shell command line zsh bash console konsole', trash: 'replaced ersetzt', settings: 'appearance language theme dark light preferences einstellungen sprache', help: 'how tips hilfe' },
+      act: { mail: 'Write to Hussein', theme: dark => dark ? 'Switch to light mode' : 'Switch to dark mode', lang: 'Auf Deutsch ansehen', cvDesc: 'His CV as a PDF, ready to download.', themeDesc: 'Light or dark, whichever reads better for you.', langDesc: 'The whole desktop in German.', simpleDesc: 'The same story as one scrolling page.' },
+      pdfDesc: 'His CV as a PDF. Open it in Preview or download it.' },
+    term: { label: 'Command', welcome: 'Type help to see the commands, or try whoami, ls projects, open kms or git log.',
+      help: [['whoami', 'who Hussein is'], ['ls [folder]', 'list files, for example ls projects'], ['cd <folder>', 'change folder'], ['cat <file>', 'print a file, for example cat about.txt'], ['open <name>', 'open an app, a project or the CV, for example open kms'], ['skills', 'his skills and where he used them'], ['grep <word>', 'search every file, for example grep django'], ['git log', 'his career as commits'], ['contact', 'email, LinkedIn and GitHub'], ['neofetch', 'the system at a glance'], ['clear', 'clear the screen, or press Ctrl+L']],
+      whoami: 'Hussein Altaka, Full Stack Developer. Python and Django, 5 years, based in Baghdad.',
+      tryHelp: 'Type help to see what works here.', opening: n => `Opening ${n}…`, inTerm: 'You are already in it.', pdf: 'This is a PDF. Run open cv to read it, or download it:',
+      rm: 'rm: everything here runs in production, so nothing gets deleted.', grepNone: w => `No line matches “${w}”. Try grep django or grep queue.`,
+      openHint: id => `Run open ${id} to see it.`, skillsHint: 'Run open notes to see the proof for each skill.', contactHint: 'Run open mail to write to him.', email: 'Email',
+      up: 'up 5 years (since 08/2021), 3 systems in production',
+      gitlog: [['2025', 'Apicbase: the stock pipeline goes live, every client moves onto it, none rolled back'], ['12/2023', 'KMS: start replacing Siemens at two power plants, live three months after the first meeting'], ['2023', 'Al-Nahrain: Information Engineering goes live, then the university council chooses it for the whole university'], ['05/2023', 'Apicbase: join as Full Stack Developer after sending back the 7-day task in under 30 hours'], ['08/2021', 'Al-Hadi: first job, a college on paper goes fully online in one academic year']],
+      nf: [['Role', 'Full Stack Developer'], ['Uptime', '5 years, since 08/2021'], ['Languages', 'Python, JavaScript, SQL'], ['Frameworks', 'Django, DRF, Vue 3, HTMX'], ['Data', 'PostgreSQL, Redis, Celery, Amazon SQS'], ['Infra', 'Docker, Linux, Cloudflare'], ['AI', 'an OAuth2 MCP server'], ['Running', 'KMS, the Apicbase stock pipeline, the Al-Nahrain ERP'], ['Shell', 'zsh']],
+      chips: ['help', 'whoami', 'ls projects', 'open kms', 'git log', 'neofetch'] }
+  },
+  apps: { kms: 'KMS', apicbase: 'Apicbase', nahrain: 'Al-Nahrain ERP', hadi: 'Al-Hadi Platform', cv: 'Hussein-Altaka-CV.pdf' },
+  cases: {
+    kms: { org: 'KMS', orgSub: 'Keppt · two power plants', period: '12/2023 – today', role: 'Sole developer, my own system', context: 'Two combined-cycle power plants, 730 MW and 650 MW', stack: 'Python, Django, PostgreSQL, HTMX, Docker, OAuth2, MCP', live: true,
+      title: 'Two power plants replaced a Siemens system with software I built.',
+      sum: 'KMS is the system two power plants run on, from repairs and safety permits to stores, HR and attendance. Engineers at both plants start their day in it, and no one works on live equipment until it is switched off, locked and approved in KMS.',
+      line: 'The system two power plants run on', tag: 'Power plants',
+      see: ['One morning at a plant', 'In this drawing, a pump needs a repair. It is switched off and locked before anyone touches it, and then a manager asks the AI a question.'],
+      guide: [['Every repair is tracked', 'Each fault and repair job at the plants is a work order in KMS. There are 20,000+ so far.'], ['Safe before work starts', 'The machine is switched off and locked at every point. Operations approve, and only then does the job begin.'], ['Ask in plain words', 'Managers ask a question, and AI answers from the plant’s own records. It can read, but never change anything.']],
+      intro: 'Siemens charged per feature and per user, and every change took days to a month to show up. A friend told me the company needed someone. I met its head, and three months later KMS was in use.',
+      metrics: [{ v: '2', l: 'power plants run on KMS' }, { v: '20,000+', l: 'work orders' }, { v: '6,500+', l: 'fault notifications' }, { v: '400+', l: 'engineers use it every day' }, { v: '3 months', l: 'from first meeting to live' }],
+      built: ['Maintenance first, then operations, stores, HR, attendance, training and overtime, built together with the plants’ engineers.', 'Six safety permit types and an isolation lockout that must be approved before anyone works on live equipment.', 'An OAuth2 MCP server with 16 read-only tools, so heads of department ask AI for their reports, from failure trends to the maintenance backlog.', 'The plant’s day starts in it: operations open KMS at 6:00, maintenance at 7:00, and the head of the station watches it all.'],
+      private: 'Private system. Live walkthrough on request.' },
+    apicbase: { org: 'Apicbase', orgSub: 'Belgian food-tech SaaS', period: '05/2023 – today', role: 'Full Stack Developer', context: 'Remote from Baghdad, clients across Europe', stack: 'Python, Django, DRF, PostgreSQL, Celery, Amazon SQS, Redis, Vue 3', live: true,
+      title: '500+ client locations run their stock on the pipeline I built and own.',
+      sum: 'Apicbase is software that restaurant groups, hotels and caterers use for recipes, purchasing and stock. I built and own the part that keeps the stock right. Every delivery, count and waste entry from 500+ client locations goes through it.',
+      line: 'Kitchen stock for 500+ client locations', tag: 'Kitchen stock',
+      see: ['Where a stock change goes', 'This drawing follows a day of deliveries, counts and waste from three locations, all the way into the stock.'],
+      guide: [['Changes come in', 'Each location sends its stock changes all day: deliveries, counts and waste.'], ['One line per location', 'Each location’s changes wait in their own line, so they are applied in the order they happened.'], ['In the background', 'A worker updates the stock behind the scenes, so nobody waits on a slow page.'], ['Confirmed live', 'Staff see each change go from waiting to done, without reloading the page.']],
+      intro: 'I sent back their 7-day hiring task in under 30 hours, and the CTO hired me as the first Arab developer on the team. Small features first, then they gave me the stock pipeline.',
+      metrics: [{ v: '500+', l: 'client locations on the pipeline' }, { v: '0', l: 'clients rolled back' }, { f: '25 s', v: '< 1 s', l: 'slowest inventory page' }, { f: '2 h', v: '49 min', l: 'tests for every change' }, { f: '16 min', v: '6 s', l: 'test database, per shard' }],
+      built: ['Moved stock updates off the request path onto Amazon SQS FIFO, ordered per outlet. Live since 2025, every client on it, none rolled back.', 'Rebuilt the slowest inventory pages: search, sorting and paging on the server, and a Count() aggregate turned into a correlated subquery.', 'Led the platform-wide move from role-based checks to per-resource permissions for every tenant.', 'Fixed the demo library’s broken data the night before a sales demo, with my manager, by 9:30 pm. The demo went fine.'] },
+    nahrain: { org: 'Al-Nahrain University', orgSub: 'Public university, Baghdad', period: '2023 – today', role: 'My own system, built and run by me', context: 'One of Iraq’s leading universities', stack: 'Python, Django, PostgreSQL, HTMX', live: true,
+      title: 'Seven colleges of Al-Nahrain University run on the ERP I built.',
+      sum: 'Seven colleges of Al-Nahrain, one of Iraq’s leading universities, run their daily work on this system: students from bachelor’s to PhD, staff, fees and payments, and official certificates. I built it on my own and still run it.',
+      line: 'Students, staff and fees for a university', tag: 'University',
+      see: ['From one college to seven', 'This drawing shows how the system spread: my own college first, then the university council’s decision, then six more colleges, one by one.'],
+      guide: [['One college first', 'It started in my own college, Information Engineering.'], ['The council decides', 'Every dean and the university president saw it and chose it for the whole university. Then it rolled out college by college.'], ['Used every day', '200+ staff manage students, fees and certificates in it every day.']],
+      intro: 'The Assistant Dean of my old college had seen my work at Al-Hadi and wanted the same. Every head of department kept their own Excel file, in several versions.',
+      metrics: [{ v: '1 → 7', l: 'colleges, after one council meeting' }, { v: '200+', l: 'staff use it every day' }],
+      built: ['Started with Information Engineering, then presented it to the university council: every dean and the university president. Their answer was the whole university.', 'Multi-tenant by design, with each college in its own sealed space.', 'Rolled out college by college, three months to a year each: first the internet, then training staff who were used to paper.'],
+      private: 'Private system. Live walkthrough on request.' },
+    hadi: { org: 'Al-Hadi University College', orgSub: 'Baghdad · my first job', period: '08/2021 – 05/2023', role: 'Built the platform, then led the software unit', context: 'A college that ran on paper', stack: 'Python, Django, PostgreSQL, HTMX, Linux, Cloudflare', live: false,
+      title: 'A college that ran on paper went fully online in one academic year.',
+      sum: 'The platform that took Al-Hadi University College off paper, built in my first job. Students pay their fees and see their results on their phone, and a graduation certificate is ready in under an hour instead of weeks.',
+      line: 'Took a college from paper to online', tag: 'College',
+      see: ['From paper to phones', 'This drawing shows the same college twice: on paper before my platform, and online after it.'],
+      guide: [['Before', 'Paying the yearly fee meant hours in a queue, and results were worked out by hand over weeks.'], ['After', 'Students pay and see their results on their phone. Grades are locked once checked, so a certificate takes under an hour.']], hint: 'Drag the line in the middle to compare.',
+      intro: 'The head of registration, tired of paper and of Excel files in many versions, asked me to fix it. I built the platform alone, with no senior to check my decisions.',
+      metrics: [{ v: '2,000', l: 'students a year' }, { f: 'weeks', v: '< 1 h', l: 'per graduation certificate' }, { v: '1 year', l: 'from paper to fully online' }, { v: '3', l: 'engineers in the unit I led' }],
+      built: ['Fees and results online, in the app and on the website. When the ministry changes its grace marks, every result recalculates by itself.', 'Final grades are audited once, then locked so nobody can edit them. Elsewhere in Iraq a certificate takes weeks, sometimes two months.', 'Set up the college’s first server, moved its DNS to Cloudflare and rebuilt the legacy PHP website in Django.', 'Led the Software Systems & Networks Unit: backend (me), frontend and mobile.'] }
+  },
+  skills: [
+    { t: 'Performance', r: [['apicbase', '25 s → under 1 s on the slowest inventory pages'], ['apicbase', 'testing every change: 2 hours → 49 minutes'], ['hadi', 'graduation certificates in under an hour']] },
+    { t: 'System design', r: [['apicbase', 'stock moved off the request path onto an ordered event queue'], ['hadi', 'final grades audited once, then locked for good'], ['kms', 'safety permits and isolation lockouts approved before work starts'], ['kms', 'one system for a power company, from maintenance to HR'], ['nahrain', 'a multi-tenant ERP for seven colleges of a university']] },
+    { t: 'Legacy migrations', r: [['kms', 'Siemens → KMS at two power plants'], ['hadi', 'legacy PHP → Django'], ['apicbase', 'stock inside the request → an event queue, none rolled back'], ['apicbase', 'role checks → per-resource policies']] },
+    { t: 'Multi-tenancy and security', r: [['apicbase', 'per-resource policies for every tenant, platform-wide'], ['nahrain', 'each college in its own sealed space']] },
+    { t: 'CI and testing', r: [['apicbase', 'CI 2 hours → 49 minutes, then the test database 16 minutes → 6 seconds per shard']] },
+    { t: 'Infrastructure', r: [['hadi', 'the college’s first server: hardware, Linux, the rack and DNS on Cloudflare'], ['apicbase', 'Amazon SQS FIFO and Celery in production']] },
+    { t: 'Leading engineers', r: [['hadi', 'led the software unit: 3 engineers'], ['kms', 'built KMS with the plants’ engineers'], ['apicbase', 'led the platform-wide move to per-resource policies']] },
+    { t: 'End-to-end ownership', r: [['hadi', 'the college platform, built alone from the first data model'], ['kms', 'KMS, from the first talk to live in three months'], ['nahrain', 'the Al-Nahrain ERP, from one college to seven']] },
+    { t: 'AI integration', r: [['kms', 'an OAuth2 MCP server, so heads of department ask AI for their reports']] },
+    { t: 'Python and Django', r: [['hadi', 'the Al-Hadi platform'], ['apicbase', 'the Apicbase stock pipeline'], ['kms', 'KMS'], ['nahrain', 'the Al-Nahrain ERP']] },
+    { t: 'PostgreSQL', r: [['apicbase', 'a Count() aggregate replaced by a correlated subquery'], ['apicbase', 'the test database cached as a dump keyed by the migrations']] },
+    { t: 'Celery and Amazon SQS', r: [['apicbase', 'SQS FIFO, ordered per outlet, in production since 2025']] }
+  ],
+  trash: [
+    { icon: 'gear', name: 'Siemens maintenance system', by: 'kms', note: 'Two power plants moved off it. It charged per feature and per user.' },
+    { icon: 'paper', name: 'Paper admission forms', by: 'hadi', note: 'Students apply and pay online now.' },
+    { icon: 'paper', name: 'Results worked out by hand', by: 'hadi', note: 'They took weeks. Now they open the moment they are announced.' },
+    { icon: 'xlsx', name: 'staff_final (2).xlsx', by: 'nahrain', note: 'Every head of department kept their own version.' },
+    { icon: 'php', name: 'legacy-php-site', by: 'hadi', note: 'The college website, rebuilt in Django.' },
+    { icon: 'doc', name: 'The 25-second page', by: 'apicbase', note: 'The same page now loads in under a second.' },
+    { icon: 'doc', name: 'The 2-hour test run', by: 'apicbase', note: 'Down to 49 minutes for every change.' },
+    { icon: 'doc', name: 'Role-based checks', by: 'apicbase', note: 'Per-resource permissions for every tenant now.' }
+  ]
+},
+de: {
+  ui: {
+    desktop: 'Schreibtisch', aboutApp: 'Über Hussein', files: 'Dateien', notes: 'Notizen', mail: 'Mail', preview: 'Vorschau', trash: 'Papierkorb', help: 'Hilfe',
+    menuAbout: 'Über Hussein', menuSimple: 'Als einfache Seite ansehen', appearance: 'Erscheinungsbild', auto: 'Automatisch', light: 'Hell', dark: 'Dunkel',
+    mFile: 'Ablage', mWindow: 'Fenster', mHelp: 'Hilfe', closeWin: 'Fenster schließen', downloadCv: 'Lebenslauf laden', minimize: 'Im Dock ablegen', zoom: 'Zoomen', allFront: 'Alle nach vorne bringen', howTo: 'So funktioniert dieser Schreibtisch',
+    clockTitle: 'Uhrzeit in Bagdad', baghdad: 'BAGDAD', switchLang: 'English', theme: 'Hell oder dunkel',
+    sub: 'Full Stack Developer · seit 2021',
+    head: 'Ich baue die Software, auf der zwei Kraftwerke, sieben Fakultäten einer Universität und über 500 Kundenstandorte jeden Tag laufen.',
+    specs: [['Chip', 'Python & Django, 5 Jahre'], ['Läuft', '3 Systeme im Einsatz'], ['Speicher', '20.000+ Arbeitsaufträge'], ['Bildschirme', '500+ Kundenstandorte · 2 Kraftwerke · 7 Fakultäten einer Universität'], ['Standort', 'Bagdad · remote für Apicbase, Belgien'], ['Seriennummer', 'seit 08/2021']],
+    moreInfo: 'Weitere Infos …', email: 'E-Mail', projHint: 'Öffnen Sie eins, um zu sehen, was es macht und wie ich es gebaut habe.', started: 'Wie es anfing', seeHint: 'Jede Zahl wird unter der Zeichnung erklärt.',
+    favorites: 'Favoriten', projects: 'Projekte', documents: 'Dokumente', items: n => `${n} Objekte`,
+    live: 'Im Einsatz', firstJob: 'Mein erster Job, bis 05/2023', built: 'Was ich gebaut habe', period: 'Zeitraum', role: 'Rolle', context: 'Umfeld', stack: 'Technik',
+    notesLede: 'Wo ich es eingesetzt habe', open: 'Öffnen', notesCount: n => n === 1 ? '1 Stelle' : `${n} Stellen`,
+    to: 'An', subject: 'Betreff', hello: 'Hallo Hussein', write: 'Ihre Nachricht …', send: 'Senden', walk: 'Live-Vorführung anfragen', walkSubject: 'Live-Vorführung',
+    mailNote: 'KMS und das Al-Nahrain-System sind nicht öffentlich, deshalb zeige ich sie live in einem Gespräch.',
+    trashLede: n => `${n} Dinge, die meine Software ersetzt hat`, replacedBy: 'ersetzt durch', empty: 'Papierkorb leeren', emptied: 'In Wirklichkeit schon weg: Jedes davon wurde durch Software ersetzt, die jeden Tag läuft.',
+    lv: {
+      illus: 'Illustration', privTitle: 'Eine Illustration. Das echte System ist nicht öffentlich.', illusTitle: 'Eine Illustration der Idee, kein Screenshot.', replay: 'Nochmal abspielen',
+      kms: { ctx: 'Kraftwerksübersicht', wo: 'Arbeitsaufträge', total: 'insgesamt', rows: [['WO-20142', 'Speisewasserpumpe P-102', 'Mechanik', 'wait'], ['WO-20141', 'Luftfilter Gasturbine', 'Mechanik', 'done'], ['WO-20140', 'Ölprobe Transformator', 'Elektrik', 'done'], ['WO-20139', 'Prüfung Druckmessumformer', 'Leittechnik', 'sched']],
+        status: { wait: 'Wartet auf Freigabe', prog: 'In Arbeit', done: 'Erledigt', sched: 'Heute 07:00' }, ptw: 'Heißarbeitserlaubnis', pending: 'Offen', approved: 'Genehmigt', req: 'Beantragt von der Instandhaltung', iso: 'Freischaltpunkte gesichert', appr: 'Genehmigt vom Betrieb',
+        asst: 'KI-Assistent', mcp: 'MCP, nur lesend', q: 'Welche Anlagen fielen dieses Jahr am häufigsten aus?', ans: 'Meiste Störmeldungen dieses Jahr', items: ['Speisewasserpumpen', 'Kühlventilatoren', 'Regelventile', 'Motoren', 'Heizungen'], ro: 'Werkzeug, nur lesend', more: ['Ausfalltrend pro Monat', 'Überfällige Arbeitsaufträge'] },
+      api: { ctx: 'Bestandspipeline', cols: ['Standort', 'Warteschlange, eine pro Standort', 'Verbuchung', 'Bestand'], qShort: 'Warteschlange', wk: 'Bereit', wkBusy: 'Aktiv', outlets: ['Standort A', 'Standort B', 'Standort C'], kinds: ['Inventur', 'Abfall', 'Lieferung'], inOrder: 'Die Änderungen jedes Standorts werden in der Reihenfolge verbucht, in der sie passiert sind.',
+        evTitle: 'Bestandsänderungen', live: 'Live-Updates', st: { q: 'Wartet', p: 'Wird verbucht', d: 'Erledigt' } },
+      nahrain: { ctx: 'Fakultäten', tenants: 'Fakultäten, die es nutzen', first: 'Information Engineering', firstNote: 'Hier fing es an', colleges: ['Rechts­wissenschaft', 'Ingenieur­wesen', 'Natur­wissen­schaften', 'Politik­wissen­schaft', 'Wirtschafts­wissen­schaften', 'Bio­technologie'], live: 'Live', pending: 'Noch nicht', oneLive: '1 Fakultät live', allLive: '7 Fakultäten live', rollout: 'Einführung',
+        log: [['2023', 'Information Engineering geht live'], ['Universitätsrat', 'Alle Dekane und der Präsident sehen es'], ['Entscheidung', 'Die ganze Universität, nicht nur eine Fakultät'], ['Einführung', 'Jede Fakultät in drei Monaten bis einem Jahr']], staff: 'Über 200 Mitarbeitende nutzen es täglich' },
+      hadi: { ctx: 'Vorher und nachher', before: 'Vorher', after: 'Nachher', ticket: 'Wartenummer', window: 'Gebührenschalter', wait: 'Geschätzte Wartezeit', waitV: 'mehrere Stunden', sheet: 'Jahresergebnisse', sheetNote: 'Von Hand berechnet. Fertig nach einigen Wochen.',
+        portal: 'Studienportal', results: 'Die Endnoten sind da', passed: 'Bestanden', fee: 'Gebühr', paid: 'Bezahlt', cert: 'Abschlusszeugnis', locked: 'Noten gesperrt', ready: 'Fertig in unter einer Stunde', drag: 'Ziehen, um vorher und nachher zu vergleichen' }
+    },
+    helpText: ['Das ist Husseins Portfolio, gebaut wie ein Mac.', 'Seine vier Projekte stehen in „Über Hussein“ und rechts auf dem Schreibtisch. Öffnen Sie eins, um zu sehen, was es macht, was er gebaut hat und die Zahlen.', 'Im Dock: Dateien zum Stöbern, Notizen für seine Fähigkeiten mit Belegen, Mail, um ihm zu schreiben, Terminal für alle, die Befehle mögen, und der Papierkorb für das, was seine Software ersetzt hat.', 'Mit {MOD}K oder der Lupe in der Menüleiste durchsuchen Sie seine Fähigkeiten, Projekte und Zahlen.', 'Esc schließt das vordere Fenster. Ziehen Sie ein Fenster an seiner Titelleiste und ändern Sie die Größe an der rechten unteren Ecke.'],
+    helpPhone: ['Das ist Husseins Portfolio, gebaut wie ein iPhone.', 'Seine vier Projekte stehen in der Karte „Projekte“ unter seinem Namen. Tippen Sie auf eins, um zu sehen, was es macht, was er gebaut hat und die Zahlen.', 'Die Suche findet jede Fähigkeit, jedes Projekt und jede Zahl. Notizen zeigt seine Fähigkeiten mit Belegen, Mail schreibt ihm, und Terminal ist für alle, die Befehle mögen.', 'Mit Home oben links kommen Sie hierher zurück.'],
+    terminal: 'Terminal',
+    ios: { home: 'Home', search: 'Suchen', settings: 'Einstellungen', tips: 'Tipps', cv: 'Lebenslauf', role: 'Full Stack Developer', line: 'Python & Django, 5 Jahre', short: { nahrain: 'Al-Nahrain', hadi: 'Al-Hadi' }, appearance: 'Erscheinungsbild', language: 'Sprache' },
+    spot: { label: 'Spotlight', ph: 'Spotlight-Suche', tryLbl: 'Zum Beispiel', chips: ['Django', 'Performance', 'KI', 'Teams leiten'], top: 'Bester Treffer',
+      sec: { project: 'Projekte', skill: 'Fähigkeiten', fact: 'Fakten', app: 'Apps', doc: 'Dokumente', replaced: 'Ersetzt durch seine Software', action: 'Aktionen' },
+      none: q => `Keine Treffer für „${q}“`, noneHint: 'Versuchen Sie Python, Django, Vue oder PostgreSQL.', open: 'Öffnen', cancel: 'Abbrechen',
+      desc: { about: 'Wer Hussein ist, mit den wichtigsten Zahlen und seinem Lebenslauf.', files: 'Alle Projekte und Dokumente an einem Ort.', notes: 'Seine Fähigkeiten, jeweils mit dem Ort, wo er sie eingesetzt hat.', mail: 'Hussein schreiben.', terminal: 'Befehle, die wirklich funktionieren: whoami, ls projects, open kms, git log.', trash: 'Was seine Software ersetzt hat.', settings: 'Erscheinungsbild und Sprache.', help: 'So funktioniert dieser Schreibtisch.' },
+      akeys: { about: 'profile bio cv resume profil', files: 'finder projects documents projekte dokumente', notes: 'skills fahigkeiten', mail: 'email e-mail contact message write kontakt nachricht', terminal: 'shell command line zsh bash console konsole', trash: 'replaced ersetzt', settings: 'appearance language theme dark light preferences einstellungen sprache', help: 'how tips hilfe' },
+      act: { mail: 'Hussein schreiben', theme: dark => dark ? 'Zum hellen Modus wechseln' : 'Zum dunklen Modus wechseln', lang: 'View in English', cvDesc: 'Sein Lebenslauf als PDF, bereit zum Herunterladen.', themeDesc: 'Hell oder dunkel, je nachdem, was sich für Sie besser liest.', langDesc: 'Der ganze Schreibtisch auf Englisch.', simpleDesc: 'Dieselbe Geschichte als eine durchgehende Seite.' },
+      pdfDesc: 'Sein Lebenslauf als PDF. In der Vorschau öffnen oder herunterladen.' },
+    term: { label: 'Befehl', welcome: 'Mit help sehen Sie alle Befehle. Oder probieren Sie whoami, ls projects, open kms oder git log.',
+      help: [['whoami', 'wer Hussein ist'], ['ls [ordner]', 'Dateien auflisten, z. B. ls projects'], ['cd <ordner>', 'Ordner wechseln'], ['cat <datei>', 'eine Datei ausgeben, z. B. cat about.txt'], ['open <name>', 'eine App, ein Projekt oder den Lebenslauf öffnen, z. B. open kms'], ['skills', 'seine Fähigkeiten und wo er sie eingesetzt hat'], ['grep <wort>', 'alle Dateien durchsuchen, z. B. grep django'], ['git log', 'sein Werdegang als Commits'], ['contact', 'E-Mail, LinkedIn und GitHub'], ['neofetch', 'das System auf einen Blick'], ['clear', 'Bildschirm leeren, oder Ctrl+L']],
+      whoami: 'Hussein Altaka, Full Stack Developer. Python und Django, 5 Jahre, in Bagdad.',
+      tryHelp: 'Mit help sehen Sie, was hier funktioniert.', opening: n => `Öffne ${n} …`, inTerm: 'Sie sind schon drin.', pdf: 'Das ist ein PDF. Mit open cv lesen Sie es, oder laden Sie es herunter:',
+      rm: 'rm: Hier läuft alles in Produktion, deshalb wird nichts gelöscht.', grepNone: w => `Keine Zeile enthält „${w}“. Probieren Sie grep django oder grep queue.`,
+      openHint: id => `Mit open ${id} sehen Sie es.`, skillsHint: 'Mit open notes sehen Sie die Belege zu jeder Fähigkeit.', contactHint: 'Mit open mail schreiben Sie ihm direkt.', email: 'E-Mail',
+      up: 'aktiv seit 08/2021 (5 Jahre), 3 Systeme im Einsatz',
+      gitlog: [['2025', 'Apicbase: Die Bestandspipeline geht live, alle Kunden wechseln darauf, kein einziger Rollback'], ['12/2023', 'KMS: Start der Ablösung von Siemens in zwei Kraftwerken, live drei Monate nach dem ersten Gespräch'], ['2023', 'Al-Nahrain: Information Engineering geht live, dann wählt der Universitätsrat es für die ganze Universität'], ['05/2023', 'Apicbase: Einstieg als Full Stack Developer, nach der 7-Tage-Aufgabe in unter 30 Stunden'], ['08/2021', 'Al-Hadi: erster Job, ein College auf Papier ist nach einem Studienjahr komplett online']],
+      nf: [['Rolle', 'Full Stack Developer'], ['Laufzeit', '5 Jahre, seit 08/2021'], ['Sprachen', 'Python, JavaScript, SQL'], ['Frameworks', 'Django, DRF, Vue 3, HTMX'], ['Daten', 'PostgreSQL, Redis, Celery, Amazon SQS'], ['Infra', 'Docker, Linux, Cloudflare'], ['KI', 'ein OAuth2-MCP-Server'], ['Läuft', 'KMS, die Bestandspipeline bei Apicbase, das Al-Nahrain-ERP'], ['Shell', 'zsh']],
+      chips: ['help', 'whoami', 'ls projects', 'open kms', 'git log', 'neofetch'] }
+  },
+  apps: { kms: 'KMS', apicbase: 'Apicbase', nahrain: 'Al-Nahrain-ERP', hadi: 'Al-Hadi-Plattform', cv: 'Hussein-Altaka-CV.pdf' },
+  cases: {
+    kms: { org: 'KMS', orgSub: 'Keppt · zwei Kraftwerke', period: '12/2023 – heute', role: 'Einziger Entwickler, eigenes System', context: 'Zwei GuD-Kraftwerke, 730 MW und 650 MW', stack: 'Python, Django, PostgreSQL, HTMX, Docker, OAuth2, MCP', live: true,
+      title: 'Zwei Kraftwerke haben ein Siemens-System durch meine Software ersetzt.',
+      sum: 'KMS ist das System, auf dem zwei Kraftwerke laufen, von Reparaturen und Arbeitsfreigaben bis zu Lager, Personal und Zeiterfassung. Die Ingenieure beider Kraftwerke beginnen ihren Tag darin, und niemand arbeitet an laufenden Anlagen, bevor sie in KMS abgeschaltet, gesichert und freigegeben sind.',
+      line: 'Das System, auf dem zwei Kraftwerke laufen', tag: 'Kraftwerke',
+      see: ['Ein Morgen im Kraftwerk', 'In dieser Zeichnung muss eine Pumpe repariert werden. Sie wird abgeschaltet und gesichert, bevor jemand sie anfasst, und danach stellt eine Führungskraft der KI eine Frage.'],
+      guide: [['Jede Reparatur erfasst', 'Jede Störung und jeder Reparaturauftrag in den Kraftwerken ist ein Arbeitsauftrag in KMS. Bisher über 20.000.'], ['Sicher vor Arbeitsbeginn', 'Die Anlage wird an jeder Stelle abgeschaltet und gesichert. Der Betrieb gibt frei, und erst dann beginnt die Arbeit.'], ['Fragen in normalen Worten', 'Führungskräfte stellen eine Frage, und die KI antwortet aus den Daten des Kraftwerks. Sie kann lesen, aber nichts ändern.']],
+      intro: 'Siemens berechnete jede Funktion und jeden Nutzer einzeln, und jede Änderung brauchte Tage bis einen Monat. Ein Freund erzählte mir, dass die Firma jemanden suchte. Ich traf den Chef, und drei Monate später war KMS im Einsatz.',
+      metrics: [{ v: '2', l: 'Kraftwerke laufen auf KMS' }, { v: '20.000+', l: 'Arbeitsaufträge' }, { v: '6.500+', l: 'Störmeldungen' }, { v: '400+', l: 'Ingenieure nutzen es täglich' }, { v: '3 Monate', l: 'vom ersten Gespräch bis live' }],
+      built: ['Zuerst die Instandhaltung, dann Betrieb, Lager, Personal, Zeiterfassung, Schulungen und Überstunden, gemeinsam mit den Ingenieuren der Kraftwerke.', 'Sechs Arten von Arbeitsfreigaben und eine Freischaltung, die genehmigt sein muss, bevor jemand an laufenden Anlagen arbeitet.', 'Ein OAuth2-MCP-Server mit 16 Werkzeugen nur zum Lesen: Abteilungsleitungen holen sich ihre Berichte per KI, von Ausfalltrends bis zum Wartungsrückstand.', 'Der Tag im Kraftwerk beginnt darin: Der Betrieb öffnet KMS um 6:00, die Instandhaltung um 7:00, und die Kraftwerksleitung behält alles im Blick.'],
+      private: 'Nicht öffentlich. Live-Vorführung auf Anfrage.' },
+    apicbase: { org: 'Apicbase', orgSub: 'Belgisches Food-Tech-SaaS', period: '05/2023 – heute', role: 'Full Stack Developer', context: 'Remote aus Bagdad, Kunden in ganz Europa', stack: 'Python, Django, DRF, PostgreSQL, Celery, Amazon SQS, Redis, Vue 3', live: true,
+      title: 'Über 500 Kundenstandorte führen ihren Bestand über die Pipeline, die ich gebaut habe und verantworte.',
+      sum: 'Apicbase ist eine Software, mit der Restaurantgruppen, Hotels und Caterer Rezepte, Einkauf und Bestand verwalten. Ich habe den Teil gebaut, der den Bestand stimmig hält, und verantworte ihn. Jede Lieferung, jede Inventur und jede Abfallbuchung von über 500 Kundenstandorten läuft darüber.',
+      line: 'Küchenbestand für 500+ Kundenstandorte', tag: 'Küchenbestand',
+      see: ['Der Weg einer Bestandsänderung', 'Diese Zeichnung folgt einem Tag mit Lieferungen, Inventuren und Abfall von drei Standorten, den ganzen Weg bis in den Bestand.'],
+      guide: [['Neue Änderungen', 'Jeder Standort meldet den ganzen Tag Bestandsänderungen: Lieferungen, Inventuren und Abfall.'], ['Eine Reihe pro Standort', 'Die Änderungen jedes Standorts warten in ihrer eigenen Reihe und werden so in der Reihenfolge verbucht, in der sie passiert sind.'], ['Im Hintergrund', 'Ein Hintergrundprozess aktualisiert den Bestand, so wartet niemand auf eine langsame Seite.'], ['Live bestätigt', 'Das Team sieht, wie jede Änderung von wartend auf erledigt wechselt, ohne die Seite neu zu laden.']],
+      intro: 'Die 7-Tage-Aufgabe im Bewerbungsprozess schickte ich in unter 30 Stunden zurück, und der CTO stellte mich als ersten arabischen Entwickler im Team ein. Erst kleine Features, dann bekam ich die Bestandspipeline.',
+      metrics: [{ v: '500+', l: 'Kundenstandorte auf der Pipeline' }, { v: '0', l: 'Rollbacks' }, { f: '25 s', v: '< 1 s', l: 'langsamste Inventurseite' }, { f: '2 Std.', v: '49 Min.', l: 'Tests für jede Änderung' }, { f: '16 Min.', v: '6 s', l: 'Testdatenbank pro Shard' }],
+      built: ['Bestandsänderungen aus dem Request genommen und auf Amazon SQS FIFO verlagert, pro Standort geordnet. Seit 2025 live, alle Kunden darauf, kein einziger Rollback.', 'Die langsamsten Inventurseiten neu gebaut: Suche, Sortierung und Paginierung auf dem Server, und aus einem Count()-Aggregat wurde eine korrelierte Unterabfrage.', 'Die plattformweite Umstellung von rollenbasierten Prüfungen auf Berechtigungen pro Ressource für jeden Mandanten geleitet.', 'Die kaputten Daten der Demo-Bibliothek am Abend vor einer Sales-Demo mit meinem Manager bis 21:30 Uhr repariert. Die Demo lief problemlos.'] },
+    nahrain: { org: 'Al-Nahrain-Universität', orgSub: 'Staatliche Universität, Bagdad', period: '2023 – heute', role: 'Eigenes System, von mir gebaut und betrieben', context: 'Eine der führenden Universitäten im Irak', stack: 'Python, Django, PostgreSQL, HTMX', live: true,
+      title: 'Sieben Fakultäten der Al-Nahrain-Universität arbeiten mit dem ERP, das ich gebaut habe.',
+      sum: 'Sieben Fakultäten der Al-Nahrain-Universität, einer der führenden Universitäten im Irak, erledigen ihre tägliche Arbeit in diesem System: Studierende vom Bachelor bis zur Promotion, Personal, Gebühren und Zahlungen sowie offizielle Zeugnisse. Ich habe es allein gebaut und betreibe es bis heute.',
+      line: 'Verwaltung einer Universität im Irak', tag: 'Universität',
+      see: ['Von einer Fakultät zu sieben', 'Diese Zeichnung zeigt, wie sich das System verbreitet hat: zuerst meine eigene Fakultät, dann die Entscheidung des Universitätsrats, dann sechs weitere Fakultäten, eine nach der anderen.'],
+      guide: [['Erst eine Fakultät', 'Es fing in meiner eigenen Fakultät an, Information Engineering.'], ['Der Rat entscheidet', 'Alle Dekane und der Universitätspräsident sahen es und wählten es für die ganze Universität. Dann kam es Fakultät für Fakultät.'], ['Täglich im Einsatz', 'Über 200 Mitarbeitende verwalten darin jeden Tag Studierende, Gebühren und Zeugnisse.']],
+      intro: 'Der Prodekan meiner alten Fakultät hatte meine Arbeit am Al-Hadi gesehen und wollte dasselbe. Jede Abteilungsleitung führte ihre eigene Excel-Datei, in mehreren Versionen.',
+      metrics: [{ v: '1 → 7', l: 'Fakultäten, nach einer Sitzung des Universitätsrats' }, { v: '200+', l: 'Mitarbeitende nutzen es täglich' }],
+      built: ['Angefangen bei Information Engineering, dann vor dem Universitätsrat präsentiert: alle Dekane und der Präsident. Ihre Antwort war die ganze Universität.', 'Von Anfang an mandantenfähig, jede Fakultät in ihrem eigenen, abgeschotteten Bereich.', 'Fakultät für Fakultät eingeführt, jeweils drei Monate bis ein Jahr: erst das Internet, dann Schulungen für Personal, das an Papier gewöhnt war.'],
+      private: 'Nicht öffentlich. Live-Vorführung auf Anfrage.' },
+    hadi: { org: 'Al-Hadi University College', orgSub: 'Bagdad · mein erster Job', period: '08/2021 – 05/2023', role: 'Plattform gebaut, dann die Software-Einheit geleitet', context: 'Ein College, das auf Papier lief', stack: 'Python, Django, PostgreSQL, HTMX, Linux, Cloudflare', live: false,
+      title: 'Ein College, das auf Papier lief, war nach einem Studienjahr komplett online.',
+      sum: 'Die Plattform, mit der das Al-Hadi University College vom Papier wegkam, gebaut in meinem ersten Job. Studierende zahlen ihre Gebühren und sehen ihre Ergebnisse auf dem Handy, und ein Abschlusszeugnis ist in unter einer Stunde fertig statt in Wochen.',
+      line: 'Ein College vom Papier ins Netz gebracht', tag: 'College',
+      see: ['Vom Papier aufs Handy', 'Diese Zeichnung zeigt dasselbe College zweimal: auf Papier vor meiner Plattform und online danach.'],
+      guide: [['Vorher', 'Für die Jahresgebühr stand man stundenlang an, und die Ergebnisse wurden über Wochen von Hand berechnet.'], ['Nachher', 'Studierende zahlen und sehen ihre Ergebnisse auf dem Handy. Die Noten werden einmal kontrolliert und dann gesperrt, so dauert ein Zeugnis unter einer Stunde.']], hint: 'Ziehen Sie die Linie in der Mitte, um zu vergleichen.',
+      intro: 'Der Leiter der Studienverwaltung hatte genug von Papier und von Excel-Dateien in vielen Versionen und bat mich, das zu ändern. Ich baute die Plattform allein, ohne einen Senior, der meine Entscheidungen prüfte.',
+      metrics: [{ v: '2.000', l: 'Studierende pro Jahr' }, { f: 'Wochen', v: '< 1 Std.', l: 'pro Abschlusszeugnis' }, { v: '1 Jahr', l: 'von Papier zu komplett online' }, { v: '3', l: 'Entwickler in der Einheit, die ich geleitet habe' }],
+      built: ['Gebühren und Noten online, in der App und auf der Website. Ändert das Ministerium seine Bonuspunkte, berechnet das System alle Noten selbst neu.', 'Endnoten werden einmal geprüft und dann gesperrt, niemand kann sie ändern. Anderswo im Irak dauert ein Zeugnis Wochen, manchmal zwei Monate.', 'Den ersten Server des Colleges aufgebaut, das DNS zu Cloudflare umgezogen und die alte PHP-Website in Django neu gebaut.', 'Die Einheit für Softwaresysteme und Netzwerke geleitet: Backend (ich), Frontend und Mobile.'] }
+  },
+  skills: [
+    { t: 'Performance', r: [['apicbase', '25 s → unter 1 s auf den langsamsten Inventurseiten'], ['apicbase', 'Tests für jede Änderung: 2 Stunden → 49 Minuten'], ['hadi', 'Abschlusszeugnisse in unter einer Stunde']] },
+    { t: 'Systemdesign', r: [['apicbase', 'der Bestand raus aus dem Request, rein in eine geordnete Event-Queue'], ['hadi', 'Endnoten einmal geprüft, dann für immer gesperrt'], ['kms', 'Arbeitsfreigaben und Freischaltungen, genehmigt vor Arbeitsbeginn'], ['kms', 'ein System für ein Energieunternehmen, von der Instandhaltung bis zum Personal'], ['nahrain', 'ein mandantenfähiges ERP für sieben Fakultäten einer Universität']] },
+    { t: 'Legacy-Migrationen', r: [['kms', 'Siemens → KMS in zwei Kraftwerken'], ['hadi', 'altes PHP → Django'], ['apicbase', 'Bestand im Request → eine Event-Queue, kein einziger Rollback'], ['apicbase', 'Rollenprüfungen → Richtlinien pro Ressource']] },
+    { t: 'Mandantenfähigkeit und Sicherheit', r: [['apicbase', 'Richtlinien pro Ressource für jeden Mandanten, plattformweit'], ['nahrain', 'jede Fakultät in ihrem eigenen, abgeschotteten Bereich']] },
+    { t: 'CI und Tests', r: [['apicbase', 'CI 2 Stunden → 49 Minuten, dann die Testdatenbank 16 Minuten → 6 Sekunden pro Shard']] },
+    { t: 'Infrastruktur', r: [['hadi', 'der erste Server des Colleges: Hardware, Linux, das Rack und DNS über Cloudflare'], ['apicbase', 'Amazon SQS FIFO und Celery in Produktion']] },
+    { t: 'Teams leiten', r: [['hadi', 'Leitung der Software-Einheit: 3 Entwickler'], ['kms', 'KMS gemeinsam mit den Ingenieuren der Kraftwerke gebaut'], ['apicbase', 'die plattformweite Umstellung auf Richtlinien pro Ressource geleitet']] },
+    { t: 'End-to-End-Verantwortung', r: [['hadi', 'die College-Plattform, allein gebaut vom ersten Datenmodell an'], ['kms', 'KMS, vom ersten Gespräch bis live in drei Monaten'], ['nahrain', 'das Al-Nahrain-ERP, von einer Fakultät bis zu sieben']] },
+    { t: 'KI-Integration', r: [['kms', 'ein OAuth2-MCP-Server: Abteilungsleitungen holen sich ihre Berichte per KI']] },
+    { t: 'Python und Django', r: [['hadi', 'die Al-Hadi-Plattform'], ['apicbase', 'die Bestandspipeline bei Apicbase'], ['kms', 'KMS'], ['nahrain', 'das Al-Nahrain-ERP']] },
+    { t: 'PostgreSQL', r: [['apicbase', 'ein Count()-Aggregat durch eine korrelierte Unterabfrage ersetzt'], ['apicbase', 'die Testdatenbank als Dump zwischengespeichert, mit den Migrationen als Schlüssel']] },
+    { t: 'Celery und Amazon SQS', r: [['apicbase', 'SQS FIFO, pro Standort geordnet, seit 2025 in Produktion']] }
+  ],
+  trash: [
+    { icon: 'gear', name: 'Siemens-Instandhaltungssystem', by: 'kms', note: 'Zwei Kraftwerke sind davon weg. Es kostete pro Funktion und pro Nutzer.' },
+    { icon: 'paper', name: 'Papier-Zulassungsformulare', by: 'hadi', note: 'Bewerbung und Bezahlung laufen jetzt online.' },
+    { icon: 'paper', name: 'Von Hand berechnete Noten', by: 'hadi', note: 'Das dauerte Wochen. Heute stehen sie bereit, sobald sie veröffentlicht sind.' },
+    { icon: 'xlsx', name: 'Personal_final (2).xlsx', by: 'nahrain', note: 'Jede Abteilungsleitung hatte ihre eigene Version.' },
+    { icon: 'php', name: 'alte-php-seite', by: 'hadi', note: 'Die Website des Colleges, neu gebaut in Django.' },
+    { icon: 'doc', name: 'Die 25-Sekunden-Seite', by: 'apicbase', note: 'Dieselbe Seite lädt jetzt in unter einer Sekunde.' },
+    { icon: 'doc', name: 'Der 2-Stunden-Testlauf', by: 'apicbase', note: 'Jetzt 49 Minuten für jede Änderung.' },
+    { icon: 'doc', name: 'Rollenbasierte Prüfungen', by: 'apicbase', note: 'Heute Berechtigungen pro Ressource für jeden Mandanten.' }
+  ]
+}
+};
+
+// ------------------------------------------------------------------ language, theme, wallpaper
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const store = { get: k => { try { return localStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} } };
+const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+const mobile = () => matchMedia('(max-width: 760px)').matches;
+let LANG = (() => {
+  const ok = l => l === 'en' || l === 'de';
+  const q = new URLSearchParams(location.search).get('lang'); if (ok(q)) return q;
+  const s = store.get('lang'); if (ok(s)) return s;
+  return ((navigator.languages && navigator.languages[0]) || navigator.language || 'en').toLowerCase().startsWith('de') ? 'de' : 'en';
+})();
+const C = () => CONTENT[LANG], U = () => CONTENT[LANG].ui;
+function setTheme(t) { if (t === 'auto') document.documentElement.removeAttribute('data-theme'); else document.documentElement.setAttribute('data-theme', t); store.set('theme', t); document.querySelectorAll('.win[data-key=settings]').forEach(fillWin); }
+setTheme(store.get('theme') || 'auto');
+function setWallpaper() {             // drop wallpaper.jpg next to this page and it becomes the desktop picture and the avatar
+  const im = new Image();
+  im.onload = () => { document.documentElement.style.setProperty('--wall', 'url("wallpaper.jpg")'); HAS_PHOTO = true; document.querySelectorAll('.av').forEach(paintAvatar); };
+  im.src = 'wallpaper.jpg';
+}
+let HAS_PHOTO = false;
+function paintAvatar(el) { if (!HAS_PHOTO) return; el.style.backgroundImage = 'url("wallpaper.jpg")'; el.classList.add('ph'); }
+
+// ------------------------------------------------------------------ icons (drawn here, no Apple artwork)
+const GLYPH = {
+  kms: '<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>',
+  apicbase: '<path d="M3 7l9-4 9 4-9 4zM3 12l9 4 9-4M3 17l9 4 9-4"/>',
+  nahrain: '<path d="M2 9l10-5 10 5-10 5zM6 11v5c3 2.5 9 2.5 12 0v-5M22 9v6"/>',
+  hadi: '<path d="M4 4h6a3 3 0 0 1 2 1 3 3 0 0 1 2-1h6v15h-6a2 2 0 0 0-2 2 2 2 0 0 0-2-2H4zM12 5v16"/>'
+};
+const appIcon = (id, s = 58) => `<span class="appic" style="width:${s}px;height:${s}px;border-radius:${Math.round(s * .23)}px;background:linear-gradient(160deg,${TINT[id][0]},${TINT[id][1]})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${GLYPH[id]}</svg></span>`;
+const squircle = (bg, inner) => `<svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="g${bg.replace(/[^a-z0-9]/gi, '')}" x1="0" y1="0" x2="0" y2="1">${bg.split(',').map((c, i, a) => `<stop offset="${i / Math.max(1, a.length - 1)}" stop-color="${c}"/>`).join('')}</linearGradient></defs><rect width="64" height="64" rx="15" fill="url(#g${bg.replace(/[^a-z0-9]/gi, '')})"/>${inner}</svg>`;
+const ICON = {
+  files: squircle('#6CB8FF,#1E7BEF', '<path d="M14 20a3 3 0 0 1 3-3h9l4 4h17a3 3 0 0 1 3 3v19a3 3 0 0 1-3 3H17a3 3 0 0 1-3-3z" fill="#fff" opacity=".95"/><path d="M14 27h36" stroke="#1E7BEF" stroke-width="2" opacity=".35"/>'),
+  notes: squircle('#FFFFFF,#F2F2F2', '<rect x="0" y="0" width="64" height="16" rx="15" fill="#FFD52E"/><rect x="0" y="8" width="64" height="8" fill="#FFD52E"/><path d="M14 27h36M14 35h36M14 43h26" stroke="#C9C9CE" stroke-width="2.4" stroke-linecap="round"/>'),
+  mail: squircle('#5AC8FA,#0A6CF0', '<rect x="13" y="19" width="38" height="27" rx="4" fill="#fff"/><path d="M14 21l18 14 18-14" fill="none" stroke="#0A6CF0" stroke-width="2.6" stroke-linejoin="round"/>'),
+  trash: `<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M17 18h30l-3 38H20z" fill="rgba(235,235,240,.55)" stroke="rgba(255,255,255,.85)" stroke-width="1.6"/><path d="M14 16h36" stroke="rgba(255,255,255,.9)" stroke-width="3" stroke-linecap="round"/><path d="M26 25v24M32 25v24M38 25v24" stroke="rgba(255,255,255,.75)" stroke-width="1.6"/></svg>`,
+  pdf: `<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 4h26l12 12v42a3 3 0 0 1-3 3H14a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3z" fill="#fff"/><path d="M40 4v12h12" fill="#E5E5EA"/><path d="M18 24h28M18 30h28M18 36h20" stroke="#C7C7CC" stroke-width="2"/><rect x="11" y="44" width="30" height="12" rx="2.5" fill="#E5322D"/><text x="26" y="53" text-anchor="middle" font-family="-apple-system,Inter,sans-serif" font-size="8.5" font-weight="800" fill="#fff">PDF</text></svg>`,
+  doc: `<svg viewBox="0 0 34 34" aria-hidden="true"><path d="M8 3h13l6 6v21a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 7 30V4.5A1.5 1.5 0 0 1 8.5 3z" fill="#fff" stroke="#C7C7CC"/><path d="M11 13h12M11 17h12M11 21h8" stroke="#C7C7CC" stroke-width="1.4"/></svg>`,
+  paper: `<svg viewBox="0 0 34 34" aria-hidden="true"><path d="M7 5h18v24H7z" fill="#FFF8E7" stroke="#D9C9A3"/><path d="M10 11h12M10 15h12M10 19h9" stroke="#D9C9A3" stroke-width="1.4"/><path d="M5 8h18v24H5z" fill="none" stroke="#D9C9A3" opacity=".6"/></svg>`,
+  xlsx: `<svg viewBox="0 0 34 34" aria-hidden="true"><path d="M8 3h13l6 6v21a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 7 30V4.5A1.5 1.5 0 0 1 8.5 3z" fill="#fff" stroke="#C7C7CC"/><rect x="5" y="17" width="16" height="11" rx="2" fill="#1F9D55"/><text x="13" y="25.3" text-anchor="middle" font-family="-apple-system,Inter,sans-serif" font-size="6.5" font-weight="800" fill="#fff">XLS</text></svg>`,
+  php: `<svg viewBox="0 0 34 34" aria-hidden="true"><path d="M8 3h13l6 6v21a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 7 30V4.5A1.5 1.5 0 0 1 8.5 3z" fill="#fff" stroke="#C7C7CC"/><rect x="5" y="17" width="16" height="11" rx="2" fill="#7A86B8"/><text x="13" y="25.3" text-anchor="middle" font-family="-apple-system,Inter,sans-serif" font-size="6.5" font-weight="800" fill="#fff">PHP</text></svg>`,
+  gear: `<svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="13" fill="#E5E5EA"/><path d="M17 9v3M17 22v3M9 17h3M22 17h3M11.3 11.3l2.1 2.1M20.6 20.6l2.1 2.1M11.3 22.7l2.1-2.1M20.6 13.4l2.1-2.1" stroke="#8E8E93" stroke-width="1.8" stroke-linecap="round"/><circle cx="17" cy="17" r="4" fill="none" stroke="#8E8E93" stroke-width="1.8"/></svg>`,
+  terminal: squircle('#4A4A4E,#1C1C1E', '<rect x="9" y="12" width="46" height="40" rx="6" fill="#0E0E10" stroke="rgba(255,255,255,.16)"/><path d="M17 24l8 6-8 6" fill="none" stroke="#F2F2F7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M29 38h13" stroke="#F2F2F7" stroke-width="3" stroke-linecap="round"/>'),
+  settings: squircle('#A1A1A6,#5E5E63', '<circle cx="32" cy="32" r="17" fill="none" stroke="#F5F5F7" stroke-width="7" stroke-dasharray="4.7 4.2"/><circle cx="32" cy="32" r="13" fill="#F5F5F7"/><circle cx="32" cy="32" r="5.5" fill="#7C7C81"/>'),
+  tips: squircle('#FFD60A,#FF9F0A', '<path d="M32 13.5a12.5 12.5 0 0 0-7.5 22.5c1.4 1 2.3 2.6 2.3 4.3V42h10.4v-1.7c0-1.7.9-3.3 2.3-4.3A12.5 12.5 0 0 0 32 13.5z" fill="#fff"/><rect x="26.8" y="45" width="10.4" height="3" rx="1.5" fill="#fff"/><rect x="28.3" y="50" width="7.4" height="3" rx="1.5" fill="#fff"/>'),
+  cvApp: squircle('#FF7A70,#E5322D', '<path d="M21 12h15.5L45 20.5V50a2.5 2.5 0 0 1-2.5 2.5h-21A2.5 2.5 0 0 1 19 50V14.5A2.5 2.5 0 0 1 21 12z" fill="#fff"/><path d="M36.5 12v8.5H45" fill="#FFD0CC"/><text x="32" y="42" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Inter,sans-serif" font-size="12" font-weight="800" fill="#E5322D">CV</text>'),
+  trashApp: squircle('#9B9BA0,#5E5E63', '<path d="M21.5 23h21l-1.9 25.2a2.5 2.5 0 0 1-2.5 2.3H25.9a2.5 2.5 0 0 1-2.5-2.3z" fill="#fff"/><path d="M18 20h28" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><path d="M27.5 16.5h9" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><path d="M28.5 28.5v15M35.5 28.5v15" stroke="#8a8a8f" stroke-width="2.2" stroke-linecap="round"/>')
+};
+const SIDE = { projects: '<path d="M2 5a1.5 1.5 0 0 1 1.5-1.5h3l1.5 1.5h4.5A1.5 1.5 0 0 1 14 6.5v5A1.5 1.5 0 0 1 12.5 13h-9A1.5 1.5 0 0 1 2 11.5z" fill="none" stroke="currentColor" stroke-width="1.4"/>', documents: '<path d="M4 2h5l3 3v9H4z" fill="none" stroke="currentColor" stroke-width="1.4"/>', trash: '<path d="M3.5 4.5h9M6 4.5V3h4v1.5M5 4.5l.6 9h4.8l.6-9" fill="none" stroke="currentColor" stroke-width="1.4"/>' };
+const side = d => `<svg viewBox="0 0 16 16" aria-hidden="true">${SIDE[d]}</svg>`;
+
+// ------------------------------------------------------------------ the apps (each window is one of these)
+const caseOf = id => C().cases[id];
+const APPS = {
+  about:   { name: () => U().aboutApp, size: [860], at: w => Math.max(12, (innerWidth - w) / 2 - 60), render: renderAbout },
+  files:   { name: () => U().files, size: [780, 470], dock: true, render: renderFiles },
+  project: { name: id => C().apps[id], size: [900, 800], render: renderProject },
+  notes:   { name: () => U().notes, size: [860, 560], dock: true, render: renderNotes },
+  mail:    { name: () => U().mail, size: [600], dock: true, render: renderMail },
+  preview: { name: () => U().preview, size: [760, 860], render: renderPreview },
+  trash:   { name: () => U().trash, size: [760, 520], dock: true, render: renderTrash },
+  help:    { name: () => U().help, size: [460], render: renderHelp },
+  terminal: { name: () => U().terminal, size: [700, 460], dock: true, render: renderTerminal },
+  settings: { name: () => U().ios.settings, size: [440, 600], render: renderSettings }
+};
+const DOCK = ['files', 'notes', 'mail', 'terminal'];
+
+function renderAbout() {
+  const u = U(), a = C().apps;
+  return { title: '', html: `<div class="about2"><div class="about"><div class="av" aria-hidden="true">HA</div><h1>Hussein Altaka</h1><p class="sub">${esc(u.sub)}</p>
+    <p class="head">${esc(u.head)}</p>
+    <dl>${u.specs.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>
+    <div class="acts"><a class="btn p" href="${CV}" download>${esc(u.downloadCv)}</a><button class="btn" data-open="mail">${esc(u.email)}</button></div></div>
+    <section class="aproj" aria-labelledby="aproj-h"><h2 id="aproj-h">${esc(u.projects)}</h2><p>${esc(u.projHint)}</p>
+      <div class="plist">${ORDER.map(id => `<button class="prow" data-open="project:${id}">${appIcon(id, 40)}<span><b>${esc(a[id])}</b><span class="pl">${esc(caseOf(id).line)}</span></span>${CHEV}</button>`).join('')}</div></section></div>`,
+    after: w => w.querySelectorAll('.av').forEach(paintAvatar) };
+}
+function renderFiles(place = 'projects') {
+  const u = U(), a = C().apps;
+  const items = place === 'documents' ? [`<button class="fitem" data-open="preview">${ICON.pdf.replace('<svg', '<svg width="64" height="64"')}<span class="l">${esc(a.cv)}</span><span class="s">PDF</span></button>`]
+    : ORDER.map(id => `<button class="fitem" data-open="project:${id}">${appIcon(id, 64)}<span class="l">${esc(a[id])}</span><span class="s">${esc(caseOf(id).period)}</span></button>`);
+  const sb = (k, label) => `<button class="${place === k ? 'on' : ''}" data-place="${k}">${side(k)}${esc(label)}</button>`;
+  return { title: place === 'documents' ? u.documents : u.projects, html: `<div class="finder"><aside class="side"><p>${esc(u.favorites)}</p>${sb('projects', u.projects)}${sb('documents', u.documents)}<button data-open="trash">${side('trash')}${esc(u.trash)}</button></aside>
+    <div class="fmain"><div class="fgrid">${items.join('')}</div><div class="fstat">${esc(u.items(items.length))}</div></div></div>` };
+}
+function renderProject(id) {
+  const c = caseOf(id), u = U();
+  const steps = c.guide.map(([t, d], i) => `<li data-g="${i + 1}" tabindex="0"><span class="gn" aria-hidden="true">${i + 1}</span><span><b>${esc(t)}</b>${esc(d)}</span></li>`).join('')
+    + (c.hint ? `<li class="hint">${ic('drag')}<span>${esc(c.hint)}</span></li>` : '');
+  return { title: C().apps[id], html: `<article class="proj"><div class="hd">${appIcon(id, 54)}<div><p class="org">${esc(c.org)}</p><p class="orgsub">${esc(c.orgSub)}</p></div>
+      <span class="pill ${c.live ? '' : 'done'}"><i aria-hidden="true"></i>${esc(c.live ? u.live : u.firstJob)}</span></div>
+    <h2>${esc(c.title)}</h2><p class="sum">${esc(c.sum)}</p>
+    <h3>${esc(c.see[0])}</h3><p class="see">${esc(c.see[1])} ${esc(u.seeHint)}</p>
+    <figure class="demo" style="--ac:${TINT[id][1]};--ac2:${TINT[id][0]}"><div class="shot"></div><figcaption><ol class="guide">${steps}</ol></figcaption></figure>
+    <ul class="metrics">${c.metrics.map(m => `<li>${m.f ? `<span class="f">${esc(m.f)}</span>` : ''}<span class="v">${esc(m.v)}</span><span class="l">${esc(m.l)}</span></li>`).join('')}</ul>
+    <h3>${esc(u.started)}</h3><p class="intro">${esc(c.intro)}</p>
+    <h3>${esc(u.built)}</h3><ul class="built">${c.built.map(b => `<li>${esc(b)}</li>`).join('')}</ul>
+    <dl class="facts"><dt>${esc(u.period)}</dt><dd>${esc(c.period)}</dd><dt>${esc(u.role)}</dt><dd>${esc(c.role)}</dd><dt>${esc(u.context)}</dt><dd>${esc(c.context)}</dd><dt>${esc(u.stack)}</dt><dd>${esc(c.stack)}</dd></dl>
+    ${c.private ? `<p class="private">${esc(c.private)}</p>` : ''}</article>`,
+    after: w => {
+      const p = w.querySelector('.shot'); if (!p) return;
+      let stop = () => {};
+      const run = () => { stop(); p.innerHTML = LIVE[id].html(); stop = LIVE[id].start(p); p.querySelector('.rp').onclick = run; };
+      const hov = li => {                // pointing at a step in the caption shows where it is on the screen
+        const n = li ? li.dataset.g : '';
+        p.querySelectorAll('[data-g]').forEach(x => x.classList.toggle('ghov', x.dataset.g === n));
+        p.querySelectorAll('.gm').forEach(x => x.classList.toggle('hov', x.dataset.m === n));
+      };
+      const gl = w.querySelector('.guide');
+      gl.addEventListener('pointerover', e => hov(e.target.closest('li[data-g]')));
+      gl.addEventListener('pointerleave', () => hov(null));
+      gl.addEventListener('focusin', e => hov(e.target.closest('li[data-g]')));
+      gl.addEventListener('focusout', () => hov(null));
+      run(); w._stop = () => stop();
+    } };
+}
+function renderNotes(i = '0') {
+  const u = U(), sk = C().skills, cur = sk[+i] || sk[0];
+  return { title: u.notes, html: `<div class="notes"><div class="nlist">${sk.map((s, k) => `<button class="${s === cur ? 'on' : ''}" data-skill="${k}"><b>${esc(s.t)}</b><span>${esc(u.notesCount(s.r.length))}</span></button>`).join('')}</div>
+    <div class="ndoc"><h2>${esc(cur.t)}</h2><p class="lede">${esc(u.notesLede)}</p><ul>${cur.r.map(([p, t]) => `<li><span class="tag" style="background:${TINT[p][1]}">${esc(C().apps[p])}</span><span>${esc(t)}</span><button data-open="project:${p}">${esc(u.open)} →</button></li>`).join('')}</ul></div></div>` };
+}
+function renderMail(subject) {
+  const u = U();
+  return { title: u.mail, html: `<div class="mail"><div class="row"><label>${esc(u.to)}:</label><span>Hussein Altaka &lt;${EMAIL}&gt;</span></div>
+    <div class="row"><label for="msub">${esc(u.subject)}:</label><input id="msub" value="${esc(subject || u.hello)}"></div>
+    <textarea id="mbody" placeholder="${esc(u.write)}"></textarea>
+    <div class="acts"><button class="btn p" data-act="send">${esc(u.send)}</button><button class="btn" data-act="walk">${esc(u.walk)}</button><a class="btn" href="${LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a><a class="btn" href="${GITHUB}" target="_blank" rel="noopener">GitHub</a><a class="btn" href="${CV}" download>${esc(u.downloadCv)}</a></div>
+    <p class="note">${esc(u.mailNote)}</p></div>` };
+}
+function renderPreview() {
+  const u = U();
+  return { title: C().apps.cv, html: `<div class="pv"><div class="bar">${esc(C().apps.cv)}<a class="btn p" href="${CV}" download>${esc(u.downloadCv)}</a></div><iframe src="${CV}#view=FitH" title="${esc(C().apps.cv)}"></iframe></div>` };
+}
+function renderTrash(emptied) {
+  const u = U(), t = C().trash;
+  return { title: u.trash, html: `<div class="trash"><div class="top">${esc(u.trashLede(t.length))}<button class="btn" data-act="empty">${esc(u.empty)}</button></div>
+    ${emptied ? `<p class="sheet">${esc(u.emptied)}</p>` : ''}
+    ${t.map(x => `<div class="row">${ICON[x.icon]}<div><p class="n">${esc(x.name)}</p><p class="d">${esc(x.note)}</p></div><p class="by">${esc(u.replacedBy)}<br><button data-open="project:${x.by}">${esc(C().apps[x.by])}</button></p></div>`).join('')}</div>` };
+}
+function renderHelp() { const u = U(), ph = mobile(); return { title: ph ? u.ios.tips : u.help, html: `<div class="help">${(ph ? u.helpPhone : u.helpText).map(p => `<p>${esc(p.replace('{MOD}', MOD))}</p>`).join('')}</div>` }; }
+
+// ------------------------------------------------------------------ step 2: each system shown as its own product screen. Illustrations only: KMS and Al-Nahrain are private.
+const LV = () => U().lv;
+function timers() {                    // every timer a screen starts, so closing its window stops them all
+  const ids = new Set();
+  return { t: (f, ms) => { const i = setTimeout(() => { ids.delete(i); f(); }, ms); ids.add(i); return i; }, stop: () => { ids.forEach(i => clearTimeout(i)); ids.clear(); } };
+}
+const IC = {
+  check: '<path d="M4 8.5l2.5 2.5L12 5.5"/>',
+  clock: '<circle cx="8" cy="8" r="6"/><path d="M8 5v3.2l2 1.3"/>',
+  lock: '<rect x="3.5" y="7" width="9" height="6.5" rx="1.5"/><path d="M5.5 7V5.2a2.5 2.5 0 0 1 5 0V7"/>',
+  unlock: '<rect x="3.5" y="7" width="9" height="6.5" rx="1.5"/><path d="M5.5 7V5.2a2.5 2.5 0 0 1 4.8-.9"/>',
+  spark: '<path d="M8 2.5l1.3 3.2 3.2 1.3-3.2 1.3L8 11.5 6.7 8.3 3.5 7l3.2-1.3z"/>',
+  wrench: '<path d="M10.4 2.7a3 3 0 0 0-3.5 3.9L2.8 10.7l2.5 2.5 4.1-4.1a3 3 0 0 0 3.9-3.5l-1.8 1.8-1.7-.4-.4-1.7z"/>',
+  shield: '<path d="M8 2l5 2v3.6c0 2.9-2.1 5.2-5 6.4-2.9-1.2-5-3.5-5-6.4V4z"/><path d="M5.8 8l1.5 1.5L10.4 6.5"/>',
+  store: '<path d="M2.5 6.5L3.6 3h8.8l1.1 3.5M3.2 6.5v7h9.6v-7M2.5 6.5h11M6.6 13.5V10h2.8v3.5"/>',
+  gear: '<circle cx="8" cy="8" r="2.3"/><path d="M8 2.4v1.7M8 11.9v1.7M2.4 8h1.7M11.9 8h1.7M4 4l1.2 1.2M10.8 10.8L12 12M4 12l1.2-1.2M10.8 5.2L12 4"/>',
+  db: '<ellipse cx="8" cy="4" rx="5" ry="1.8"/><path d="M3 4v8c0 1 2.2 1.8 5 1.8s5-.8 5-1.8V4M3 8c0 1 2.2 1.8 5 1.8s5-.8 5-1.8"/>',
+  building: '<path d="M3 13.5V5l5-2.5L13 5v8.5M1.8 13.5h12.4M6.4 13.5v-3h3.2v3M5.6 6.6h.8M9.6 6.6h.8M5.6 8.6h.8M9.6 8.6h.8"/>',
+  award: '<circle cx="8" cy="6" r="3.6"/><path d="M5.9 8.9L5 14l3-1.5 3 1.5-.9-5.1"/>',
+  ticket: '<path d="M2.5 4.5h11v2a1.5 1.5 0 0 0 0 3v2h-11v-2a1.5 1.5 0 0 0 0-3z"/><path d="M9.5 4.5v7" stroke-dasharray="1.2 1.6"/>',
+  calc: '<rect x="3.5" y="2" width="9" height="12" rx="1.5"/><path d="M5.5 4h5v2h-5zM5.6 8.5h.1M8 8.5h.1M10.4 8.5h.1M5.6 11h.1M8 11h.1M10.4 11h.1"/>',
+  replay: '<path d="M3 8a5 5 0 1 0 1.6-3.7"/><path d="M3 2.6V5h2.4"/>',
+  count: '<path d="M5.5 2.8h5v1.6h-5zM4.2 3.6H3.5v10h9v-10h-.7M6 9.2l1.4 1.4 2.8-2.9"/>',
+  waste: '<path d="M3 4.5h10M6.5 4.5V3h3v1.5M4.5 4.5l.6 9h5.8l.6-9"/>',
+  order: '<path d="M2.6 5L8 2.6 13.4 5v6L8 13.4 2.6 11zM2.6 5L8 7.4 13.4 5M8 7.4v6"/>',
+  drag: '<path d="M6 5L3 8l3 3M10 5l3 3-3 3"/>'
+};
+const ic = (n, cls = '') => `<svg class="i ${cls}" viewBox="0 0 16 16" aria-hidden="true">${IC[n]}</svg>`;
+const CHEV = '<svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M3.5 1.5L7 5 3.5 8.5"/></svg>';
+const mk = n => `<span class="gm" data-m="${n}" aria-hidden="true">${n}</span>`;   // a numbered marker on a screen; the caption under it explains each number
+function guide(p, n) {                 // light up step n in the caption and on the screen; 0 lights none
+  const f = p.closest('.demo'); if (!f) return;
+  f.querySelectorAll('.guide li[data-g]').forEach(li => li.classList.toggle('on', +li.dataset.g === n));
+  p.querySelectorAll('[data-g]').forEach(x => x.classList.toggle('gon', +x.dataset.g === n));
+  p.querySelectorAll('.gm').forEach(x => x.classList.toggle('on', +x.dataset.m === n));
+}
+const shotBar = (id, ctx, priv) => { const l = LV(); return `<div class="sbar"><span class="app"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="stroke-width:2">${GLYPH[id]}</svg>${esc(C().apps[id])}</span><span class="ctx">${esc(ctx)}</span><span class="ill" title="${esc(priv ? l.privTitle : l.illusTitle)}">${esc(l.illus)}</span><button class="rp" type="button" aria-label="${esc(l.replay)}" title="${esc(l.replay)}">${ic('replay')}</button></div>`; };
+const STATUS = { wait: 'wa', prog: 'in', done: 'ok', sched: 'mu' };
+const EVK = [['#0A84FF', 'count'], ['#FF9F0A', 'waste'], ['#30B158', 'order']], EVST = { q: 'mu', p: 'in', d: 'ok' };
+const evRow = (l, n, o, st) => { const k = (n + o) % 3; return `<div class="ev"><span class="ki" style="background:${EVK[k][0]}">${ic(EVK[k][1])}</span><span><b>${esc(l.kinds[k])}</b><small>${esc(l.outlets[o])}</small></span><span class="mono">#${n}</span><span class="pill2 ${EVST[st]}">${esc(l.st[st])}</span></div>`; };
+const LIVE = {
+  kms: {
+    html() {
+      const l = LV().kms;
+      const rows = l.rows.map((r, i) => `<div class="wo${i === 0 ? ' hl' : ''}"><span class="mono">${r[0]}</span><span class="eq">${esc(r[1])}<small>${esc(r[2])}</small></span><span class="pill2 ${STATUS[r[3]]}">${esc(l.status[r[3]])}</span></div>`).join('');
+      return shotBar('kms', l.ctx, true) + `<div class="sbody kms">
+        <div><div class="pane" data-g="1"><div class="ph">${mk(1)}${ic('wrench')}${esc(l.wo)}<span class="r"><b class="cnt">0</b> ${esc(l.total)}</span></div>${rows}</div>
+          <div class="pane ptw" data-g="2"><div class="top">${mk(2)}${ic('shield')}<b>${esc(l.ptw)}</b><span class="mono">PTW-0841</span><span class="pill2 wa pst">${esc(l.pending)}</span></div><p class="sub">${esc(l.rows[0][1])}</p>
+            <ol><li class="ok"><span class="dot">${ic('check')}</span><span>${esc(l.req)}</span><span class="mono">06:58</span></li>
+              <li class="iso"><span class="dot">${ic('lock')}</span><span>${esc(l.iso)}</span><span class="locks">${[0, 1, 2, 3].map(() => `<span>${ic('unlock')}</span>`).join('')}</span></li>
+              <li class="apr"><span class="dot">${ic('check')}</span><span>${esc(l.appr)}</span><span class="mono">07:04</span></li></ol></div></div>
+        <div class="pane asst" data-g="3"><div class="ph">${mk(3)}${ic('spark')}${esc(l.asst)}<span class="r">${esc(l.mcp)}</span></div>
+          <div class="msgs"><div class="bub q">${esc(l.q)}</div><div class="typing"><i></i><i></i><i></i></div><div class="bub a"><b>${esc(l.ans)}</b><div class="rank">${l.items.map((n, i) => `<div><em>${esc(n)}</em><span data-w="${[94, 76, 61, 44, 30][i]}%"></span></div>`).join('')}</div></div><div class="sugg">${l.more.map(m => `<span>${esc(m)}</span>`).join('')}</div></div>
+          <div class="tool">${ic('gear')}<span class="code">get_bad_actors</span><span>${esc(l.ro)}</span></div></div></div>`;
+    },
+    start(p) {                          // the interlock: the isolation locks, operations approve, and only then the work starts
+      const T = timers(), l = LV().kms, nf = new Intl.NumberFormat(LANG === 'de' ? 'de-DE' : 'en-US'), g = n => guide(p, n);
+      const cnt = p.querySelector('.cnt'), locks = [...p.querySelectorAll('.locks span')], iso = p.querySelector('.iso'), apr = p.querySelector('.apr'), pst = p.querySelector('.pst');
+      const wo0 = p.querySelector('.wo .pill2'), q = p.querySelector('.bub.q'), typ = p.querySelector('.typing'), ans = p.querySelector('.bub.a'), bars = [...p.querySelectorAll('.rank span')];
+      const lock = x => { x.classList.add('on'); x.innerHTML = ic('lock'); };
+      const approve = () => { iso.classList.add('ok'); apr.classList.add('ok'); pst.className = 'pill2 ok pst'; pst.textContent = l.approved; };
+      const begin = () => { wo0.className = 'pill2 in'; wo0.textContent = l.status.prog; };
+      const answer = () => { typ.classList.remove('in'); ans.classList.add('in'); bars.forEach((b, k) => T.t(() => (b.style.width = b.dataset.w), 150 + k * 90)); T.t(() => p.querySelector('.sugg').classList.add('in'), 900); };
+      if (reduced()) { cnt.textContent = nf.format(20000) + '+'; locks.forEach(lock); approve(); begin(); q.classList.add('in'); answer(); guide(p, 0); return T.stop; }
+      const t0 = performance.now(), step = () => { if (!p.isConnected) return; const k = Math.min(1, (performance.now() - t0) / 1300), e = 1 - Math.pow(1 - k, 3); cnt.textContent = nf.format(Math.round(20000 * e)) + (k === 1 ? '+' : ''); if (k < 1) requestAnimationFrame(step); };
+      requestAnimationFrame(step); g(1);
+      T.t(() => { iso.classList.add('on'); g(2); }, 1600);
+      locks.forEach((x, i) => T.t(() => lock(x), 1850 + i * 330));
+      T.t(() => iso.classList.add('ok'), 3200);
+      T.t(approve, 3550);
+      T.t(begin, 3950);
+      T.t(() => { q.classList.add('in'); g(3); }, 4600);
+      T.t(() => typ.classList.add('in'), 5000);
+      T.t(answer, 5900);
+      T.t(() => g(0), 8800);
+      return T.stop;
+    }
+  },
+  apicbase: {
+    html() {
+      const l = LV().api;
+      return shotBar('apicbase', l.ctx, false) + `<div class="sbody"><div class="flow"><div class="fhead">${l.cols.map((c, i) => `<span${i === 1 ? ` data-s="${esc(l.qShort)}"` : ''}>${i < 3 ? mk(i + 1) : ''}${esc(c)}</span>`).join('')}</div>
+        ${l.outlets.map((o, i) => `<div class="flane"><div class="node src" data-g="1" data-k="${esc(o.slice(-1))}">${ic('store')}<span class="t">${esc(o)}</span></div><div class="qgrp" data-g="2"></div><div class="node wk" data-g="3">${ic('gear')}<span class="t">${esc(l.wk)}</span></div><div class="node st" data-g="3">${ic('db')}<em>#${120 + i * 37}</em></div></div>`).join('')}
+        <p class="fnote">${ic('check')}${esc(l.inOrder)}</p></div>
+        <div class="pane evl" data-g="4"><div class="ph">${mk(4)}${ic('order')}${esc(l.evTitle)}<span class="r"><i></i><span class="lt">${esc(l.live)}</span></span></div><div class="evs">${[[194, 2], [157, 1], [120, 0], [193, 2]].map(([n, o]) => evRow(l, n, o, 'd')).join('')}</div></div></div>`;
+    },
+    start(p) {                          // one outlet's events reach the stock in the order they happened; four each, then Replay
+      const T = timers(), l = LV().api, box = p.querySelector('.evs'), g = n => guide(p, n);
+      if (reduced()) { guide(p, 0); return T.stop; }
+      const add = html => {             // a new event slides in on top; the rows below move down smoothly
+        const was = new Map([...box.children].map(r => [r, r.offsetTop]));
+        box.insertAdjacentHTML('afterbegin', html);
+        const row = box.firstElementChild;
+        [...box.children].forEach(r => { const t = was.get(r); if (t != null && t !== r.offsetTop) r.animate([{ transform: `translateY(${t - r.offsetTop}px)` }, { transform: 'none' }], { duration: 320, easing: 'cubic-bezier(.2,.9,.25,1)' }); });
+        row.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 320 });
+        while (box.children.length > 6) box.lastElementChild.remove();
+        return row;
+      };
+      const setSt = (row, st) => { const pl = row.querySelector('.pill2'); pl.className = 'pill2 ' + EVST[st]; pl.textContent = l.st[st]; };
+      let alive = true;
+      const pause = ms => new Promise(r => T.t(r, ms));
+      g(1); T.t(() => g(2), 1000); T.t(() => g(3), 2700); T.t(() => g(4), 4500);
+      const runs = [...p.querySelectorAll('.flane')].map(async (lane, i) => {
+        const q = lane.querySelector('.qgrp'), wk = lane.querySelector('.wk'), wt = wk.querySelector('.t'), st = lane.querySelector('.st'), em = st.querySelector('em');
+        let seq = 120 + i * 37;
+        await pause(300 + i * 650);
+        for (let j = 0; j < 4 && alive && p.isConnected; j++) {
+          const n = ++seq, k = (n + i) % 3, el = document.createElement('span');
+          el.className = 'pkt'; el.style.background = EVK[k][0]; el.innerHTML = `${ic(EVK[k][1])}${esc(l.kinds[k])}<span class="n">#${n}</span>`;
+          lane.appendChild(el);
+          const row = add(evRow(l, n, i, 'q'));
+          const L = lane.getBoundingClientRect(), Q = q.getBoundingClientRect(), W = wk.getBoundingClientRect(), w = el.offsetWidth;
+          const x0 = Q.left - L.left + 6, x1 = Math.max(x0, Q.right - L.left - w - 6), xw = W.left - L.left + (W.width - w) / 2;
+          try {
+            await el.animate([{ transform: `translateX(${x0}px)`, opacity: 0 }, { transform: `translateX(${x0 + 14}px)`, opacity: 1, offset: .12 }, { transform: `translateX(${x1}px)`, opacity: 1 }], { duration: 1150, easing: 'cubic-bezier(.45,0,.25,1)', fill: 'forwards' }).finished;
+            await el.animate([{ transform: `translateX(${x1}px) scale(1)`, opacity: 1 }, { transform: `translateX(${xw}px) scale(.55)`, opacity: 0 }], { duration: 340, easing: 'cubic-bezier(.5,0,.75,0)', fill: 'forwards' }).finished;
+          } catch (e) { break; }
+          el.remove(); setSt(row, 'p');
+          wk.classList.add('busy'); wt.textContent = l.wkBusy;      // the worker applies it; the next event is already queueing
+          T.t(() => { wk.classList.remove('busy'); wt.textContent = l.wk; setSt(row, 'd'); em.textContent = '#' + n; st.classList.remove('flash'); void st.offsetWidth; st.classList.add('flash'); }, 520);
+          await pause(380 + ((n * 211 + i * 97) % 650));
+        }
+      });
+      Promise.all(runs).then(() => { if (alive) T.t(() => g(0), 700); });
+      return () => { alive = false; T.stop(); };
+    }
+  },
+  nahrain: {
+    html() {
+      const l = LV().nahrain, cell = (name, first) => `<div class="cell${first ? ' first' : ''}"${first ? ' data-g="1"' : ''}>${first ? mk(1) : ic('building')}<span class="nm">${esc(name)}${first ? `<em class="n1">${esc(l.firstNote)}</em>` : ''}</span><span class="lb"><i></i><b>${esc(l.pending)}</b></span></div>`;
+      const cells = cell(l.first, true) + l.colleges.map(n => cell(n)).join('');
+      return shotBar('nahrain', l.ctx, true) + `<div class="sbody nah"><div class="pane"><div class="ph">${ic('building')}${esc(l.tenants)}<span class="r"><b class="cnt"></b></span></div><div class="ten">${cells}</div></div>
+        <div class="pane" data-g="2"><div class="ph">${mk(2)}${ic('clock')}${esc(l.rollout)}</div><ol class="log">${l.log.map(([t, d]) => `<li><div><b>${esc(t)}</b><span>${esc(d)}</span></div></li>`).join('')}</ol><div class="nfoot" data-g="3">${mk(3)}${esc(l.staff)}</div></div></div>`;
+    },
+    start(p) {                          // my old college first, then the council, then seven colleges
+      const T = timers(), l = LV().nahrain, cells = [...p.querySelectorAll('.cell')], logs = [...p.querySelectorAll('.log li')], cnt = p.querySelector('.cnt'), g = n => guide(p, n);
+      const live = c => { c.classList.add('on'); c.querySelector('.lb b').textContent = l.live; };
+      if (reduced()) { cells.forEach(live); logs.forEach(x => x.classList.add('on')); cnt.textContent = l.allLive; guide(p, 0); return T.stop; }
+      T.t(() => { live(cells[0]); logs[0].classList.add('on'); cnt.textContent = l.oneLive; g(1); }, 500);
+      T.t(() => { logs[1].classList.add('on'); g(2); }, 1700);
+      T.t(() => logs[2].classList.add('on'), 2500);
+      cells.slice(1).forEach((c, i) => T.t(() => live(c), 3050 + i * 170));
+      const end = 3050 + cells.length * 170;
+      T.t(() => { logs[3].classList.add('on'); cnt.textContent = l.allLive; }, end);
+      T.t(() => g(3), end + 500);
+      T.t(() => g(0), end + 3000);
+      return T.stop;
+    }
+  },
+  hadi: {
+    html() {
+      const l = LV().hadi, sk = w => `<i class="sk" style="width:${w}%"></i>`;
+      const marks = '<path d="M6 8l2 13M12 8l2 13M18 8l2 13M24 8l2 13M3 17l27-5"/><path d="M6 36l2 13M12 36l2 13M18 36l2 13"/><path d="M52 10c6-3 11 3 17 0s9-2 14 1M52 26c7 2 11-2 18 0s9 1 13-1M52 42c5-3 12 2 18-1s8 0 12 2M52 60c6 2 12-2 18 0"/><path d="M8 66h30M8 74h22"/>';
+      return shotBar('hadi', l.ctx, false) + `<div class="sbody"><div class="ba2">
+        <div class="half before" data-g="1"><span class="lbl2">${mk(1)}${esc(l.before)}</span>
+          <div class="tkt">${ic('ticket')}<p class="k">${esc(l.ticket)}</p><p class="no">147</p><p class="w">${esc(l.window)}</p><hr><p class="k">${esc(l.wait)}</p><p class="v">${ic('clock')}${esc(l.waitV)}</p></div>
+          <div class="sheet2"><p class="tt">${ic('calc')}${esc(l.sheet)}</p><div class="ruled"><svg viewBox="0 0 134 96" aria-hidden="true">${marks}</svg></div><p class="fn">${esc(l.sheetNote)}</p></div></div>
+        <div class="half after" data-g="2"><span class="lbl2">${mk(2)}${esc(l.after)}</span>
+          <div class="phone2"><div class="scr2"><p class="pt">${esc(l.portal)}</p><div class="card2"><b>${esc(l.results)}</b>${[62, 46, 70].map(w => `<div class="rw">${sk(w)}<span class="pill2">${esc(l.passed)}</span></div>`).join('')}</div><div class="card2 row2"><span>${esc(l.fee)}</span><span class="pill2">${esc(l.paid)}</span></div></div></div>
+          <div class="cert2">${ic('award', 'aw')}<p class="ct">${esc(l.cert)}</p>${sk(84)}${sk(62)}${sk(72)}<p class="lk">${ic('lock')}${esc(l.locked)}</p><p class="rd">${esc(l.ready)}</p></div></div>
+        <div class="divider" role="slider" tabindex="0" aria-label="${esc(l.drag)}" aria-valuemin="0" aria-valuemax="100"><span>${ic('drag')}</span></div></div></div>`;
+    },
+    start(p) {                          // one sweep from paper to the portal, then the reader drags
+      const ba = p.querySelector('.ba2'), hdl = p.querySelector('.divider'), T = timers(), g = n => guide(p, n); let raf = 0;
+      const set = v => { v = Math.max(0, Math.min(100, v)); ba.style.setProperty('--x', v + '%'); hdl.setAttribute('aria-valuenow', Math.round(v)); };
+      if (reduced()) guide(p, 0); else { g(1); T.t(() => g(2), 1700); T.t(() => g(0), 4200); }
+      if (reduced() || mobile()) set(50);
+      else { set(100); const t0 = performance.now(), go = () => { if (!p.isConnected) return; const k = Math.max(0, Math.min(1, (performance.now() - t0 - 600) / 1700)); set(100 - 50 * (1 - Math.pow(1 - k, 3))); if (k < 1) raf = requestAnimationFrame(go); }; raf = requestAnimationFrame(go); }
+      const at = e => { const r = ba.getBoundingClientRect(); set((e.clientX - r.left) / r.width * 100); };
+      ba.addEventListener('pointerdown', e => { if (mobile()) return; cancelAnimationFrame(raf); ba.setPointerCapture(e.pointerId); at(e); const mv = ev => at(ev), up = () => { ba.removeEventListener('pointermove', mv); ba.removeEventListener('pointerup', up); }; ba.addEventListener('pointermove', mv); ba.addEventListener('pointerup', up); });
+      hdl.addEventListener('keydown', e => { const v = parseFloat(ba.style.getPropertyValue('--x')) || 50; if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); cancelAnimationFrame(raf); set(v + (e.key === 'ArrowLeft' ? -5 : 5)); } });
+      return () => { cancelAnimationFrame(raf); T.stop(); };
+    }
+  }
+};
+
+// ------------------------------------------------------------------ step 3: shared helpers
+const MOD = /Mac|iPhone|iPad|iPod/.test(navigator.platform || navigator.userAgent || '') ? '⌘' : 'Ctrl+';
+const escRe = x => x.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const fold = x => String(x).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ß/g, 'ss');
+let UQN = 0;
+const uq = svg => { const n = ++UQN; return svg.replace(/id="([^"]+)"/g, `id="$1_${n}"`).replace(/url\(#([^)]+)\)/g, `url(#$1_${n})`); };   // a second copy of an icon gets its own gradient ids
+const hamono = sz => `<span class="appic" style="width:${sz}px;height:${sz}px;border-radius:${Math.round(sz * .23)}px;background:linear-gradient(160deg,#33496a,#141c29);font:700 ${Math.round(sz * .36)}px/1 var(--font)">HA</span>`;
+const MAG = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/></svg>';
+const isDark = () => { const t = store.get('theme') || 'auto'; return t === 'dark' || (t === 'auto' && matchMedia('(prefers-color-scheme: dark)').matches); };
+const toggleTheme = () => setTheme(isDark() ? 'light' : 'dark');
+const downloadCv = () => { const a = document.createElement('a'); a.href = CV; a.download = ''; a.click(); };
+function mark(text, words) {           // the text, escaped, with every searched word (2+ letters) in <mark>
+  const low = text.toLowerCase(), on = new Array(text.length).fill(false);
+  words.map(x => x.toLowerCase()).filter(x => x.length > 1).forEach(x => { for (let i = low.indexOf(x); i > -1; i = low.indexOf(x, i + x.length)) for (let j = i; j < i + x.length; j++) on[j] = true; });
+  let out = '', open = false;
+  for (let i = 0; i < text.length; i++) { if (on[i] !== open) { out += on[i] ? '<mark>' : '</mark>'; open = on[i]; } out += esc(text[i]); }
+  return out + (open ? '</mark>' : '');
+}
+
+// ------------------------------------------------------------------ step 3: Spotlight. A recruiter types "Django" and gets the proof.
+const SYN = { kms: 'power plant plants energy maintenance siemens industrial kraftwerk kraftwerke energie instandhaltung wartung', apicbase: 'food tech saas restaurant restaurants stock inventory belgium remote bestand lager inventur', nahrain: 'university erp education college colleges multi-tenant universitat hochschule bildung', hadi: 'college education students platform portal paper universitat hochschule studierende' };
+const SKSYN = ['speed fast slow optimization optimisation latency queries geschwindigkeit schnell langsam optimierung', 'architecture event-driven design architektur', 'migration migrations refactor refactoring modernization modernisierung', 'auth authorization permissions rbac security tenant tenants saas berechtigungen sicherheit mandanten', 'ci cd tests testing unit quality devops qualitat', 'devops linux server servers dns cloudflare aws docker ops hosting', 'lead leadership team manager management mentoring fuhrung teamleitung', 'ownership owner full stack fullstack end-to-end solo verantwortung', 'ai llm mcp claude agents machine learning artificial intelligence ki kunstliche intelligenz', 'python django drf backend', 'postgres postgresql sql database databases db datenbank', 'celery sqs aws queue queues async asynchronous messaging events warteschlange'];
+const ACTG = { mail: '<path d="M3 5h10v7H3z"/><path d="M3.5 5.5L8 9l4.5-3.5"/>', download: '<path d="M8 2.5v8M4.8 7.5L8 10.7l3.2-3.2M3 13h10"/>', theme: '<circle cx="8" cy="8" r="5.2"/><path d="M8 2.8v10.4A5.2 5.2 0 0 0 8 2.8z" fill="currentColor"/>', globe: '<circle cx="8" cy="8" r="5.5"/><path d="M2.5 8h11M8 2.5c1.8 1.6 2.6 3.5 2.6 5.5S9.8 11.9 8 13.5M8 2.5C6.2 4.1 5.4 6 5.4 8s.8 3.9 2.6 5.5"/>', link: '<path d="M9.5 3H13v3.5M13 3L7.5 8.5M11 9.5V13H3V5h3.5"/>' };
+const actIcon = (g, sz) => `<span class="appic" style="width:${sz}px;height:${sz}px;border-radius:${Math.round(sz * .23)}px;background:linear-gradient(160deg,#8e8e93,#5a5a5f)"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${ACTG[g]}</svg></span>`;
+const SPORDER = ['project', 'skill', 'fact', 'app', 'doc', 'replaced', 'action'];
+const SPOT = { open: false, sel: 0, rows: [], prev: null };
+let SPIX = null, SPIXL = '';
+const ttl = it => typeof it.title === 'function' ? it.title() : it.title;
+function spotIndex() {                 // everything searchable, built from the same facts as the windows
+  if (SPIX && SPIXL === LANG) return SPIX;
+  const u = U(), sp = u.spot, c = C(), a = c.apps, items = [], add = o => items.push(o);
+  ORDER.forEach(id => {
+    const k = c.cases[id], ic = () => appIcon(id, 22);
+    add({ kind: 'project', title: a[id], sub: k.orgSub, icon: ic, boost: 8, keys: [k.org, k.orgSub, k.title, k.sum, k.line, k.tag, ...k.see, ...k.guide.flat(), k.intro, k.stack, k.context, k.role, ...k.built, ...k.metrics.map(m => `${m.v} ${m.l}`), SYN[id], id].join(' '), go: () => openWin('project', id), pv: () => pvProject(id) });
+    k.metrics.forEach(m => { const v = `${m.f ? m.f + ' → ' : ''}${m.v}`; add({ kind: 'fact', title: `${v} ${m.l}`, sub: a[id], icon: ic, keys: `${a[id]} ${SYN[id]}${m.f ? ` ${c.skills[0].t} ${SKSYN[0]}` : ''}`, go: () => openWin('project', id), pv: () => pvFact(id, v, m.l) }); });
+    k.built.forEach(b => add({ kind: 'fact', title: b, sub: a[id], icon: ic, keys: a[id], go: () => openWin('project', id), pv: () => pvFact(id, '', b) }));
+  });
+  c.skills.forEach((sk, i) => add({ kind: 'skill', title: sk.t, sub: u.notesCount(sk.r.length), icon: () => uq(ICON.notes), boost: 7, keys: [...sk.r.map(r => `${r[1]} ${a[r[0]]}`), SKSYN[i] || ''].join(' '), go: () => openWin('notes', String(i)), pv: () => pvSkill(i) }));
+  [['about', u.aboutApp], ['files', u.files], ['notes', u.notes], ['mail', u.mail], ['terminal', u.terminal], ['trash', u.trash], ['settings', u.ios.settings], ['help', u.help]].forEach(([k, n]) => {
+    const ic = sz => k === 'about' ? hamono(sz) : uq(ICON[{ trash: 'trashApp', help: 'tips' }[k] || k]);
+    add({ kind: 'app', title: n, sub: '', icon: () => ic(22), boost: 5, keys: `${sp.desc[k]} ${sp.akeys[k]}`, go: () => openWin(k), pv: () => pvCard(ic(64), n, sp.desc[k]) });
+  });
+  add({ kind: 'doc', title: a.cv, sub: 'PDF', icon: () => ICON.pdf, boost: 6, keys: 'cv resume curriculum vitae lebenslauf pdf download', go: () => openWin('preview'), pv: () => pvCard(ICON.pdf, a.cv, sp.pdfDesc) });
+  c.trash.forEach(t => add({ kind: 'replaced', title: t.name, sub: a[t.by], icon: () => ICON[t.icon], keys: `${t.note} ${a[t.by]} ${u.replacedBy}`, go: () => openWin('trash'), pv: () => pvCard(ICON[t.icon], t.name, t.note, `${u.replacedBy} ${a[t.by]}`) }));
+  const act = (title, g, keys, desc, go) => add({ kind: 'action', title, sub: '', icon: () => actIcon(g, 22), boost: 2, keys, go, pv: () => pvCard(actIcon(g, 64), ttl({ title }), desc) });
+  act(sp.act.mail, 'mail', 'email e-mail contact message write kontakt nachricht schreiben', sp.desc.mail, () => openWin('mail'));
+  act(u.downloadCv, 'download', 'cv resume pdf download lebenslauf herunterladen', sp.act.cvDesc, downloadCv);
+  act(() => sp.act.theme(isDark()), 'theme', 'dark light mode theme appearance dunkel hell modus erscheinungsbild', sp.act.themeDesc, toggleTheme);
+  act(sp.act.lang, 'globe', 'deutsch german english englisch sprache language', sp.act.langDesc, () => setLang(LANG === 'en' ? 'de' : 'en'));
+  act(u.menuSimple, 'link', 'simple page story scroll einfache seite geschichte', sp.act.simpleDesc, () => window.open(STORY, '_blank', 'noopener'));
+  SPIX = items; SPIXL = LANG; return items;
+}
+function spotFind(q) {                 // every word must match; the title counts more than the details
+  const toks = fold(q).split(/\s+/).filter(Boolean); if (!toks.length) return [];
+  const res = [];
+  for (const it of spotIndex()) {
+    const T = fold(ttl(it)), K = fold(it.keys); let sc = it.boost || 0;
+    for (const t of toks) {
+      const wb = new RegExp('(^|[^a-z0-9])' + escRe(t));
+      if (T.startsWith(t)) sc += 30; else if (wb.test(T)) sc += 20; else if (t.length > 2 && T.includes(t)) sc += 10;
+      else if (wb.test(K)) sc += 6; else if (t.length > 2 && K.includes(t)) sc += 2; else { sc = -1; break; }
+    }
+    if (sc >= 0) res.push({ it, sc });
+  }
+  return res.sort((x, y) => y.sc - x.sc);
+}
+const pvHint = () => mobile() ? '' : `<p class="sp-hint"><kbd>↩</kbd> ${esc(U().spot.open)}</p>`;
+function pvProject(id) {
+  const k = caseOf(id);
+  return `<div class="sp-pvh">${appIcon(id, 52)}<div><b>${esc(C().apps[id])}</b><small>${esc(k.orgSub)}</small></div></div><p class="sp-pvt">${esc(k.title)}</p>
+    <div class="sp-kv">${k.metrics.slice(0, 4).map(m => `<span><b>${esc(m.v)}</b>${esc(m.l)}</span>`).join('')}</div><p class="sp-pvs">${esc(k.period)}<br>${esc(k.stack)}</p>${pvHint()}`;
+}
+function pvFact(id, big, text) { return `${big ? `<p class="sp-big">${esc(big)}</p>` : ''}<p class="sp-pvt">${esc(text)}</p><p class="sp-from">${appIcon(id, 18)}${esc(C().apps[id])}</p>${pvHint()}`; }
+function pvSkill(i) {
+  const sk = C().skills[i], a = C().apps;
+  return `<div class="sp-pvh">${uq(ICON.notes)}<div><b>${esc(sk.t)}</b><small>${esc(U().notesCount(sk.r.length))}</small></div></div><ul class="sp-proof">${sk.r.map(([p, t]) => `<li><i style="background:${TINT[p][1]}"></i><span>${fold(t).includes(fold(a[p])) ? esc(t.charAt(0).toUpperCase() + t.slice(1)) : `<b>${esc(a[p])}</b> ${esc(t)}`}</span></li>`).join('')}</ul>${pvHint()}`;
+}
+function pvCard(icon, title, text, foot) { return `<div class="sp-pvc">${icon}<b>${esc(title)}</b><p>${esc(text)}</p>${foot ? `<p class="sp-pvs">${esc(foot)}</p>` : ''}</div>${pvHint()}`; }
+function spotRender() {
+  if (!SPOT.open) return;
+  const box = $('#spot'), sp = U().spot, inp = $('#spq'), q = inp.value.trim(), res = box.querySelector('.sp-res'), none = box.querySelector('.sp-none');
+  box.querySelector('.sp-try').hidden = !!q; SPOT.rows = [];
+  if (!q) { res.hidden = none.hidden = true; inp.setAttribute('aria-expanded', 'false'); inp.removeAttribute('aria-activedescendant'); return; }
+  const hits = spotFind(q);
+  if (!hits.length) { res.hidden = true; none.hidden = false; none.innerHTML = `<b>${esc(sp.none(q))}</b>${esc(sp.noneHint)}`; inp.setAttribute('aria-expanded', 'false'); inp.removeAttribute('aria-activedescendant'); return; }
+  none.hidden = true; res.hidden = false; inp.setAttribute('aria-expanded', 'true');
+  const words = q.split(/\s+/), html = [], put = it => { const i = SPOT.rows.length; html.push(`<div class="sp-row" role="option" id="spo${i}" data-i="${i}" aria-selected="false"><span class="sp-ic">${it.icon()}</span><span class="sp-t">${mark(ttl(it), words)}</span>${it.sub ? `<span class="sp-s">${esc(it.sub)}</span>` : ''}</div>`); SPOT.rows.push(it); };
+  html.push(`<p class="sp-h">${esc(sp.top)}</p>`); put(hits[0].it);
+  SPORDER.forEach(k => { const g = hits.filter(h => h.it !== hits[0].it && h.it.kind === k).slice(0, k === 'fact' ? 5 : 4); if (g.length) { html.push(`<p class="sp-h">${esc(sp.sec[k])}</p>`); g.forEach(h => put(h.it)); } });
+  box.querySelector('.sp-list').innerHTML = html.join('');
+  spotSelect(0);
+}
+function spotSelect(i) {
+  SPOT.sel = i;
+  $('#spot').querySelectorAll('.sp-row').forEach(r => { const on = +r.dataset.i === i; r.classList.toggle('on', on); r.setAttribute('aria-selected', String(on)); if (on) r.scrollIntoView({ block: 'nearest' }); });
+  $('#spq').setAttribute('aria-activedescendant', 'spo' + i);
+  const it = SPOT.rows[i]; $('#spot').querySelector('.sp-pv').innerHTML = it ? it.pv() : '';
+}
+function spotGo(i) { const it = SPOT.rows[i]; if (!it) return; closeSpot(); it.go(); }
+function openSpot(q = '') {
+  const box = $('#spot'), sp = U().spot;
+  if (!SPOT.open) {
+    SPOT.prev = document.activeElement; hideMenu();
+    box.innerHTML = `<div class="sp-box" role="dialog" aria-modal="true" aria-label="Spotlight"><div class="sp-bar">${MAG}<input class="sp-in" id="spq" type="text" role="combobox" aria-expanded="false" aria-controls="spl" aria-autocomplete="list" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="go" placeholder="${esc(sp.ph)}"><button class="sp-x" type="button">${esc(sp.cancel)}</button></div>
+      <div class="sp-try"><span>${esc(sp.tryLbl)}</span>${sp.chips.map(ch => `<button type="button" class="sp-chip">${esc(ch)}</button>`).join('')}</div>
+      <div class="sp-none" hidden></div>
+      <div class="sp-res" hidden><div class="sp-list" id="spl" role="listbox" aria-label="${esc(sp.label)}"></div><div class="sp-pv"></div></div></div>`;
+    box.hidden = false; SPOT.open = true;
+    const inp = $('#spq');
+    inp.addEventListener('input', spotRender);
+    inp.addEventListener('keydown', e => {
+      const n = SPOT.rows.length;
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); if (n) spotSelect((SPOT.sel + (e.key === 'ArrowDown' ? 1 : n - 1)) % n); }
+      else if (e.key === 'Enter') { e.preventDefault(); spotGo(SPOT.sel); }
+    });
+    box.querySelector('.sp-list').addEventListener('mousemove', e => { const r = e.target.closest('.sp-row'); if (r && +r.dataset.i !== SPOT.sel) spotSelect(+r.dataset.i); });
+    if (!reduced()) box.querySelector('.sp-box').animate([{ opacity: 0, transform: 'scale(.97)' }, { opacity: 1, transform: 'none' }], { duration: 160, easing: 'cubic-bezier(.2,.9,.25,1)' });
+  }
+  const inp = $('#spq'); inp.value = q; spotRender(); inp.focus();
+}
+function closeSpot() {
+  if (!SPOT.open) return;
+  const box = $('#spot'); box.hidden = true; box.innerHTML = ''; SPOT.open = false; SPOT.rows = [];
+  if (SPOT.prev && SPOT.prev.isConnected && !mobile()) SPOT.prev.focus({ preventScroll: true }); SPOT.prev = null;
+}
+$('#spot').addEventListener('click', e => {
+  const box = $('#spot');
+  if (e.target === box || e.target.closest('.sp-x')) { closeSpot(); return; }
+  const ch = e.target.closest('.sp-chip'); if (ch) { const inp = $('#spq'); inp.value = ch.textContent; spotRender(); inp.focus(); return; }
+  const r = e.target.closest('.sp-row'); if (r) spotGo(+r.dataset.i);
+});
+
+// ------------------------------------------------------------------ step 3: Terminal. A small home folder built from the same facts.
+const PSLUG = { kms: 'kms', apicbase: 'apicbase', nahrain: 'al-nahrain-erp', hadi: 'al-hadi-platform' };
+const slug = x => fold(x).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const ALIAS = { kms: 'project:kms', apicbase: 'project:apicbase', nahrain: 'project:nahrain', 'al-nahrain': 'project:nahrain', 'al-nahrain-erp': 'project:nahrain', hadi: 'project:hadi', 'al-hadi': 'project:hadi', 'al-hadi-platform': 'project:hadi', cv: 'preview', resume: 'preview', lebenslauf: 'preview', 'hussein-altaka-cv.pdf': 'preview', about: 'about', 'about.txt': 'about', mail: 'mail', email: 'mail', contact: 'mail', notes: 'notes', skills: 'notes', files: 'files', finder: 'files', '.': 'files', projects: 'files:projects', documents: 'files:documents', trash: 'trash', help: 'help', settings: 'settings', terminal: 'terminal', spotlight: 'spot', search: 'spot' };
+const GITH = ['e4c1a92', 'b7f03d5', '9a2e6c1', '5d18f7b', '2c9b0e4'];
+const openAlias = v => { const [k, x] = v.split(':'); openWin(k, x); };
+const aliasName = v => { const [k, x] = v.split(':'); return k === 'project' ? C().apps[x] : k === 'preview' ? C().apps.cv : k === 'files' && x ? U()[x] : APPS[k].name(x); };
+function termFS() {
+  const u = U(), t = u.term, c = C();
+  const readme = id => { const k = c.cases[id]; return [`# ${c.apps[id]}`, '', k.title, '', k.sum, '', `${u.period}: ${k.period}`, `${u.role}: ${k.role}`, `${u.context}: ${k.context}`, `${u.stack}: ${k.stack}`, '', ...k.metrics.map(m => `- ${m.f ? m.f + ' → ' : ''}${m.v} ${m.l}`), '', ...k.built.map(b => `- ${b}`), ...(k.private ? ['', k.private] : []), '', t.openHint(id)]; };
+  const proj = {}, notes = {};
+  ORDER.forEach(id => { proj[PSLUG[id]] = { meta: c.cases[id].period, open: () => openWin('project', id), d: { 'README.md': { f: () => readme(id), open: () => openWin('project', id) } } }; });
+  c.skills.forEach((sk, i) => { notes[slug(sk.t) + '.md'] = { f: () => [`# ${sk.t}`, '', ...sk.r.map(([p, x]) => `- ${c.apps[p]}: ${x}`)], open: () => openWin('notes', String(i)) }; });
+  return { d: {
+    'about.txt': { f: () => ['Hussein Altaka', u.sub, '', u.head, '', ...u.specs.map(([k, v]) => `${k.padEnd(14)} ${v}`)], open: () => openWin('about') },
+    Projects: { open: () => openWin('files', 'projects'), d: proj },
+    Documents: { open: () => openWin('files', 'documents'), d: { [c.apps.cv]: { pdf: true, open: () => openWin('preview') } } },
+    Notes: { open: () => openWin('notes'), d: notes }
+  } };
+}
+const tWalk = (fs, path) => path.reduce((n, k) => n && n.d && n.d[k], fs);
+function tResolve(fs, cwd, p) {        // a path, relative or from ~, to { node, path }; folder names ignore case
+  if (!p || p === '~') return { node: fs, path: [] };
+  let path;
+  if (p.startsWith('~')) { path = []; p = p.replace(/^~\/?/, ''); }
+  else if (p.startsWith('/')) { const m = p.match(/^\/Users\/hussein\/?(.*)$/i); if (!m) return null; path = []; p = m[1]; }
+  else path = [...cwd];
+  for (const part of p.split('/').filter(Boolean)) {
+    if (part === '.') continue;
+    if (part === '..') { path.pop(); continue; }
+    const node = tWalk(fs, path); if (!node || !node.d) return null;
+    const name = Object.keys(node.d).find(n => n.toLowerCase() === part.toLowerCase()); if (!name) return null;
+    path.push(name);
+  }
+  return { node: tWalk(fs, path), path };
+}
+function tFiles(node, path, fn) { Object.keys(node.d || {}).forEach(n => { const ch = node.d[n]; if (ch.d) tFiles(ch, [...path, n], fn); else fn([...path, n], ch); }); }
+function bagFmt(o) { return new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Baghdad', ...o }).format(new Date()); }
+const bagTime = () => bagFmt({ hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23' });
+const catLines = (T, node) => node.f().forEach(l => l.startsWith('# ') ? T.html(`<b>${esc(l)}</b>`) : T.print(l));
+const CMDS = {
+  help(T, a, t) { t.help.forEach(([c, d]) => T.html(`<span class="c-y">${esc(c.padEnd(14))}</span>${esc(d)}`)); },
+  whoami(T, a, t) { T.print('hussein'); T.print(t.whoami); T.print(U().head, 'c-d'); },
+  pwd(T) { T.print('/Users/hussein' + (T.S.cwd.length ? '/' + T.S.cwd.join('/') : '')); },
+  ls(T, a) {
+    const long = a.some(x => /^-\w*l/.test(x)), p = a.find(x => !x.startsWith('-')), r = tResolve(T.fs, T.S.cwd, p);
+    if (!r) { T.print(`ls: ${p}: No such file or directory`, 'c-r'); return; }
+    if (!r.node.d) { T.print(r.path[r.path.length - 1]); return; }
+    const names = Object.keys(r.node.d).sort((x, y) => x.localeCompare(y, 'en', { sensitivity: 'base' })), nm = n => r.node.d[n].d ? `<span class="c-b">${esc(n)}</span>` : esc(n);
+    if (long) names.forEach(n => T.html(`${r.node.d[n].d ? 'drwxr-xr-x' : '-rw-r--r--'}  hussein  ${esc((r.node.d[n].meta || '').padEnd(18))}  ${nm(n)}`));
+    else T.html(names.map(nm).join('   '));
+  },
+  dir(T, a, t) { CMDS.ls(T, a, t); },
+  cd(T, a) { const p = a[0] || '~', r = tResolve(T.fs, T.S.cwd, p); if (!r) T.print(`cd: no such file or directory: ${p}`, 'c-r'); else if (!r.node.d) T.print(`cd: not a directory: ${p}`, 'c-r'); else T.S.cwd = r.path; },
+  cat(T, a, t) {
+    if (!a.length) { T.print('usage: cat <file>', 'c-d'); return; }
+    a.forEach(p => {
+      let r = tResolve(T.fs, T.S.cwd, p); const al = ALIAS[p.toLowerCase().replace(/\/$/, '')];
+      if (!r && al && al.startsWith('project:')) r = tResolve(T.fs, [], 'Projects/' + PSLUG[al.split(':')[1]]);
+      if (!r && al === 'preview') r = tResolve(T.fs, [], 'Documents/' + C().apps.cv);
+      if (!r && al === 'about') r = tResolve(T.fs, [], 'about.txt');
+      if (!r) T.print(`cat: ${p}: No such file or directory`, 'c-r');
+      else if (r.node.pdf) { T.print(t.pdf); T.html(`<a href="${CV}" download>${esc(C().apps.cv)}</a>`); }
+      else if (r.node.d) { if (r.node.d['README.md']) catLines(T, r.node.d['README.md']); else T.print(`cat: ${p}: Is a directory`, 'c-r'); }
+      else catLines(T, r.node);
+    });
+  },
+  open(T, a, t) {
+    if (!a.length) { T.print('usage: open <name>', 'c-d'); return; }
+    const p = a.join(' '), al = ALIAS[p.toLowerCase().replace(/\/$/, '')];
+    if (al === 'terminal') { T.print(t.inTerm, 'c-d'); return; }
+    if (al === 'spot') { openSpot(); return; }
+    let go = null, name = '';
+    const r = tResolve(T.fs, T.S.cwd, p);
+    if (r && r.node.open) { go = r.node.open; name = r.path[r.path.length - 1] || '~'; }
+    else if (al) { go = () => openAlias(al); name = aliasName(al); }
+    if (!go) { T.print(`The file /Users/hussein/${[...T.S.cwd, p].join('/')} does not exist.`, 'c-r'); return; }
+    T.print(t.opening(name), 'c-d'); setTimeout(go, 220);
+  },
+  skills(T, a, t) { const c = C(); c.skills.forEach(sk => T.html(`<span class="c-y">${esc(sk.t.padEnd(34))}</span>${esc([...new Set(sk.r.map(r => c.apps[r[0]]))].join(', '))}`)); T.print(t.skillsHint, 'c-d'); },
+  grep(T, a, t) {
+    const pat = a.filter(x => !x.startsWith('-')).join(' ').replace(/^["']|["']$/g, ''); if (!pat) { T.print('usage: grep <word>', 'c-d'); return; }
+    const lo = pat.toLowerCase(); let n = 0;
+    tFiles(T.fs, [], (path, node) => { if (!node.f) return; node.f().forEach(l => { if (n < 40 && l.toLowerCase().includes(lo)) { n++; T.html(`<span class="c-m">${esc(path.join('/'))}</span><span class="c-d">:</span>${mark(l, [pat])}`); } }); });
+    if (!n) T.print(t.grepNone(pat), 'c-d');
+  },
+  git(T, a, t) {
+    const sub = (a[0] || '').toLowerCase();
+    if (sub === 'log') {
+      const one = a.includes('--oneline');
+      t.gitlog.forEach(([d, m], i) => {
+        if (one) { T.html(`<span class="c-y">${GITH[i]}</span> ${esc(m)}`); return; }
+        T.html(`<span class="c-y">commit ${GITH[i]}</span>${i === 0 ? ' <span class="c-c">(HEAD -&gt; <span class="c-g">main</span>)</span>' : ''}`);
+        T.print('Author: Hussein Altaka'); T.print('Date:   ' + d); T.html(''); T.print('    ' + m); T.html('');
+      });
+      return;
+    }
+    if (sub === 'status') { T.print('On branch main'); T.print('nothing to commit, working tree clean'); return; }
+    if (!sub) { T.print('usage: git log', 'c-d'); return; }
+    T.print(`git: '${a[0]}' is not a git command. See 'git --help'.`, 'c-r');
+  },
+  contact(T, a, t) {
+    T.html(`${esc(t.email.padEnd(10))}<a href="mailto:${EMAIL}">${EMAIL}</a>`);
+    T.html(`${'LinkedIn'.padEnd(10)}<a href="${LINKEDIN}" target="_blank" rel="noopener">${esc(LINKEDIN.replace('https://', ''))}</a>`);
+    T.html(`${'GitHub'.padEnd(10)}<a href="${GITHUB}" target="_blank" rel="noopener">${esc(GITHUB.replace('https://', ''))}</a>`);
+    T.print(t.contactHint, 'c-d');
+  },
+  neofetch(T, a, t) {                 // four blocks in the colours of his four systems
+    const blk = col => `<span style="color:${col}">██████</span>`, row = (x, y) => `${blk(TINT[x][0])}  ${blk(TINT[y][0])}`;
+    const art = [row('kms', 'apicbase'), row('kms', 'apicbase'), row('kms', 'apicbase'), '', row('nahrain', 'hadi'), row('nahrain', 'hadi'), row('nahrain', 'hadi')];
+    const info = ['<span class="c-g">hussein</span>@<span class="c-g">baghdad</span>', '───────────────', ...t.nf.map(([k, v]) => `<span class="c-y">${esc(k.padEnd(11))}</span> ${esc(v)}`)];
+    T.html(`<div class="nf"><div>${art.join('\n')}</div><div>${info.join('\n')}</div></div>`);
+  },
+  date(T) { T.print(`${bagFmt({ weekday: 'short' })} ${bagFmt({ month: 'short' })} ${bagFmt({ day: 'numeric' }).padStart(2)} ${bagTime()} +03 ${bagFmt({ year: 'numeric' })}`); },
+  uptime(T, a, t) { T.print(`${bagTime().slice(0, 5)}  ${t.up}`); },
+  echo(T, a) { T.print(a.join(' ')); },
+  history(T) { T.S.hist.forEach((h, i) => T.print(`${String(i + 1).padStart(5)}  ${h}`)); },
+  clear(T) { T.clear(); },
+  cls(T) { T.clear(); },
+  exit(T) { T.print('[Process completed]', 'c-d'); setTimeout(() => closeWin(T.w), 450); },
+  sudo(T) { T.print('hussein is not in the sudoers file. This incident will be reported.'); },
+  rm(T, a, t) { T.print(t.rm); },
+  man(T, a) { T.print(a[0] ? `No manual entry for ${a[0]}` : 'What manual page do you want?'); }
+};
+function termExec(T, line) {
+  const t = U().term, argv = line.trim().split(/\s+/).filter(Boolean); if (!argv.length) return;
+  const fn = Object.prototype.hasOwnProperty.call(CMDS, argv[0].toLowerCase()) ? CMDS[argv[0].toLowerCase()] : null;
+  if (fn) fn(T, argv.slice(1), t); else { T.print(`zsh: command not found: ${argv[0]}`, 'c-r'); T.print(t.tryHelp, 'c-d'); }
+}
+function termComplete(T, inp) {         // Tab completes commands, then files, folders and app names
+  const v = inp.value, parts = v.split(' '), last = parts[parts.length - 1];
+  let cands;
+  if (parts.length === 1) cands = Object.keys(CMDS).filter(c => c.startsWith(last.toLowerCase()));
+  else {
+    const sl = last.lastIndexOf('/'), dir = sl > -1 ? last.slice(0, sl + 1) : '', stem = last.slice(sl + 1).toLowerCase(), r = tResolve(T.fs, T.S.cwd, dir || '.');
+    const names = r && r.node.d ? Object.keys(r.node.d).map(n => dir + n + (r.node.d[n].d ? '/' : '')) : [];
+    const extra = parts[0] === 'open' && !dir ? Object.keys(ALIAS).filter(k => /^[a-z]/.test(k)) : [];
+    cands = [...new Set([...names, ...extra])].filter(n => n.slice(dir.length).toLowerCase().startsWith(stem));
+  }
+  if (!cands.length) return;
+  if (cands.length === 1) { parts[parts.length - 1] = cands[0] + (cands[0].endsWith('/') ? '' : ' '); inp.value = parts.join(' '); return; }
+  let pre = cands[0]; cands.forEach(c => { while (!c.toLowerCase().startsWith(pre.toLowerCase())) pre = pre.slice(0, -1); });
+  if (pre.length > last.length) { parts[parts.length - 1] = pre; inp.value = parts.join(' '); return; }
+  T.html(`${T.prompt()} ${esc(v)}`); T.html(cands.map(esc).join('   '));
+}
+function renderTerminal() {
+  const t = U().term;
+  return { title: U().terminal, html: `<div class="term" role="log" aria-live="polite"><div class="t-out"></div><div class="t-line"><span class="t-ps"></span><input class="t-in" type="text" aria-label="${esc(t.label)}" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="go"></div></div><div class="t-chips">${t.chips.map(c => `<button type="button" data-cmd="${esc(c)}">${esc(c)}</button>`).join('')}</div>`, after: termInit };
+}
+function termInit(w) {                 // the session (output, history, folder) lives on the window, so a language switch keeps it
+  const S = w._term || (w._term = { log: [], hist: [], cwd: [], hi: 0 });
+  const box = w.querySelector('.term'), outEl = w.querySelector('.t-out'), inp = w.querySelector('.t-in'), ps = w.querySelector('.t-ps');
+  const T = {
+    w, S, fs: termFS(),
+    html(h) { const d = `<div>${h}</div>`; S.log.push(d); if (S.log.length > 500) S.log.splice(0, S.log.length - 500); outEl.insertAdjacentHTML('beforeend', d); while (outEl.childElementCount > 500) outEl.firstElementChild.remove(); },
+    print(text, cls) { this.html(cls ? `<span class="${cls}">${esc(text)}</span>` : esc(text)); },
+    prompt() { return `<span class="c-g">hussein@baghdad</span> <span class="c-b">${esc(S.cwd.length ? S.cwd[S.cwd.length - 1] : '~')}</span> %`; },
+    clear() { S.log = []; outEl.innerHTML = ''; }
+  };
+  const scroll = () => { box.scrollTop = box.scrollHeight; };
+  const run = line => {
+    T.html(`${T.prompt()} ${esc(line)}`);
+    if (line.trim()) { S.hist.push(line); if (S.hist.length > 100) S.hist.shift(); }
+    S.hi = S.hist.length; termExec(T, line); ps.innerHTML = T.prompt(); scroll();
+  };
+  ps.innerHTML = T.prompt();
+  if (S.log.length) outEl.innerHTML = S.log.join('');
+  else { T.print(`Last login: ${bagFmt({ weekday: 'short' })} ${bagFmt({ month: 'short' })} ${bagFmt({ day: 'numeric' })} ${bagTime()} on ttys001`); T.print(U().term.welcome, 'c-d'); }
+  inp.addEventListener('keydown', e => {
+    const k = e.key.toLowerCase();
+    if (e.key === 'Enter') { e.preventDefault(); const v = inp.value; inp.value = ''; run(v); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); if (S.hi > 0) inp.value = S.hist[--S.hi]; }
+    else if (e.key === 'ArrowDown') { e.preventDefault(); if (S.hi < S.hist.length - 1) inp.value = S.hist[++S.hi]; else { S.hi = S.hist.length; inp.value = ''; } }
+    else if (e.key === 'Tab') { e.preventDefault(); termComplete(T, inp); scroll(); }
+    else if (e.ctrlKey && k === 'l') { e.preventDefault(); T.clear(); }
+    else if (e.ctrlKey && k === 'c' && !String(getSelection())) { e.preventDefault(); T.html(`${T.prompt()} ${esc(inp.value)}^C`); inp.value = ''; scroll(); }
+  });
+  box.addEventListener('click', () => { if (!String(getSelection())) inp.focus({ preventScroll: true }); });
+  w.querySelector('.t-chips').addEventListener('click', e => { const b = e.target.closest('[data-cmd]'); if (b) run(b.dataset.cmd); });
+  scroll();
+  if (!mobile()) setTimeout(() => { if (w.isConnected && !SPOT.open) inp.focus({ preventScroll: true }); }, 60);
+}
+
+// ------------------------------------------------------------------ step 3: Settings, and the iPhone home screen
+function renderSettings() {
+  const u = U(), io = u.ios, t = store.get('theme') || 'auto';
+  const ck = '<svg class="ck" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"/></svg>';
+  const opt = (k, v, label, on) => `<button type="button" data-set="${k}:${v}" aria-pressed="${on}">${esc(label)}${on ? ck : ''}</button>`;
+  return { title: io.settings, html: `<div class="set">
+    <button type="button" class="set-prof" data-open="about"><span class="av" aria-hidden="true">HA</span><span><b>Hussein Altaka</b><small>${esc(io.role)}</small></span><svg class="chev" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.5L10.5 8 6 12.5"/></svg></button>
+    <p class="set-h">${esc(io.appearance)}</p><div class="set-g">${opt('theme', 'auto', u.auto, t === 'auto')}${opt('theme', 'light', u.light, t === 'light')}${opt('theme', 'dark', u.dark, t === 'dark')}</div>
+    <p class="set-h">${esc(io.language)}</p><div class="set-g">${opt('lang', 'en', 'English', LANG === 'en')}${opt('lang', 'de', 'Deutsch', LANG === 'de')}</div>
+    <div class="set-g set-gap"><a href="${CV}" download>${esc(u.downloadCv)}</a><a href="${STORY}" target="_blank" rel="noopener">${esc(u.menuSimple)} ↗</a></div></div>`,
+    after: w => w.querySelectorAll('.av').forEach(paintAvatar) };
+}
+function renderIOS() {
+  const u = U(), io = u.ios, a = C().apps;
+  const app = (open, icon, label) => `<button type="button" class="io-app" data-open="${open}"><span class="io-ic">${icon}</span><span class="io-lb">${esc(label)}</span></button>`;
+  $('#ios').innerHTML = `<div class="io-home"><div class="io-grid">
+      <button type="button" class="io-wd io-me" data-open="about"><span class="av" aria-hidden="true">HA</span><span class="io-mt"><b>Hussein Altaka</b><span>${esc(io.role)}</span><span>${esc(io.line)}</span></span></button>
+      <div class="io-wd io-proj"><h2>${esc(u.projects)}</h2>${ORDER.map(id => `<button type="button" class="io-prow" data-open="project:${id}">${appIcon(id, 38)}<span><b>${esc(io.short[id] || a[id])}</b><small>${esc(caseOf(id).line)}</small></span>${CHEV}</button>`).join('')}</div>
+      <div class="io-wd io-clk"><svg class="aclock" viewBox="0 0 150 150" role="img"></svg></div>
+      ${app('preview', uq(ICON.cvApp), io.cv)}${app('trash', uq(ICON.trashApp), u.trash)}${app('settings', uq(ICON.settings), io.settings)}${app('help', uq(ICON.tips), io.tips)}
+    </div></div>
+    <button type="button" class="io-search" data-act="spot">${MAG}${esc(io.search)}</button>
+    <nav class="io-dock" aria-label="Dock">${['files', 'notes', 'mail', 'terminal'].map(k => `<button type="button" class="io-app" data-open="${k}" aria-label="${esc(APPS[k].name())}"><span class="io-ic">${uq(ICON[k])}</span></button>`).join('')}</nav>`;
+  document.querySelectorAll('#ios .av').forEach(paintAvatar);
+}
+function iosIcon(w) {                  // the home-screen icon a window came from, to zoom back into
+  const k = w.dataset.key, x = w.dataset.arg, el = document.querySelector(`#ios [data-open="${k}${x ? ':' + x : ''}"]`) || document.querySelector(`#ios [data-open="${k}"]`);
+  return el ? el.querySelector('.io-ic') || el : null;
+}
+function iosZoom(r) { return { transform: `translate(${r.left}px,${r.top}px) scale(${r.width / innerWidth},${r.height / innerHeight})`, borderRadius: `${Math.round(14 * innerWidth / r.width)}px` }; }
+function iosIn(w, src, push) {          // an app grows out of its icon; one app opened from another slides in from the right
+  if (reduced()) return;
+  const ease = 'cubic-bezier(.2,.9,.25,1)';
+  if (push) { w.animate([{ transform: 'translateX(100%)' }, { transform: 'none' }], { duration: 340, easing: ease }); return; }
+  const ic = src && (src.querySelector('.io-ic') || src), r = ic && ic.getBoundingClientRect();
+  if (!r || !r.width) { w.animate([{ opacity: 0, transform: 'scale(.94)' }, { opacity: 1, transform: 'none' }], { duration: 260, easing: ease }); return; }
+  w.style.transformOrigin = '0 0';
+  w.animate([{ ...iosZoom(r), opacity: .5 }, { transform: 'none', borderRadius: '0px', opacity: 1 }], { duration: 420, easing: ease }).finished.then(() => { w.style.transformOrigin = ''; }, () => {});
+}
+function iosOut(w) {
+  if (w.dataset.back) return w.animate([{ transform: 'none' }, { transform: 'translateX(100%)' }], { duration: 300, easing: 'cubic-bezier(.4,0,.6,1)', fill: 'forwards' }).finished;
+  const ic = iosIcon(w), r = ic && ic.getBoundingClientRect();
+  if (!r || !r.width) return w.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'scale(.94)' }], { duration: 220, fill: 'forwards' }).finished;
+  w.style.transformOrigin = '0 0';
+  return w.animate([{ transform: 'none', borderRadius: '0px', opacity: 1 }, { ...iosZoom(r), opacity: .3 }], { duration: 380, easing: 'cubic-bezier(.3,.6,.2,1)', fill: 'forwards' }).finished;
+}
+
+// ------------------------------------------------------------------ windows
+let LAST_TAP = null;                   // the home-screen icon that was just tapped, so its app can grow out of it
+const WINS = {}; let Z = 20, CASCADE = 0;
+function openWin(key, arg) {
+  const id = arg ? `${key}:${arg}` : key, ex = WINS[key === 'files' ? 'files' : id];
+  if (ex) { LAST_TAP = null; if (key === 'files' && arg) { ex.dataset.arg = arg; fillWin(ex); } if (ex.classList.contains('min')) restoreWin(ex); else focusWin(ex); return ex; }
+  const A = APPS[key], w = document.createElement('section'), src = LAST_TAP, prev = mobile() ? frontWin() : null; LAST_TAP = null;
+  w.className = 'win'; w.dataset.id = key === 'files' ? 'files' : id; w.dataset.key = key; if (arg) w.dataset.arg = arg;
+  w.setAttribute('role', 'dialog');
+  w.innerHTML = '<div class="tb"><button class="back" type="button"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.5 4l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span></span></button><div class="lights"><button class="c" aria-label="Close"></button><button class="m" aria-label="Minimize"></button><button class="x" aria-label="Zoom"></button></div><div class="ttl"></div><div class="tbx"></div></div><div class="wc"></div><div class="rz" aria-hidden="true"></div>';
+  const vw = innerWidth, vh = innerHeight, width = Math.min(A.size[0], vw - 24), off = (CASCADE++ % 6) * 26;
+  const left = A.at ? A.at(width) : Math.max(12, Math.min((vw - width) / 2 - 40 + off, vw - width - 130));
+  const top = Math.max(40, Math.min(58 + off, vh - 280));
+  Object.assign(w.style, { width: width + 'px', left: left + 'px', top: top + 'px' });
+  if (A.size[1]) w.style.height = Math.min(A.size[1], vh - top - 100) + 'px'; else w.style.maxHeight = (vh - top - 100) + 'px';
+  if (prev) w.dataset.back = prev.dataset.id;
+  $('#wins').appendChild(w); WINS[w.dataset.id] = w;
+  fillWin(w); wireWin(w); focusWin(w); bounce(key);
+  if (mobile()) iosIn(w, src, !!prev);
+  return w;
+}
+function fillWin(w) {
+  if (w._stop) { w._stop(); w._stop = null; }
+  const { key, arg } = w.dataset, r = APPS[key].render(arg);
+  w.querySelector('.ttl').textContent = r.title;
+  w.setAttribute('aria-label', r.title || APPS[key].name(arg));
+  w.querySelector('.wc').innerHTML = r.html;
+  if (r.after) r.after(w);
+  const pw = w.dataset.back && WINS[w.dataset.back], bk = w.querySelector('.back span');   // on a phone: back to the app it came from, or Home
+  if (bk) bk.textContent = pw ? (pw.querySelector('.ttl').textContent || APPS[pw.dataset.key].name(pw.dataset.arg)) : U().ios.home;
+}
+function focusWin(w) {
+  w.classList.remove('min'); w.style.zIndex = ++Z;
+  document.querySelectorAll('.win.front').forEach(x => x.classList.remove('front'));
+  w.classList.add('front'); paintMenubar(); paintDock();
+}
+function frontWin() { return [...document.querySelectorAll('.win:not(.min):not(.closing)')].sort((a, b) => b.style.zIndex - a.style.zIndex)[0] || null; }
+function closeWin(w) {
+  if (w._closing) return; w._closing = true;
+  if (w._stop) w._stop(); delete WINS[w.dataset.id]; dropMini(w); w.classList.add('closing');
+  const done = () => { w.remove(); const f = frontWin(); if (f) focusWin(f); else { paintMenubar(); paintDock(); } };
+  if (mobile() && !reduced()) iosOut(w).then(done, done); else done();
+}
+function flyTo(w, el, out) {          // the window shrinks into the dock, or grows out of it
+  const r = w.getBoundingClientRect(), d = el.getBoundingClientRect();
+  const dx = d.left + d.width / 2 - (r.left + r.width / 2), dy = d.top + d.height / 2 - (r.top + r.height / 2);
+  const small = { transform: `translate(${dx}px,${dy}px) scale(${Math.max(.04, d.width / r.width)},${Math.max(.03, d.height / r.height)})`, opacity: .35 }, big = { transform: 'none', opacity: 1 };
+  return w.animate(out ? [big, small] : [small, big], { duration: reduced() ? 1 : 380, easing: out ? 'cubic-bezier(.5,0,.75,.4)' : 'cubic-bezier(.2,.75,.3,1)' }).finished;
+}
+async function minimizeWin(w) {
+  const mini = addMini(w);
+  await flyTo(w, mini, true);
+  w.classList.add('min'); w.classList.remove('front');
+  const f = frontWin(); if (f) focusWin(f); else { paintMenubar(); paintDock(); }
+}
+async function restoreWin(w) {
+  const mini = document.querySelector(`.dk.mini[data-win="${CSS.escape(w.dataset.id)}"]`);
+  w.classList.remove('min'); focusWin(w);
+  if (mini) { await flyTo(w, mini, false); dropMini(w); }
+}
+function wireWin(w) {
+  w.addEventListener('pointerdown', () => focusWin(w));
+  w.querySelector('.c').onclick = e => { e.stopPropagation(); closeWin(w); };
+  w.querySelector('.m').onclick = e => { e.stopPropagation(); minimizeWin(w); };
+  w.querySelector('.x').onclick = e => { e.stopPropagation(); w.classList.toggle('max'); };
+  w.querySelector('.back').onclick = e => { e.stopPropagation(); closeWin(w); };
+  const tb = w.querySelector('.tb');
+  tb.addEventListener('dblclick', e => { if (!mobile() && !e.target.closest('.lights,.back')) w.classList.toggle('max'); });
+  tb.addEventListener('pointerdown', e => {
+    if (e.target.closest('.lights,button,a') || mobile() || w.classList.contains('max')) return;
+    const sx = e.clientX, sy = e.clientY, ox = w.offsetLeft, oy = w.offsetTop; tb.setPointerCapture(e.pointerId);
+    const mv = ev => { w.style.left = Math.min(Math.max(ox + ev.clientX - sx, 80 - w.offsetWidth), innerWidth - 80) + 'px'; w.style.top = Math.min(Math.max(oy + ev.clientY - sy, 28), innerHeight - 60) + 'px'; };
+    const up = () => { tb.removeEventListener('pointermove', mv); tb.removeEventListener('pointerup', up); };
+    tb.addEventListener('pointermove', mv); tb.addEventListener('pointerup', up);
+  });
+  const rz = w.querySelector('.rz');
+  rz.addEventListener('pointerdown', e => {
+    e.stopPropagation(); const sx = e.clientX, sy = e.clientY, ow = w.offsetWidth, oh = w.offsetHeight; rz.setPointerCapture(e.pointerId);
+    w.style.maxHeight = 'none';
+    const mv = ev => { w.style.width = Math.max(320, ow + ev.clientX - sx) + 'px'; w.style.height = Math.max(200, oh + ev.clientY - sy) + 'px'; };
+    const up = () => { rz.removeEventListener('pointermove', mv); rz.removeEventListener('pointerup', up); };
+    rz.addEventListener('pointermove', mv); rz.addEventListener('pointerup', up);
+  });
+}
+
+// ------------------------------------------------------------------ the dock
+function iconFor(key, arg) {
+  if (key === 'project') return appIcon(arg, 54);
+  if (key === 'preview') return ICON.pdf;
+  if (key === 'about') return `<span class="appic" style="width:100%;height:100%;border-radius:23%;background:linear-gradient(160deg,#33496a,#141c29);font:700 17px/1 var(--font)">HA</span>`;
+  return ICON[key] || ICON.files;
+}
+function renderDock() {
+  const u = U();
+  $('#dock').innerHTML = DOCK.map(k => `<button class="dk" data-app="${k}" aria-label="${esc(APPS[k].name())}"><span class="ic">${ICON[k]}</span><span class="tip">${esc(APPS[k].name())}</span></button>`).join('')
+    + '<span class="dsep" aria-hidden="true"></span><span id="minis" style="display:contents"></span>'
+    + `<button class="dk" data-app="trash" aria-label="${esc(u.trash)}"><span class="ic">${ICON.trash}</span><span class="tip">${esc(u.trash)}</span></button>`;
+  document.querySelectorAll('.win.min').forEach(addMini);
+  paintDock();
+}
+function addMini(w) {                  // a minimized window waits in the dock, next to the Trash
+  let m = document.querySelector(`.dk.mini[data-win="${CSS.escape(w.dataset.id)}"]`);
+  if (m) return m;
+  m = document.createElement('button'); m.className = 'dk mini'; m.dataset.win = w.dataset.id;
+  const name = w.querySelector('.ttl').textContent || APPS[w.dataset.key].name(w.dataset.arg);
+  m.setAttribute('aria-label', name);
+  m.innerHTML = `<span class="ic">${iconFor(w.dataset.key, w.dataset.arg)}</span><span class="tip">${esc(name)}</span>`;
+  $('#minis').appendChild(m);
+  return m;
+}
+function dropMini(w) { const m = document.querySelector(`.dk.mini[data-win="${CSS.escape(w.dataset.id)}"]`); if (m) m.remove(); }
+function paintDock() {
+  document.querySelectorAll('.dk[data-app]').forEach(b => { const k = b.dataset.app; b.classList.toggle('on', Object.values(WINS).some(w => w.dataset.key === k)); });
+}
+function bounce(key) {
+  const b = document.querySelector(`.dk[data-app="${key}"]`); if (!b || reduced()) return;
+  b.animate([{ transform: 'none' }, { transform: 'translateY(-16px)' }, { transform: 'none' }, { transform: 'translateY(-7px)' }, { transform: 'none' }], { duration: 640, easing: 'ease-out' });
+}
+$('#dock').addEventListener('click', e => {
+  const b = e.target.closest('.dk'); if (!b) return;
+  if (b.classList.contains('mini')) { const w = WINS[b.dataset.win]; if (w) restoreWin(w); return; }
+  const k = b.dataset.app, mine = Object.values(WINS).filter(w => w.dataset.key === k);
+  const hidden = mine.find(w => w.classList.contains('min'));
+  if (hidden) restoreWin(hidden); else if (mine.length) focusWin(mine.sort((a, b2) => b2.style.zIndex - a.style.zIndex)[0]); else openWin(k);
+});
+$('#dock').addEventListener('mousemove', e => {          // icons grow under the pointer, like the real dock
+  if (reduced() || mobile()) return;
+  document.querySelectorAll('.dk').forEach(b => {
+    const r = b.getBoundingClientRect(), d = Math.abs(e.clientX - (r.left + r.width / 2)), s = 54 * (1 + .55 * Math.max(0, 1 - d / 130));
+    b.style.width = b.style.height = s + 'px';
+  });
+});
+$('#dock').addEventListener('mouseleave', () => document.querySelectorAll('.dk').forEach(b => (b.style.width = b.style.height = '')));
+
+// ------------------------------------------------------------------ the menu bar and its menus
+function paintMenubar() {
+  const u = U(), f = frontWin(), name = f ? APPS[f.dataset.key].name(f.dataset.arg) : u.desktop;
+  $('#menubar').innerHTML = `<button class="logo" data-menu="sys" aria-label="Menu">HA</button><span class="mi app">${esc(name)}</span>
+    <button class="appmenu" data-menu="file">${esc(u.mFile)}</button><button class="appmenu" data-menu="window">${esc(u.mWindow)}</button><button class="appmenu" data-menu="help">${esc(u.mHelp)}</button>
+    <span class="sp"></span>
+    <button data-act="lang" aria-label="${esc(u.switchLang)}" title="${esc(u.switchLang)}">${LANG.toUpperCase()}</button>
+    <button data-act="theme" aria-label="${esc(u.theme)}" title="${esc(u.theme)}"><svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5a6.5 6.5 0 1 0 0 13z"/><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></button>
+    <button data-act="spot" aria-label="${esc(u.spot.label)}" title="${esc(u.spot.label)} (${MOD}K)"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/></svg></button>
+    <span class="mi clock" id="mclock" title="${esc(u.clockTitle)}"></span>`;
+  tick();
+}
+const MENUS = {
+  sys: () => { const u = U(), t = store.get('theme') || 'auto'; return [
+    { l: u.menuAbout, a: () => openWin('about') }, '-',
+    { l: u.menuSimple + ' ↗', a: () => window.open(STORY, '_blank', 'noopener') }, '-',
+    { l: u.auto, c: t === 'auto', a: () => setTheme('auto') }, { l: u.light, c: t === 'light', a: () => setTheme('light') }, { l: u.dark, c: t === 'dark', a: () => setTheme('dark') }, '-',
+    { l: 'English', c: LANG === 'en', a: () => setLang('en') }, { l: 'Deutsch', c: LANG === 'de', a: () => setLang('de') }]; },
+  file: () => { const u = U(); return [{ l: u.closeWin, k: 'esc', a: () => { const f = frontWin(); if (f) closeWin(f); } }, { l: u.downloadCv, a: () => { const a = document.createElement('a'); a.href = CV; a.download = ''; a.click(); } }]; },
+  window: () => { const u = U(); return [{ l: u.minimize, a: () => { const f = frontWin(); if (f) minimizeWin(f); } }, { l: u.zoom, a: () => { const f = frontWin(); if (f) f.classList.toggle('max'); } }, '-', { l: u.allFront, a: () => document.querySelectorAll('.win.min').forEach(restoreWin) }]; },
+  help: () => [{ l: U().howTo, a: () => openWin('help') }]
+};
+let POPFOR = null;
+function showMenu(btn) {
+  const pop = $('#pop'), items = MENUS[btn.dataset.menu]();
+  pop.innerHTML = items.map((it, i) => it === '-' ? '<hr>' : `<button data-i="${i}"><span class="chk">${it.c ? '✓' : ''}</span>${esc(it.l)}${it.k ? `<span class="k">${esc(it.k)}</span>` : ''}</button>`).join('');
+  const r = btn.getBoundingClientRect(); pop.style.left = Math.min(r.left, innerWidth - 250) + 'px'; pop.style.top = (r.bottom + 4) + 'px';
+  pop.hidden = false; POPFOR = btn.dataset.menu;
+  document.querySelectorAll('.menubar .open').forEach(b => b.classList.remove('open')); btn.classList.add('open');
+  pop.onclick = e => { const b = e.target.closest('button[data-i]'); if (!b) return; hideMenu(); items[+b.dataset.i].a(); };
+}
+function hideMenu() { $('#pop').hidden = true; POPFOR = null; document.querySelectorAll('.menubar .open').forEach(b => b.classList.remove('open')); }
+$('#menubar').addEventListener('click', e => {
+  const m = e.target.closest('[data-menu]'); if (m) { e.stopPropagation(); if (POPFOR === m.dataset.menu) hideMenu(); else showMenu(m); return; }
+  const a = e.target.closest('[data-act]'); if (!a) return;
+  if (a.dataset.act === 'lang') setLang(LANG === 'en' ? 'de' : 'en');
+  if (a.dataset.act === 'theme') { const t = store.get('theme') || 'auto', dark = t === 'dark' || (t === 'auto' && matchMedia('(prefers-color-scheme: dark)').matches); setTheme(dark ? 'light' : 'dark'); }
+});
+document.addEventListener('click', e => { if (!e.target.closest('#pop')) hideMenu(); });
+
+// ------------------------------------------------------------------ the desktop and the widget
+function renderDesk() {
+  const a = C().apps, c = C().cases;
+  $('#desk').innerHTML = `<p class="dhd">${esc(U().projects)}</p>` + ORDER.map(id => `<button class="dicon" data-open="project:${id}"><span class="art">${appIcon(id, 60)}</span><span class="lbl">${esc(a[id])}<small>${esc(c[id].tag)}</small></span></button>`).join('')
+    + `<button class="dicon cv" data-open="preview"><span class="art">${ICON.pdf.replace('<svg', '<svg width="60" height="60"')}</span><span class="lbl">${esc(a.cv)}</span></button>`;
+}
+function baghdadNow() {
+  const p = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Baghdad', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false }).formatToParts(new Date());
+  const g = t => +p.find(x => x.type === t).value; return { h: g('hour') % 24, m: g('minute'), s: g('second') };
+}
+function drawClock() {
+  let ticks = '';
+  for (let i = 0; i < 60; i++) { const a = i * 6 * Math.PI / 180, big = i % 5 === 0, r1 = big ? 58 : 63, r2 = 68; ticks += `<line x1="${75 + r1 * Math.sin(a)}" y1="${75 - r1 * Math.cos(a)}" x2="${75 + r2 * Math.sin(a)}" y2="${75 - r2 * Math.cos(a)}" stroke="#1d1d1f" stroke-width="${big ? 1.6 : .7}" opacity="${big ? .85 : .4}"/>`; }
+  const nums = [[12, 75, 31], [3, 120, 81], [6, 75, 128], [9, 30, 81]].map(([t, x, y]) => `<text x="${x}" y="${y}" text-anchor="middle" font-size="18" font-weight="600" fill="#1d1d1f" font-family="-apple-system,Inter,sans-serif">${t}</text>`).join('');
+  const face = `<circle cx="75" cy="75" r="72" fill="#fff"/>${ticks}${nums}<text x="75" y="104" text-anchor="middle" font-size="9" font-weight="700" letter-spacing=".08em" fill="#8e8e93" font-family="-apple-system,Inter,sans-serif">${esc(U().baghdad)}</text>
+    <line class="ck-h" x1="75" y1="75" x2="75" y2="44" stroke="#1d1d1f" stroke-width="4.5" stroke-linecap="round"/><line class="ck-m" x1="75" y1="75" x2="75" y2="25" stroke="#1d1d1f" stroke-width="3" stroke-linecap="round"/>
+    <line class="ck-s" x1="75" y1="86" x2="75" y2="20" stroke="#F09A37" stroke-width="1.3"/><circle cx="75" cy="75" r="3.2" fill="#F09A37" stroke="#1d1d1f" stroke-width="1.2"/>`;
+  document.querySelectorAll('svg.aclock').forEach(c => { c.innerHTML = face; c.setAttribute('aria-label', U().clockTitle); });
+  tick();
+}
+function tick() {
+  const { h, m, s } = baghdadNow(), set = (c, deg) => document.querySelectorAll('.aclock .' + c).forEach(el => el.setAttribute('transform', `rotate(${deg} 75 75)`));
+  set('ck-h', (h % 12) * 30 + m * .5); set('ck-m', m * 6 + s * .1); set('ck-s', s * 6);
+  const mc = $('#mclock'); if (mc) mc.textContent = new Intl.DateTimeFormat(LANG === 'de' ? 'de-DE' : 'en-GB', { timeZone: 'Asia/Baghdad', weekday: 'short', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit', hour12: LANG !== 'de' }).format(new Date()).replace(',', '');
+}
+
+// ------------------------------------------------------------------ one click handler for everything that opens or acts
+document.addEventListener('click', e => {
+  const o = e.target.closest('[data-open]');
+  if (o) { e.preventDefault(); LAST_TAP = o.closest('#ios') ? o : null; const [k, a] = o.dataset.open.split(':'); openWin(k, a); if (o.classList.contains('dicon')) { document.querySelectorAll('.dicon.sel').forEach(x => x.classList.remove('sel')); o.classList.add('sel'); } return; }
+  if (e.target.closest('[data-act="spot"]')) { openSpot(); return; }
+  const st = e.target.closest('[data-set]'); if (st) { const [k, v] = st.dataset.set.split(':'); if (k === 'theme') setTheme(v); else if (v !== LANG) setLang(v); return; }
+  const w = e.target.closest('.win');
+  const pl = e.target.closest('[data-place]'); if (pl && w) { w.dataset.arg = pl.dataset.place; fillWin(w); return; }
+  const sk = e.target.closest('[data-skill]'); if (sk && w) { w.dataset.arg = sk.dataset.skill; fillWin(w); return; }
+  const act = e.target.closest('.win [data-act]'); if (!act || !w) return;
+  if (act.dataset.act === 'send') { const sub = w.querySelector('#msub').value, body = w.querySelector('#mbody').value; location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}`; }
+  if (act.dataset.act === 'walk') { w.querySelector('#msub').value = U().walkSubject; w.querySelector('#mbody').focus(); }
+  if (act.dataset.act === 'empty') { w.dataset.arg = '1'; fillWin(w); }
+});
+$('#desk').addEventListener('click', e => { if (!e.target.closest('.dicon')) document.querySelectorAll('.dicon.sel').forEach(x => x.classList.remove('sel')); });
+document.addEventListener('keydown', e => {
+  if ((e.metaKey || e.ctrlKey) && !e.altKey && e.key.toLowerCase() === 'k') { e.preventDefault(); if (SPOT.open) closeSpot(); else openSpot(); return; }
+  if (e.key === '/' && !SPOT.open && !e.target.closest('input,textarea,[contenteditable]')) { e.preventDefault(); openSpot(); return; }
+  if (e.key !== 'Escape') return;
+  if (SPOT.open) { closeSpot(); return; }
+  if (!$('#pop').hidden) { hideMenu(); return; }
+  if (e.target.closest('.term')) return;   // Esc in the terminal is just a key
+  const f = frontWin(); if (f) closeWin(f);
+});
+
+function setLang(l) {
+  LANG = l; document.documentElement.lang = l; store.set('lang', l);
+  renderDesk(); renderDock(); renderIOS(); drawClock(); paintMenubar();
+  Object.values(WINS).forEach(fillWin);
+  if (SPOT.open) { const q = $('#spq').value; closeSpot(); openSpot(q); }
+}
+// ------------------------------------------------------------------ start
+document.documentElement.lang = LANG;
+setWallpaper(); renderDesk(); renderDock(); renderIOS(); drawClock(); paintMenubar(); setInterval(tick, 1000);
+if (!mobile()) openWin('about');   // on a phone the home screen is the first thing, with his card on top
+</script>
+</body>
+</html>
